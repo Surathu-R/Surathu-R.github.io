@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Vivaah Creations | Royal Grandeur Wedding — Aarav & Ishita</title>
+  
+  <!-- Google Fonts: Supreme Luxury + Elegance -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Cinzel:wght@400;500;600;700;800;900&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 (Pro-style icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <!-- GSAP + ScrollTrigger + 3D plugins for heavy cinematic animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CSSRulePlugin.min.js"></script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0a050f;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      color: #f7f3e8;
+    }
+
+    /* Custom premium scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #1c1322; }
+    ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 20px; }
+    ::-webkit-scrollbar-thumb:hover { background: #f3c86a; }
+
+    /* MAIN LUXURY WRAPPER */
+    .royal-universe {
+      position: relative;
+      background: radial-gradient(ellipse at 30% 40%, #1f172a 0%, #08030f 100%);
+      overflow: hidden;
+    }
+
+    /* ========== SPLASH OPENER: DIAMOND SHATTER & RINGS ========== */
+    .splash-luxury {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, #150e21 0%, #020004 100%);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(3px);
+    }
+
+    .diamond-core {
+      position: relative;
+      width: 140px;
+      height: 140px;
+    }
+    @media (min-width: 768px) { .diamond-core { width: 200px; height: 200px; } }
+
+    .diamond-shape {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #f9e2a1, #d4af37, #f5d742, #b8860b);
+      clip-path: polygon(50% 0%, 80% 30%, 50% 100%, 20% 30%);
+      box-shadow: 0 0 60px rgba(212, 175, 55, 0.8);
+      animation: diamondPulse 2s infinite alternate;
+    }
+    @keyframes diamondPulse {
+      0% { transform: scale(1); opacity: 0.9; text-shadow: 0 0 20px gold; box-shadow: 0 0 40px #d4af37; }
+      100% { transform: scale(1.08); opacity: 1; box-shadow: 0 0 90px #f5d742; }
+    }
+    .splash-message {
+      margin-top: 45px;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 6px;
+      font-size: 0.9rem;
+      color: #e8c96e;
+      text-transform: uppercase;
+      background: rgba(0,0,0,0.5);
+      padding: 12px 28px;
+      border-radius: 60px;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(212,175,55,0.5);
+    }
+    .enter-palace-btn {
+      margin-top: 38px;
+      background: transparent;
+      border: 2px solid #d4af37;
+      padding: 14px 48px;
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      letter-spacing: 4px;
+      color: #e8c96e;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 60px;
+      transition: 0.5s;
+      opacity: 0;
+      transform: scale(0.85);
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 20px rgba(212,175,55,0.3);
+    }
+    .enter-palace-btn.reveal-btn {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+    .enter-palace-btn:hover {
+      background: #d4af37;
+      color: #0a0215;
+      box-shadow: 0 0 45px #ffdf80;
+      border-color: #ffeaac;
+    }
+
+    /* MAIN WEBSITE (initial hidden) */
+    .royal-website {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1.2s ease 0.2s;
+    }
+    .royal-website.visible-royal {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* ========== GLOBAL LUXURY STYLES ========== */
+    .gold-text { color: #d4af37; text-shadow: 0 0 12px rgba(212,175,55,0.5); }
+    .border-glow { box-shadow: 0 0 30px rgba(212,175,55,0.3); }
+
+    /* ORNATE DIVIDERS */
+    .ornate-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin: 28px 0;
+    }
+    .ornate-divider .line {
+      width: 100px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d4af37, #f5e2a4, #d4af37, transparent);
+    }
+    .ornate-divider i { font-size: 1.4rem; color: #d4af37; filter: drop-shadow(0 0 6px gold); }
+
+    /* HERO CINEMATIC */
+    .hero-royal {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 28px;
+      position: relative;
+      background: radial-gradient(ellipse at 50% 50%, rgba(20,10,35,0.7), rgba(2,0,8,0.95));
+    }
+    .hero-card {
+      max-width: 1000px;
+      background: rgba(10, 5, 20, 0.55);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(212,175,55,0.5);
+      border-radius: 80px 32px 80px 32px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.7), inset 0 0 40px rgba(212,175,55,0.1);
+    }
+    .royal-monogram {
+      font-size: 1rem;
+      letter-spacing: 12px;
+      font-weight: 300;
+      color: #e8c96e;
+    }
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.8rem, 3vw, 1rem);
+      letter-spacing: 8px;
+    }
+    .couple-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff5df, #f3cd81, #ffefb9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin: 20px 0;
+    }
+    .wedding-date-lux {
+      border-top: 1px solid rgba(212,175,55,0.5);
+      border-bottom: 1px solid rgba(212,175,55,0.5);
+      display: inline-block;
+      padding: 8px 28px;
+      font-size: 1.2rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* COUNTDOWN LUXURY */
+    .lux-countdown {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin: 40px 0 25px;
+      flex-wrap: wrap;
+    }
+    .count-unit {
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      padding: 12px 20px;
+      min-width: 85px;
+      border-radius: 40px;
+      border: 0.5px solid rgba(212,175,55,0.6);
+    }
+    .count-number {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #f3d382;
+    }
+    .count-label {
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* LUXURY BUTTONS */
+    .btn-royal-gold {
+      background: linear-gradient(135deg, #d4af37, #b48c2c);
+      border: none;
+      padding: 12px 36px;
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      color: #130919;
+      border-radius: 50px;
+      transition: 0.3s;
+      margin: 6px;
+      cursor: pointer;
+      letter-spacing: 2px;
+    }
+    .btn-royal-gold:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 30px #e7bd45;
+      background: linear-gradient(135deg, #edcf70, #cba135);
+    }
+    .btn-outline-lux {
+      background: transparent;
+      border: 1.5px solid #d4af37;
+      color: #e8c96e;
+      padding: 10px 28px;
+      border-radius: 40px;
+      backdrop-filter: blur(4px);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .btn-outline-lux:hover {
+      background: rgba(212,175,55,0.2);
+      box-shadow: 0 0 18px gold;
+    }
+
+    /* DETAILS GRID (HIGH TICKET) */
+    .info-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      margin: 40px 0;
+    }
+    .info-card {
+      background: rgba(20, 12, 35, 0.7);
+      backdrop-filter: blur(8px);
+      padding: 20px 28px;
+      border-radius: 60px 20px 60px 20px;
+      border-left: 3px solid #d4af37;
+      min-width: 180px;
+      text-align: center;
+    }
+    .info-card i { font-size: 2rem; color: #d4af37; margin-bottom: 12px; }
+
+    /* CINEMATIC GALLERY 3D HOVER */
+    .gallery-lux {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+      margin: 50px 0;
+    }
+    .gallery-lux-item {
+      border-radius: 32px;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: all 0.5s;
+      box-shadow: 0 30px 30px -15px black;
+      border: 1px solid rgba(212,175,55,0.4);
+    }
+    .gallery-lux-item img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: 0.7s;
+      display: block;
+    }
+    .gallery-lux-item:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 35px 45px -12px rgba(212,175,55,0.3);
+    }
+    .gallery-lux-item:hover img {
+      transform: scale(1.05);
+      filter: brightness(1.08);
+    }
+
+    /* VENUE & MAP STYLE */
+    .venue-lux-card {
+      background: linear-gradient(145deg, rgba(30,18,48,0.7), rgba(10,4,22,0.9));
+      border-radius: 42px;
+      padding: 30px;
+      margin: 20px 0;
+      border: 1px solid rgba(212,175,55,0.5);
+    }
+    iframe {
+      border-radius: 28px;
+      border: 1px solid #d4af37;
+    }
+
+    /* RSVP MODAL LUXURY */
+    .modal-lux {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(16px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-lux-content {
+      background: #1b1129;
+      border-radius: 64px 24px 64px 24px;
+      max-width: 520px;
+      width: 90%;
+      padding: 40px 28px;
+      text-align: center;
+      border: 1px solid #d4af37;
+      box-shadow: 0 40px 70px rgba(0,0,0,0.6);
+    }
+    .modal-lux-content input {
+      width: 100%;
+      padding: 14px;
+      margin: 12px 0;
+      background: #2b1f3a;
+      border: 1px solid #cba53b;
+      color: #ffefcf;
+      border-radius: 50px;
+    }
+    .close-lux {
+      float: right;
+      font-size: 28px;
+      cursor: pointer;
+      color: #d4af37;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 20px 40px;
+      border-top: 0.5px solid rgba(212,175,55,0.3);
+      margin-top: 30px;
+    }
+    .floating-ornament {
+      position: fixed;
+      pointer-events: none;
+      z-index: 999;
+      font-size: 1rem;
+      opacity: 0.5;
+    }
+    .reveal-scroll {
+      opacity: 0;
+      transform: translateY(45px);
+      transition: all 1s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .reveal-scroll.visible-scroll {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 700px) {
+      .info-grid { gap: 16px; }
+      .count-unit { min-width: 65px; padding: 8px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SPLASH LUXURY: DIAMOND + RINGS EFFECT -->
+<div id="luxurySplash" class="splash-luxury">
+  <div class="diamond-core">
+    <div class="diamond-shape"></div>
+  </div>
+  <div class="splash-message">VIVAAH CREATIONS — PRESENTS</div>
+  <button id="revealRoyalBtn" class="enter-palace-btn">✦ ENTER THE PALACE ✦</button>
+</div>
+
+<!-- MAIN WEBSITE CONTENT -->
+<div id="royalWebsite" class="royal-website">
+  <!-- Hero Section with heavy animations -->
+  <section class="hero-royal">
+    <div class="hero-card">
+      <div class="royal-monogram gold-text">⚜ V & C ⚜</div>
+      <div class="ornate-divider"><div class="line"></div><i class="fas fa-crown"></i><div class="line"></div></div>
+      <p class="hero-title">THE ROYAL WEDDING AFFAIR</p>
+      <div class="couple-name">Aarav & Ishita</div>
+      <div class="wedding-date-lux gold-text">Twenty-Eighth of December — MMXXVI | 7:30 PM</div>
+      <div class="lux-countdown" id="royalCountdown">
+        <div class="count-unit"><div class="count-number" id="cdDays">00</div><div class="count-label">DAYS</div></div>
+        <div class="count-unit"><div class="count-number" id="cdHours">00</div><div class="count-label">HOURS</div></div>
+        <div class="count-unit"><div class="count-number" id="cdMins">00</div><div class="count-label">MINUTES</div></div>
+        <div class="count-unit"><div class="count-number" id="cdSecs">00</div><div class="count-label">SECONDS</div></div>
+      </div>
+      <button class="btn-royal-gold" id="openRsvpBtn"><i class="fas fa-feather-alt"></i> CONFIRM ATTENDANCE</button>
+      <button class="btn-outline-lux" id="playRoyalAudio"><i class="fas fa-music"></i> ROYAL SYMPHONY</button>
+      <audio id="royalAudio" loop preload="auto" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" crossorigin="anonymous"></audio>
+    </div>
+  </section>
+
+  <!-- DETAILS SECTION -->
+  <div class="ornate-divider"><i class="fas fa-gem"></i></div>
+  <div class="reveal-scroll" style="max-width:1200px; margin:0 auto; padding:0 24px;">
+    <div class="info-grid">
+      <div class="info-card"><i class="fas fa-map-marker-alt"></i><h3>Venue</h3><p>Amber Palace, Jaipur</p><small>Sawai Jai Singh Hall</small></div>
+      <div class="info-card"><i class="fas fa-calendar-week"></i><h3>Date & Time</h3><p>28 December 2026</p><small>7:30 PM onwards</small></div>
+      <div class="info-card"><i class="fas fa-champagne-glasses"></i><h3>Reception Gala</h3><p>Royal Banquet</p><small>Followed by Fireworks</small></div>
+    </div>
+  </div>
+
+  <!-- CINEMATIC GALLERY (HIGH TICKET) -->
+  <div class="reveal-scroll" style="max-width:1200px; margin:0 auto; padding:0 24px;">
+    <div class="ornate-divider"><div class="line"></div><i class="fas fa-camera-retro"></i><div class="line"></div></div>
+    <h2 style="font-family:'Cinzel'; text-align:center; font-size:2rem;">A Grand Preview</h2>
+    <div class="gallery-lux">
+      <div class="gallery-lux-item"><img src="https://picsum.photos/id/104/500/600" alt="royal palace"><div style="padding:12px; background:#0f0a16;">Royal Procession</div></div>
+      <div class="gallery-lux-item"><img src="https://picsum.photos/id/169/500/600" alt="dinner luxury"><div style="padding:12px;">Heritage Feast</div></div>
+      <div class="gallery-lux-item"><img src="https://picsum.photos/id/30/500/600" alt="estate"><div style="padding:12px;">Amber Courtyard</div></div>
+    </div>
+  </div>
+
+  <!-- VENUE & MAP LUXURY -->
+  <div class="reveal-scroll" style="max-width:1100px; margin:50px auto; padding:0 24px;">
+    <div class="venue-lux-card">
+      <h2 style="font-family:'Cinzel'; color:#d4af37;"><i class="fas fa-landmark"></i> THE GRAND VENUE</h2>
+      <p>Amber Palace, Jaipur — where royalty meets timeless romance. Join us for an opulent wedding celebration under the stars.</p>
+      <iframe width="100%" height="280" style="border:0; margin-top:18px;" loading="lazy" src="https://maps.google.com/maps?q=Amber%20Palace%2C%20Jaipur&output=embed"></iframe>
+      <div style="margin-top: 25px;"><a href="https://maps.google.com/?q=Amber+Palace+Jaipur" target="_blank" class="btn-outline-lux" style="text-decoration:none; display:inline-block;"><i class="fas fa-directions"></i> GET DIRECTIONS</a></div>
+    </div>
+  </div>
+
+  <!-- ROYAL INVITATION MESSAGE / FAMILY -->
+  <div class="reveal-scroll" style="max-width:1100px; margin:20px auto; padding:20px 28px; background: rgba(0,0,0,0.45); backdrop-filter:blur(12px); border-radius:48px; text-align:center; border:1px solid rgba(212,175,55,0.5);">
+    <i class="fas fa-heart" style="color:#d4af37; font-size:2rem;"></i>
+    <p style="font-family:'Cormorant Garamond'; font-size:1.4rem; margin:12px 0;">Mr. & Mrs. Rajvansh & the Khurana family request the honor of your presence<br> as their children unite in a sacred bond.</p>
+    <div style="display:flex; justify-content:center; gap:35px; flex-wrap:wrap; margin:25px 0;">
+      <div><strong>Father of Groom</strong><br>Ronald Khurana</div>
+      <div><strong>Mother of Bride</strong><br>Anjali Rajvansh</div>
+    </div>
+  </div>
+
+  <!-- CONTACT + WHATSAPP (HIGH TICKET) -->
+  <div class="reveal-scroll" style="text-align:center; margin: 30px auto;">
+    <button id="whatsappShareLux" class="btn-royal-gold"><i class="fab fa-whatsapp"></i> SHARE INVITATION</button>
+    <p style="margin-top:20px;"><i class="fas fa-phone-alt gold-text"></i> RSVP CONTACT: +91 98765 43210 | +91 87654 32109</p>
+  </div>
+
+  <footer>
+    <p>VIVAAH CREATIONS — Curating Unforgettable Weddings</p>
+    <p class="gold-text" style="font-size:0.7rem;">⚜ A Royal Celebration of Love ⚜</p>
+  </footer>
+</div>
+
+<!-- RSVP MODAL -->
+<div id="luxuryModal" class="modal-lux">
+  <div class="modal-lux-content">
+    <span class="close-lux" id="closeModalLux">&times;</span>
+    <i class="fas fa-envelope-open-text" style="font-size:2.5rem; color:#d4af37;"></i>
+    <h3 style="margin:15px 0;">The Royal Guestbook</h3>
+    <input type="text" id="guestNameLux" placeholder="Your Full Name">
+    <input type="email" id="guestEmailLux" placeholder="Email Address">
+    <input type="text" id="guestAttend" placeholder="Number of Guests">
+    <button id="submitRsvpLux" class="btn-royal-gold" style="margin-top:12px;">CONFIRM PRESENCE</button>
+  </div>
+</div>
+
+<script>
+  // HEAVY GSAP ANIMATIONS + SCROLL REVEAL + SPLASH
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // SPLASH LOGIC: DIAMOND to RINGS transition before reveal
+  const splashDiv = document.getElementById('luxurySplash');
+  const revealBtn = document.getElementById('revealRoyalBtn');
+  const mainWebsite = document.getElementById('royalWebsite');
+  
+  // Simulate Diamond shimmer and then show button
+  setTimeout(() => {
+    if (revealBtn) revealBtn.classList.add('reveal-btn');
+  }, 1600);
+  
+  function revealHighTicket() {
+    // Animate splash exit
+    gsap.to(splashDiv, { opacity: 0, duration: 1.2, ease: "power3.inOut", onComplete: () => {
+      splashDiv.style.display = 'none';
+    }});
+    mainWebsite.classList.add('visible-royal');
+    // Massive entrance animation for hero elements
+    const heroTimeline = gsap.timeline();
+    heroTimeline.from(".hero-card", { scale: 0.92, opacity: 0, duration: 1.2, ease: "back.out(0.8)" })
+      .from(".couple-name", { textShadow: "0px 0px 0px", duration: 1, y: 25, opacity: 0, ease: "power3.out" }, "-=0.7")
+      .from(".info-card", { scale: 0.8, opacity: 0, stagger: 0.2, duration: 0.9, ease: "elastic.out(1,0.5)" }, "-=0.5")
+      .from(".btn-royal-gold, .btn-outline-lux", { y: 40, opacity: 0, stagger: 0.2, duration: 0.8 }, "-=0.2");
+    
+    // Start floating royal particles
+    startRoyalOrnaments();
+    // Audio attempt
+    const audio = document.getElementById('royalAudio');
+    audio.volume = 0.4;
+    audio.play().catch(() => { console.log("autoplay blocked"); });
+  }
+  
+  revealBtn.addEventListener('click', revealHighTicket);
+  
+  // COUNTDOWN LOGIC
+  function updateRoyalCountdown() {
+    const weddingDate = new Date(2026, 11, 28, 19, 30, 0).getTime();
+    const now = new Date().getTime();
+    const diff = weddingDate - now;
+    if (diff < 0) { document.getElementById('royalCountdown').innerHTML = "<span class='gold-text'>Celebration has begun ✨</span>"; return; }
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (86400000)) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cdDays').innerText = days.toString().padStart(2,'0');
+    document.getElementById('cdHours').innerText = hours.toString().padStart(2,'0');
+    document.getElementById('cdMins').innerText = mins.toString().padStart(2,'0');
+    document.getElementById('cdSecs').innerText = secs.toString().padStart(2,'0');
+  }
+  setInterval(updateRoyalCountdown, 1000);
+  updateRoyalCountdown();
+  
+  // MODAL RSVP
+  const modal = document.getElementById('luxuryModal');
+  const openRsvp = document.getElementById('openRsvpBtn');
+  const closeModal = document.getElementById('closeModalLux');
+  const submitRsvp = document.getElementById('submitRsvpLux');
+  
+  openRsvp.addEventListener('click', () => {
+    modal.style.display = 'flex';
+    gsap.fromTo(".modal-lux-content", { scale: 0.8, opacity: 0, rotationX: -15 }, { scale: 1, opacity: 1, rotationX: 0, duration: 0.6, ease: "back.out" });
+  });
+  closeModal.addEventListener('click', () => { modal.style.display = 'none'; });
+  window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+  submitRsvp.addEventListener('click', () => {
+    const name = document.getElementById('guestNameLux').value.trim();
+    if (!name) { alert("Kindly provide your royal name."); return; }
+    alert(`✨ Your Highness ${name}, your presence is graciously recorded. ✨`);
+    modal.style.display = 'none';
+    document.getElementById('guestNameLux').value = '';
+    document.getElementById('guestEmailLux').value = '';
+    document.getElementById('guestAttend').value = '';
+  });
+  
+  // WHATSAPP SHARE LUXURY
+  const whatsBtn = document.getElementById('whatsappShareLux');
+  const shareMsg = `✨ ROYAL WEDDING INVITATION ✨\n\nYou are cordially invited to the grand union of Aarav & Ishita on 28th December 2026 at Amber Palace, Jaipur.\nWitness elegance & celebration. Join us!\n\n~ Vivaah Creations`;
+  whatsBtn.addEventListener('click', () => {
+    window.open(`https://wa.me/?text=${encodeURIComponent(shareMsg)}`, '_blank');
+  });
+  
+  // AUDIO CONTROL
+  let isMusicPlaying = false;
+  const musicBtn = document.getElementById('playRoyalAudio');
+  const bgAudio = document.getElementById('royalAudio');
+  musicBtn.addEventListener('click', () => {
+    if (!isMusicPlaying) {
+      bgAudio.play().catch(e=>console.log);
+      musicBtn.innerHTML = "<i class='fas fa-pause'></i> PAUSE SYMPHONY";
+    } else {
+      bgAudio.pause();
+      musicBtn.innerHTML = "<i class='fas fa-music'></i> ROYAL SYMPHONY";
+    }
+    isMusicPlaying = !isMusicPlaying;
+  });
+  
+  // HEAVY PARTICLE FX: Gold dust + tiny diamonds floating
+  function startRoyalOrnaments() {
+    setInterval(() => {
+      if (!mainWebsite.classList.contains('visible-royal')) return;
+      const ornament = document.createElement('div');
+      ornament.classList.add('floating-ornament');
+      ornament.innerHTML = Math.random() > 0.6 ? '✦' : '⚜';
+      ornament.style.left = Math.random() * window.innerWidth + 'px';
+      ornament.style.top = '-20px';
+      ornament.style.fontSize = (10 + Math.random() * 18) + 'px';
+      ornament.style.color = `rgba(212, 175, 55, ${0.3 + Math.random() * 0.5})`;
+      document.body.appendChild(ornament);
+      gsap.to(ornament, { y: window.innerHeight + 50, rotation: 360, duration: 6 + Math.random() * 8, ease: "none", onComplete: () => ornament.remove() });
+    }, 900);
+  }
+  
+  // SCROLL REVEAL OBSERVER
+  const revealElements = document.querySelectorAll('.reveal-scroll');
+  const scrollObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible-scroll');
+    });
+  }, { threshold: 0.2 });
+  revealElements.forEach(el => scrollObs.observe(el));
+  
+  // Additional heavy hover magic & parallax on gallery
+  const galleryItems = document.querySelectorAll('.gallery-lux-item');
+  galleryItems.forEach(item => {
+    item.addEventListener('mouseenter', () => gsap.to(item, { scale: 1.02, duration: 0.3, boxShadow: "0 30px 40px -12px rgba(212,175,55,0.6)" }));
+    item.addEventListener('mouseleave', () => gsap.to(item, { scale: 1, duration: 0.3, boxShadow: "0 30px 30px -15px black" }));
+  });
+  
+  // manual preload glitter animation
+  gsap.to(".diamond-shape", { scale: 1.05, duration: 1.4, repeat: -1, yoyo: true, ease: "sine.inOut" });
+</script>
+</body>
+</html>
