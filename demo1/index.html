@@ -1,276 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Vivaah Creations | Royal Heritage | Vikram & Aditi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700;800&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: #0a0806;
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-        }
-        .invitation-heritage {
-            max-width: 1300px;
-            margin: 40px auto;
-            background: radial-gradient(ellipse at 30% 40%, #2a1810, #0a0502);
-            border-radius: 60px 20px 60px 20px;
-            box-shadow: 0 40px 70px rgba(0,0,0,0.7), inset 0 0 50px rgba(212,175,55,0.1);
-            border: 1px solid #c9a03d;
-            overflow: hidden;
-        }
-        .hero-heritage {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 28px;
-            position: relative;
-        }
-        .glass-heritage {
-            background: rgba(20, 12, 8, 0.75);
-            backdrop-filter: blur(16px);
-            border-radius: 70px 25px 70px 25px;
-            padding: 3rem 2rem;
-            max-width: 1000px;
-            width: 100%;
-            border: 1px solid #c9a03d;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-        }
-        .gold { color: #e8c96e; text-shadow: 0 0 10px #c9a03d; }
-        .couple-images {
-            display: flex;
-            justify-content: center;
-            gap: 45px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-        .img-circle {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 3px solid #c9a03d;
-            overflow: hidden;
-            box-shadow: 0 0 45px rgba(201,160,61,0.6);
-            transition: transform 0.3s;
-        }
-        .img-circle:hover { transform: scale(1.05); }
-        .img-circle img { width: 100%; height: 100%; object-fit: cover; }
-        .names-heritage {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 8vw, 5.2rem);
-            font-weight: 700;
-            background: linear-gradient(135deg, #fff3df, #e5bc7c, #f9e0a0);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin: 20px 0;
-        }
-        .ticking-clock {
-            font-family: 'Cinzel', monospace;
-            font-size: 1.7rem;
-            background: rgba(0,0,0,0.6);
-            display: inline-block;
-            padding: 10px 30px;
-            border-radius: 60px;
-            letter-spacing: 6px;
-            margin: 20px 0;
-            border: 1px solid #c9a03d;
-        }
-        .countdown-wrapper {
-            display: flex;
-            gap: 25px;
-            justify-content: center;
-            margin: 35px 0;
-            flex-wrap: wrap;
-        }
-        .countdown-item {
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            padding: 14px 22px;
-            border-radius: 32px;
-            min-width: 90px;
-            border: 0.5px solid #c9a03d;
-        }
-        .countdown-item .number {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #f3d382;
-            font-family: 'Cinzel', serif;
-            display: block;
-        }
-        .countdown-item .label {
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .map-premium {
-            border-radius: 30px;
-            border: 1px solid #c9a03d;
-            width: 100%;
-            height: 260px;
-            margin: 20px 0;
-        }
-        .btn-gold-premium {
-            background: linear-gradient(135deg, #d4af37, #b48c2c);
-            border: none;
-            padding: 14px 38px;
-            border-radius: 50px;
-            margin: 15px 10px;
-            cursor: pointer;
-            font-family: 'Cinzel', serif;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-        .btn-gold-premium:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 35px gold;
-        }
-        .btn-outline-premium {
-            background: transparent;
-            border: 1.5px solid #c9a03d;
-            padding: 14px 38px;
-            border-radius: 50px;
-            color: #e8c96e;
-            cursor: pointer;
-            font-family: 'Cinzel', serif;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .btn-outline-premium:hover {
-            background: rgba(201,160,61,0.2);
-            box-shadow: 0 0 20px rgba(201,160,61,0.5);
-        }
-        .floating-petal {
-            position: fixed;
-            pointer-events: none;
-            z-index: 999;
-            font-size: 1.3rem;
-        }
-        footer {
-            text-align: center;
-            padding: 35px;
-            font-family: 'Cormorant Garamond', serif;
-            color: #c9a03d;
-            border-top: 0.5px solid rgba(201,160,61,0.3);
-        }
-        @media (max-width: 700px) {
-            .countdown-item { min-width: 70px; padding: 8px 12px; }
-            .img-circle { width: 120px; height: 120px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Vivaah Creations | Samaira & Rohan | Elegant Wedding Invitation</title>
+  <!-- Google Fonts: clean + elegant -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- GSAP for heavy animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #fef9f0 0%, #fff5e6 100%);
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      color: #2d2a2a;
+    }
+
+    /* main container */
+    .invitation-elegant {
+      max-width: 1200px;
+      margin: 30px auto;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 48px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 215, 150, 0.5);
+      overflow: hidden;
+      backdrop-filter: blur(2px);
+    }
+
+    /* hero section with colorful gradient */
+    .hero-elegant {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 28px;
+      background: linear-gradient(125deg, #ffe7e0 0%, #ffedd5 50%, #e6f7f0 100%);
+      position: relative;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-radius: 56px;
+      padding: 2.5rem 2rem;
+      max-width: 950px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 200, 150, 0.6);
+      transition: all 0.3s;
+    }
+
+    /* couple images in elegant frames */
+    .couple-frame {
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      margin: 20px 0 30px;
+      flex-wrap: wrap;
+    }
+    .photo-elegant {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      border: 4px solid white;
+      transition: transform 0.4s ease;
+    }
+    .photo-elegant:hover {
+      transform: scale(1.03);
+    }
+    .photo-elegant img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* stylish typography */
+    .subhead {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      color: #d47c5a;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .names {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      font-weight: 600;
+      color: #3b2a2a;
+      margin: 10px 0;
+      background: linear-gradient(120deg, #c45c3a, #e8996e, #bd6f4a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .date-badge {
+      background: #ffffffcc;
+      display: inline-block;
+      padding: 6px 24px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #b95c38;
+      margin: 15px 0;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ticking clock + countdown */
+    .clock-area {
+      background: rgba(255, 245, 235, 0.8);
+      border-radius: 100px;
+      padding: 12px 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.4rem;
+      font-family: monospace;
+      font-weight: 600;
+      margin: 15px 0;
+      box-shadow: inset 0 0 0 1px #ffe0c0, 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+    .clock-area i {
+      color: #e8825a;
+      font-size: 1.4rem;
+    }
+
+    .countdown-row {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      margin: 35px 0;
+      flex-wrap: wrap;
+    }
+    .cd-item {
+      background: white;
+      border-radius: 32px;
+      padding: 12px 18px;
+      min-width: 85px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid #ffe0c0;
+    }
+    .cd-num {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #c45c3a;
+      font-family: monospace;
+      display: block;
+    }
+    .cd-label {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #b48c6c;
+    }
+
+    /* map style */
+    .map-stylish {
+      border-radius: 32px;
+      overflow: hidden;
+      border: 1px solid #ffcfaa;
+      margin: 25px 0;
+      box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.1);
+    }
+    iframe {
+      width: 100%;
+      height: 240px;
+      border: 0;
+      display: block;
+    }
+
+    /* buttons */
+    .btn-primary {
+      background: linear-gradient(105deg, #e8825a, #d66842);
+      border: none;
+      padding: 14px 38px;
+      border-radius: 50px;
+      font-weight: 500;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      box-shadow: 0 8px 18px rgba(200, 100, 50, 0.3);
+      transition: all 0.25s;
+      margin: 8px;
+    }
+    .btn-primary:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 25px rgba(200, 100, 50, 0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #e8825a;
+      padding: 14px 38px;
+      border-radius: 50px;
+      color: #d66842;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+      margin: 8px;
+    }
+    .btn-outline:hover {
+      background: #e8825a10;
+      border-color: #c45c3a;
+    }
+
+    /* floating petals / colorful animations */
+    .floating-flower {
+      position: fixed;
+      pointer-events: none;
+      z-index: 999;
+      font-size: 1rem;
+      opacity: 0.6;
+    }
+
+    /* RSVP modal elegant */
+    .modal-modern {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(12px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content-modern {
+      background: #fffef7;
+      border-radius: 48px;
+      max-width: 450px;
+      width: 90%;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 40px 60px rgba(0, 0, 0, 0.2);
+      border: 1px solid #ffcfaa;
+    }
+    .modal-content-modern input {
+      width: 100%;
+      margin: 12px 0;
+      padding: 14px;
+      border: 1px solid #ffcfaa;
+      border-radius: 60px;
+      background: #fffaf2;
+      font-family: inherit;
+    }
+    .modal-content-modern button {
+      background: #e8825a;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 40px;
+      color: white;
+      margin: 8px;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 45px 20px 35px;
+      font-size: 0.8rem;
+      color: #b48c6c;
+      background: #fffaf3;
+      border-top: 1px solid #ffe0c0;
+    }
+
+    /* reveal animations */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 680px) {
+      .hero-card { padding: 1.8rem; }
+      .photo-elegant { width: 110px; height: 110px; }
+      .cd-item { min-width: 70px; padding: 8px 12px; }
+      .cd-num { font-size: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="invitation-heritage">
-    <div class="hero-heritage">
-        <div class="glass-heritage">
-            <div class="gold" style="letter-spacing: 10px;">✦ VIVAAH CREATIONS ✦</div>
-            <div class="couple-images">
-                <div class="img-circle"><img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Vikram"></div>
-                <div class="img-circle"><img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Aditi"></div>
-            </div>
-            <h1 class="names-heritage">Vikram & Aditi</h1>
-            <div class="ticking-clock gold" id="clockHeritage">--:--:--</div>
-            <div class="countdown-wrapper" id="countdownHeritage">
-                <div class="countdown-item"><span class="number" id="dHeritage">00</span><span class="label">DAYS</span></div>
-                <div class="countdown-item"><span class="number" id="hHeritage">00</span><span class="label">HOURS</span></div>
-                <div class="countdown-item"><span class="number" id="mHeritage">00</span><span class="label">MINUTES</span></div>
-                <div class="countdown-item"><span class="number" id="sHeritage">00</span><span class="label">SECONDS</span></div>
-            </div>
-            <p><i class="fas fa-map-marker-alt gold"></i> City Palace, Jaipur | Saturday, 12th December 2026 | 7:00 PM</p>
-            <iframe class="map-premium" src="https://maps.google.com/maps?q=City%20Palace%2C%20Jaipur&output=embed" allowfullscreen></iframe>
-            <button class="btn-gold-premium" id="rsvpHeritage"><i class="fas fa-feather-alt"></i> CONFIRM ATTENDANCE</button>
-            <button class="btn-outline-premium" id="whatsHeritage"><i class="fab fa-whatsapp"></i> SHARE INVITATION</button>
-        </div>
+<div class="invitation-elegant">
+  <div class="hero-elegant">
+    <div class="hero-card">
+      <div class="subhead">✨ the love story continues ✨</div>
+      <div class="couple-frame">
+        <div class="photo-elegant"><img src="https://randomuser.me/api/portraits/men/86.jpg" alt="Rohan"></div>
+        <div class="photo-elegant"><img src="https://randomuser.me/api/portraits/women/77.jpg" alt="Samaira"></div>
+      </div>
+      <h1 class="names">Samaira & Rohan</h1>
+      <div class="date-badge"><i class="far fa-calendar-alt"></i> Saturday, 20th March 2027</div>
+      
+      <!-- ticking clock -->
+      <div class="clock-area">
+        <i class="fas fa-clock"></i>
+        <span id="liveClockElegant">--:--:--</span>
+      </div>
+
+      <!-- countdown timer -->
+      <div class="countdown-row">
+        <div class="cd-item"><span class="cd-num" id="cdDays">00</span><span class="cd-label">Days</span></div>
+        <div class="cd-item"><span class="cd-num" id="cdHours">00</span><span class="cd-label">Hours</span></div>
+        <div class="cd-item"><span class="cd-num" id="cdMins">00</span><span class="cd-label">Minutes</span></div>
+        <div class="cd-item"><span class="cd-num" id="cdSecs">00</span><span class="cd-label">Seconds</span></div>
+      </div>
+
+      <!-- venue + map -->
+      <p><i class="fas fa-map-pin" style="color:#e8825a;"></i> The Elysian Fields, Lonavala | 5:30 PM onwards</p>
+      <div class="map-stylish">
+        <iframe src="https://maps.google.com/maps?q=Elysian%20Fields%20Lonavala&t=&z=14&output=embed" allowfullscreen></iframe>
+      </div>
+
+      <!-- action buttons -->
+      <div>
+        <button class="btn-primary" id="rsvpModernBtn"><i class="fas fa-envelope"></i> RSVP & CELEBRATE</button>
+        <button class="btn-outline" id="whatsModernBtn"><i class="fab fa-whatsapp"></i> SHARE INVITE</button>
+      </div>
+      <p style="font-size: 0.75rem; margin-top: 20px; color:#ad8a6e;">Dress code: Semi-formal / Pastel hues</p>
     </div>
-    <footer>
-        <i class="fas fa-crown"></i> A Royal Celebration of Eternal Love <i class="fas fa-crown"></i>
-    </footer>
+  </div>
+
+  <footer>
+    <i class="fas fa-heart" style="color:#e8825a;"></i> With love from the families <i class="fas fa-heart" style="color:#e8825a;"></i><br>
+    <span style="font-size:0.7rem;">Vivaah Creations — crafting timeless celebrations</span>
+  </footer>
 </div>
 
 <!-- RSVP MODAL -->
-<div id="modalHeritage" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.96); backdrop-filter:blur(16px); z-index:10000; align-items:center; justify-content:center;">
-    <div style="background:#1e1510; border-radius:48px; padding:2.2rem; max-width:420px; width:90%; text-align:center; border:1px solid #c9a03d;">
-        <i class="fas fa-envelope-open-text" style="font-size:2.5rem; color:#c9a03d;"></i>
-        <h3 style="color:#e8c96e; margin:15px 0;">Royal RSVP</h3>
-        <input type="text" id="nameHeritage" placeholder="Your Full Name" style="width:100%; margin:12px 0; padding:14px; background:#2d2018; border:1px solid #c9a03d; color:white; border-radius:40px;">
-        <input type="number" id="guestsHeritage" placeholder="Number of Guests" style="width:100%; margin:12px 0; padding:14px; background:#2d2018; border:1px solid #c9a03d; color:white; border-radius:40px;">
-        <button id="submitHeritage" style="background:#c9a03d; border:none; padding:12px 32px; border-radius:40px; cursor:pointer; font-weight:bold; margin:8px;">CONFIRM</button>
-        <button id="closeHeritage" style="background:transparent; border:1px solid #c9a03d; padding:12px 32px; border-radius:40px; color:#c9a03d; cursor:pointer;">CANCEL</button>
-    </div>
+<div id="modernRsvpModal" class="modal-modern">
+  <div class="modal-content-modern">
+    <i class="fas fa-feather-alt" style="font-size: 2rem; color: #e8825a;"></i>
+    <h3 style="margin: 12px 0; color:#3b2a2a;">Kindly Respond</h3>
+    <input type="text" id="guestNameModal" placeholder="Your name">
+    <input type="email" id="guestEmailModal" placeholder="Email (optional)">
+    <input type="text" id="guestCountModal" placeholder="Number of guests">
+    <button id="submitRsvpModalBtn">I Will Be There ✨</button>
+    <button id="closeModalBtn" style="background:#e0cfbf;">Cancel</button>
+  </div>
 </div>
 
 <script>
-    // Wedding Date: December 12, 2026 at 7:00 PM
-    const weddingDateHeritage = new Date(2026, 11, 12, 19, 0, 0);
-    
-    function updateHeritage() {
-        const now = new Date();
-        document.getElementById('clockHeritage').innerText = now.toLocaleTimeString('en-US', { hour12: false });
-        const diff = weddingDateHeritage - now;
-        if (diff > 0) {
-            document.getElementById('dHeritage').innerText = Math.floor(diff / 86400000).toString().padStart(2, '0');
-            document.getElementById('hHeritage').innerText = Math.floor((diff % 86400000) / 3600000).toString().padStart(2, '0');
-            document.getElementById('mHeritage').innerText = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
-            document.getElementById('sHeritage').innerText = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
-        }
+  // --- wedding target: 20 March 2027, 5:30 PM
+  const weddingDate = new Date(2027, 2, 20, 17, 30, 0);
+
+  // update live clock + countdown
+  function updateTimeAndCountdown() {
+    const now = new Date();
+    // live clock
+    const timeStr = now.toLocaleTimeString('en-US', { hour12: false });
+    document.getElementById('liveClockElegant').innerText = timeStr;
+
+    const diff = weddingDate - now;
+    if (diff <= 0) {
+      // if passed, show zeros or message
+      document.getElementById('cdDays').innerText = '00';
+      document.getElementById('cdHours').innerText = '00';
+      document.getElementById('cdMins').innerText = '00';
+      document.getElementById('cdSecs').innerText = '00';
+      return;
     }
-    setInterval(updateHeritage, 1000);
-    updateHeritage();
-    
-    // Floating Petals Animation
-    setInterval(() => {
-        let petal = document.createElement('div');
-        petal.classList.add('floating-petal');
-        petal.innerHTML = ['🌹', '🌸', '🌺', '✨', '🌼'][Math.floor(Math.random() * 5)];
-        petal.style.left = Math.random() * window.innerWidth + 'px';
-        petal.style.top = '-30px';
-        petal.style.color = `rgba(212, 175, 55, ${0.4 + Math.random() * 0.5})`;
-        petal.style.fontSize = (12 + Math.random() * 18) + 'px';
-        document.body.appendChild(petal);
-        gsap.to(petal, {
-            y: window.innerHeight + 80,
-            rotation: 360,
-            duration: 5 + Math.random() * 7,
-            ease: "none",
-            onComplete: () => petal.remove()
-        });
-    }, 600);
-    
-    // GSAP Entrance Animation
-    gsap.fromTo('.glass-heritage', { opacity: 0, y: 60, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "power3.out" });
-    gsap.fromTo('.img-circle', { scale: 0, rotation: -20 }, { scale: 1, rotation: 0, stagger: 0.2, duration: 0.8, delay: 0.3 });
-    gsap.fromTo('.btn-gold-premium, .btn-outline-premium', { opacity: 0, y: 30 }, { opacity: 1, y: 0, stagger: 0.15, duration: 0.7, delay: 0.6 });
-    
-    // RSVP Modal Logic
-    const modalH = document.getElementById('modalHeritage');
-    document.getElementById('rsvpHeritage').onclick = () => { modalH.style.display = 'flex'; };
-    document.getElementById('closeHeritage').onclick = () => { modalH.style.display = 'none'; };
-    document.getElementById('submitHeritage').onclick = () => {
-        let name = document.getElementById('nameHeritage').value.trim();
-        if (name) {
-            alert(`✨ Your Highness ${name}, your presence is graciously confirmed! ✨`);
-            modalH.style.display = 'none';
-            document.getElementById('nameHeritage').value = '';
-            document.getElementById('guestsHeritage').value = '';
-        } else {
-            alert("Please enter your name.");
-        }
-    };
-    window.onclick = (e) => { if (e.target === modalH) modalH.style.display = 'none'; };
-    
-    // WhatsApp Share
-    document.getElementById('whatsHeritage').onclick = () => {
-        window.open(`https://wa.me/?text=${encodeURIComponent("✨ ROYAL WEDDING INVITATION ✨\n\nYou are cordially invited to the grand wedding of Vikram & Aditi on 12th December 2026 at City Palace, Jaipur.\n\nJoin us in celebrating this majestic union!")}`, '_blank');
-    };
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (86400000)) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cdDays').innerText = days.toString().padStart(2, '0');
+    document.getElementById('cdHours').innerText = hours.toString().padStart(2, '0');
+    document.getElementById('cdMins').innerText = mins.toString().padStart(2, '0');
+    document.getElementById('cdSecs').innerText = secs.toString().padStart(2, '0');
+  }
+  setInterval(updateTimeAndCountdown, 1000);
+  updateTimeAndCountdown();
+
+  // --- GSAP entrance animations (stylish)
+  gsap.fromTo('.hero-card', 
+    { opacity: 0, y: 40, scale: 0.96 },
+    { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "power3.out" }
+  );
+  gsap.fromTo('.photo-elegant', 
+    { scale: 0, rotation: -8 },
+    { scale: 1, rotation: 0, duration: 0.8, stagger: 0.15, ease: "back.out(1.2)" }
+  );
+  gsap.fromTo('.countdown-row .cd-item', 
+    { opacity: 0, y: 30 },
+    { opacity: 1, y: 0, stagger: 0.1, duration: 0.7, delay: 0.4 }
+  );
+  gsap.fromTo('.btn-primary, .btn-outline', 
+    { opacity: 0, scale: 0.9 },
+    { opacity: 1, scale: 1, stagger: 0.1, duration: 0.5, delay: 0.7 }
+  );
+
+  // --- Scroll reveal for fun (even though everything is in view, but nice)
+  const revealItems = document.querySelectorAll('.reveal-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.cd-item, .map-stylish, .btn-primary, .btn-outline').forEach(el => {
+    el.classList.add('reveal-item');
+    observer.observe(el);
+  });
+
+  // --- floating colourful flowers / petals (stylish & playful)
+  function createFloatingElement() {
+    const emojis = ['🌸', '🌼', '🌺', '✨', '💐', '🌿', '🍃', '🌸'];
+    const el = document.createElement('div');
+    el.classList.add('floating-flower');
+    el.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+    const size = 14 + Math.random() * 20;
+    el.style.fontSize = size + 'px';
+    el.style.left = Math.random() * window.innerWidth + 'px';
+    el.style.top = '-30px';
+    el.style.opacity = 0.5 + Math.random() * 0.4;
+    // pastel colors
+    const colors = ['#f5a97f', '#f9c9b6', '#c2e0c0', '#f3cfb5', '#c9b1ff'];
+    el.style.color = colors[Math.floor(Math.random() * colors.length)];
+    document.body.appendChild(el);
+    const duration = 5 + Math.random() * 8;
+    gsap.to(el, {
+      y: window.innerHeight + 100,
+      x: `+=${Math.random() * 100 - 50}`,
+      rotation: Math.random() * 360,
+      duration: duration,
+      ease: "none",
+      onComplete: () => el.remove()
+    });
+  }
+  // start heavy floating petals
+  let petalInterval = setInterval(() => {
+    if (document.hasFocus()) {
+      for (let i = 0; i < 2; i++) createFloatingElement();
+    }
+  }, 800);
+
+  // --- RSVP Modal
+  const modal = document.getElementById('modernRsvpModal');
+  const openRsvp = document.getElementById('rsvpModernBtn');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const submitRsvp = document.getElementById('submitRsvpModalBtn');
+
+  openRsvp.addEventListener('click', () => {
+    modal.style.display = 'flex';
+    gsap.fromTo('.modal-content-modern', 
+      { scale: 0.85, opacity: 0, y: -20 },
+      { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1)" }
+    );
+  });
+  function closeModalFunc() {
+    gsap.to('.modal-content-modern', { scale: 0.9, opacity: 0, duration: 0.2, onComplete: () => modal.style.display = 'none' });
+  }
+  closeModalBtn.addEventListener('click', closeModalFunc);
+  window.addEventListener('click', (e) => { if (e.target === modal) closeModalFunc(); });
+
+  submitRsvp.addEventListener('click', () => {
+    const guestName = document.getElementById('guestNameModal').value.trim();
+    if (guestName === "") {
+      alert("Please share your lovely name 💐");
+      return;
+    }
+    alert(`✨ Yay! ${guestName}, we can't wait to celebrate with you! ✨`);
+    closeModalFunc();
+    document.getElementById('guestNameModal').value = '';
+    document.getElementById('guestEmailModal').value = '';
+    document.getElementById('guestCountModal').value = '';
+  });
+
+  // --- WhatsApp share (stylish & modern)
+  const whatsBtn = document.getElementById('whatsModernBtn');
+  const shareText = `🌸 You're invited! 🌸\n\nJoin Samaira & Rohan for their elegant wedding celebration on 20th March 2027 at The Elysian Fields, Lonavala. 5:30 PM onwards.\n\nLet's make memories together ✨\n\nView full invitation: (link)`;
+  whatsBtn.addEventListener('click', () => {
+    window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank');
+  });
+
+  // optional: hover animation on couple images
+  const photos = document.querySelectorAll('.photo-elegant');
+  photos.forEach(photo => {
+    photo.addEventListener('mouseenter', () => gsap.to(photo, { scale: 1.05, duration: 0.3 }));
+    photo.addEventListener('mouseleave', () => gsap.to(photo, { scale: 1, duration: 0.3 }));
+  });
+
+  // small background shimmer on hero
+  gsap.to('.hero-elegant', {
+    backgroundPosition: '100% 50%',
+    duration: 18,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut"
+  });
 </script>
+
 </body>
 </html>
