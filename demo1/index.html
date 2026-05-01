@@ -1,514 +1,553 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Vivaah Creations | Samaira & Rohan | Elegant Wedding Invitation</title>
-  <!-- Google Fonts: clean + elegant -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- GSAP for heavy animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Aarav & Diya | Wedding Invitation</title>
+    <!-- Google Fonts & simple CSS reset -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      background: linear-gradient(145deg, #fef9f0 0%, #fff5e6 100%);
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
-      color: #2d2a2a;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fef9f0;
+            color: #2d2a24;
+            scroll-behavior: smooth;
+        }
 
-    /* main container */
-    .invitation-elegant {
-      max-width: 1200px;
-      margin: 30px auto;
-      background: rgba(255, 255, 255, 0.92);
-      border-radius: 48px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 215, 150, 0.5);
-      overflow: hidden;
-      backdrop-filter: blur(2px);
-    }
+        /* ceremony container and main layout */
+        .main-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fffef7;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
+        }
 
-    /* hero section with colorful gradient */
-    .hero-elegant {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 28px;
-      background: linear-gradient(125deg, #ffe7e0 0%, #ffedd5 50%, #e6f7f0 100%);
-      position: relative;
-    }
+        section {
+            padding: 3rem 1.8rem;
+            border-bottom: 1px solid #f0e5d8;
+        }
 
-    .hero-card {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      border-radius: 56px;
-      padding: 2.5rem 2rem;
-      max-width: 950px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 200, 150, 0.6);
-      transition: all 0.3s;
-    }
+        .hero, .intro-card, .story-block, .events, .blessings, .venue, .rsvp-section {
+            text-align: center;
+        }
 
-    /* couple images in elegant frames */
-    .couple-frame {
-      display: flex;
-      justify-content: center;
-      gap: 35px;
-      margin: 20px 0 30px;
-      flex-wrap: wrap;
-    }
-    .photo-elegant {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-      border: 4px solid white;
-      transition: transform 0.4s ease;
-    }
-    .photo-elegant:hover {
-      transform: scale(1.03);
-    }
-    .photo-elegant img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+        h1, h2, h3, .script-text {
+            font-family: 'Playfair Display', serif;
+        }
 
-    /* stylish typography */
-    .subhead {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.85rem;
-      letter-spacing: 3px;
-      color: #d47c5a;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .names {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 7vw, 4rem);
-      font-weight: 600;
-      color: #3b2a2a;
-      margin: 10px 0;
-      background: linear-gradient(120deg, #c45c3a, #e8996e, #bd6f4a);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .date-badge {
-      background: #ffffffcc;
-      display: inline-block;
-      padding: 6px 24px;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #b95c38;
-      margin: 15px 0;
-      backdrop-filter: blur(4px);
-    }
+        .gold-text {
+            color: #b8860b;
+            letter-spacing: 1px;
+        }
 
-    /* ticking clock + countdown */
-    .clock-area {
-      background: rgba(255, 245, 235, 0.8);
-      border-radius: 100px;
-      padding: 12px 20px;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1.4rem;
-      font-family: monospace;
-      font-weight: 600;
-      margin: 15px 0;
-      box-shadow: inset 0 0 0 1px #ffe0c0, 0 8px 20px rgba(0, 0, 0, 0.05);
-    }
-    .clock-area i {
-      color: #e8825a;
-      font-size: 1.4rem;
-    }
+        /* hero tap to start overlay */
+        .cover-page {
+            height: 100vh;
+            background: linear-gradient(145deg, #f7ede4 0%, #fdf3e9 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: opacity 0.8s ease;
+            position: relative;
+            z-index: 10;
+        }
 
-    .countdown-row {
-      display: flex;
-      gap: 18px;
-      justify-content: center;
-      margin: 35px 0;
-      flex-wrap: wrap;
-    }
-    .cd-item {
-      background: white;
-      border-radius: 32px;
-      padding: 12px 18px;
-      min-width: 85px;
-      text-align: center;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-      border: 1px solid #ffe0c0;
-    }
-    .cd-num {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #c45c3a;
-      font-family: monospace;
-      display: block;
-    }
-    .cd-label {
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #b48c6c;
-    }
+        .cover-content {
+            padding: 2rem;
+        }
 
-    /* map style */
-    .map-stylish {
-      border-radius: 32px;
-      overflow: hidden;
-      border: 1px solid #ffcfaa;
-      margin: 25px 0;
-      box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.1);
-    }
-    iframe {
-      width: 100%;
-      height: 240px;
-      border: 0;
-      display: block;
-    }
+        .cover-sparkle {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            letter-spacing: 8px;
+        }
 
-    /* buttons */
-    .btn-primary {
-      background: linear-gradient(105deg, #e8825a, #d66842);
-      border: none;
-      padding: 14px 38px;
-      border-radius: 50px;
-      font-weight: 500;
-      color: white;
-      font-family: 'Poppins', sans-serif;
-      cursor: pointer;
-      font-size: 0.95rem;
-      letter-spacing: 1px;
-      box-shadow: 0 8px 18px rgba(200, 100, 50, 0.3);
-      transition: all 0.25s;
-      margin: 8px;
-    }
-    .btn-primary:hover {
-      transform: scale(1.02);
-      box-shadow: 0 15px 25px rgba(200, 100, 50, 0.4);
-    }
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid #e8825a;
-      padding: 14px 38px;
-      border-radius: 50px;
-      color: #d66842;
-      font-weight: 500;
-      cursor: pointer;
-      transition: 0.2s;
-      margin: 8px;
-    }
-    .btn-outline:hover {
-      background: #e8825a10;
-      border-color: #c45c3a;
-    }
+        .cover-invite {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 400;
+            color: #a16b3a;
+            margin-bottom: 1.5rem;
+        }
 
-    /* floating petals / colorful animations */
-    .floating-flower {
-      position: fixed;
-      pointer-events: none;
-      z-index: 999;
-      font-size: 1rem;
-      opacity: 0.6;
-    }
+        .cover-names {
+            font-size: 3.5rem;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            color: #3b2a1f;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
 
-    /* RSVP modal elegant */
-    .modal-modern {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(12px);
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-    }
-    .modal-content-modern {
-      background: #fffef7;
-      border-radius: 48px;
-      max-width: 450px;
-      width: 90%;
-      padding: 2rem;
-      text-align: center;
-      box-shadow: 0 40px 60px rgba(0, 0, 0, 0.2);
-      border: 1px solid #ffcfaa;
-    }
-    .modal-content-modern input {
-      width: 100%;
-      margin: 12px 0;
-      padding: 14px;
-      border: 1px solid #ffcfaa;
-      border-radius: 60px;
-      background: #fffaf2;
-      font-family: inherit;
-    }
-    .modal-content-modern button {
-      background: #e8825a;
-      border: none;
-      padding: 12px 32px;
-      border-radius: 40px;
-      color: white;
-      margin: 8px;
-      cursor: pointer;
-    }
-    footer {
-      text-align: center;
-      padding: 45px 20px 35px;
-      font-size: 0.8rem;
-      color: #b48c6c;
-      background: #fffaf3;
-      border-top: 1px solid #ffe0c0;
-    }
+        .tap-text {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed #b48c5c;
+            display: inline-block;
+            padding-bottom: 4px;
+            color: #7a5a3a;
+        }
 
-    /* reveal animations */
-    .reveal-item {
-      opacity: 0;
-      transform: translateY(35px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .reveal-item.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        /* main content (initially hidden) */
+        .main-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.6s;
+        }
 
-    @media (max-width: 680px) {
-      .hero-card { padding: 1.8rem; }
-      .photo-elegant { width: 110px; height: 110px; }
-      .cd-item { min-width: 70px; padding: 8px 12px; }
-      .cd-num { font-size: 1.5rem; }
-    }
-  </style>
+        .main-content.visible {
+            display: block;
+            opacity: 1;
+        }
+
+        /* wedding header */
+        .wedding-header {
+            text-align: center;
+            padding: 2rem 1rem 1rem;
+        }
+
+        .couple-name-large {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+
+        .date-venue {
+            color: #8b6946;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .story-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .story-card {
+            background: #fcf6ef;
+            border-radius: 32px;
+            padding: 2rem 1.5rem;
+            flex: 1;
+            min-width: 220px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+            border: 1px solid #f3e7db;
+        }
+
+        .story-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #5e3e28;
+            margin-top: 0.8rem;
+        }
+
+        .event-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .event-item {
+            background: #fefaf5;
+            border-radius: 28px;
+            padding: 1.2rem 1.5rem;
+            border-left: 6px solid #dbb87c;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .event-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .event-datetime {
+            font-weight: 500;
+            color: #b1622c;
+            margin: 0.3rem 0;
+        }
+
+        .event-location {
+            font-size: 0.9rem;
+            color: #6a4c2c;
+        }
+
+        .event-desc {
+            font-size: 0.9rem;
+            margin-top: 0.6rem;
+            font-style: italic;
+        }
+
+        .blessings-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .bless-card {
+            background: #f7efe6;
+            padding: 1.5rem;
+            border-radius: 40px;
+            width: 220px;
+        }
+
+        .bless-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .venue-map {
+            background: #efe3d4;
+            border-radius: 36px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            border: 1.5px solid #b8860b;
+            padding: 0.7rem 1.6rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #b47c48;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: #b8860b;
+            color: white;
+        }
+
+        .rsvp-form {
+            background: #fff6ed;
+            padding: 2rem;
+            border-radius: 40px;
+            margin-top: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+            text-align: left;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: 50px;
+            border: 1px solid #e2cfb5;
+            background: white;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+        }
+
+        button {
+            background: #b8860b;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #9b6a2c;
+        }
+
+        .thankyou-message {
+            background: #e9ddce;
+            padding: 1.8rem;
+            border-radius: 40px;
+            margin-top: 1.5rem;
+            display: none;
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.8rem;
+            color: #aa8b64;
+            background: #fdf7ef;
+        }
+
+        @media (max-width: 550px) {
+            section {
+                padding: 2rem 1rem;
+            }
+            .cover-names {
+                font-size: 2.4rem;
+            }
+            .couple-name-large {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<div class="invitation-elegant">
-  <div class="hero-elegant">
-    <div class="hero-card">
-      <div class="subhead">✨ the love story continues ✨</div>
-      <div class="couple-frame">
-        <div class="photo-elegant"><img src="https://randomuser.me/api/portraits/men/86.jpg" alt="Rohan"></div>
-        <div class="photo-elegant"><img src="https://randomuser.me/api/portraits/women/77.jpg" alt="Samaira"></div>
-      </div>
-      <h1 class="names">Samaira & Rohan</h1>
-      <div class="date-badge"><i class="far fa-calendar-alt"></i> Saturday, 20th March 2027</div>
-      
-      <!-- ticking clock -->
-      <div class="clock-area">
-        <i class="fas fa-clock"></i>
-        <span id="liveClockElegant">--:--:--</span>
-      </div>
-
-      <!-- countdown timer -->
-      <div class="countdown-row">
-        <div class="cd-item"><span class="cd-num" id="cdDays">00</span><span class="cd-label">Days</span></div>
-        <div class="cd-item"><span class="cd-num" id="cdHours">00</span><span class="cd-label">Hours</span></div>
-        <div class="cd-item"><span class="cd-num" id="cdMins">00</span><span class="cd-label">Minutes</span></div>
-        <div class="cd-item"><span class="cd-num" id="cdSecs">00</span><span class="cd-label">Seconds</span></div>
-      </div>
-
-      <!-- venue + map -->
-      <p><i class="fas fa-map-pin" style="color:#e8825a;"></i> The Elysian Fields, Lonavala | 5:30 PM onwards</p>
-      <div class="map-stylish">
-        <iframe src="https://maps.google.com/maps?q=Elysian%20Fields%20Lonavala&t=&z=14&output=embed" allowfullscreen></iframe>
-      </div>
-
-      <!-- action buttons -->
-      <div>
-        <button class="btn-primary" id="rsvpModernBtn"><i class="fas fa-envelope"></i> RSVP & CELEBRATE</button>
-        <button class="btn-outline" id="whatsModernBtn"><i class="fab fa-whatsapp"></i> SHARE INVITE</button>
-      </div>
-      <p style="font-size: 0.75rem; margin-top: 20px; color:#ad8a6e;">Dress code: Semi-formal / Pastel hues</p>
+<div class="main-wrapper">
+    <!-- COVER PAGE (Tap to begin) -->
+    <div id="coverPage" class="cover-page">
+        <div class="cover-content">
+            <div class="cover-sparkle">✨ ✨</div>
+            <div class="cover-invite">You Are Invited</div>
+            <div class="cover-names">Aarav & Diya</div>
+            <div class="tap-text">Tap to begin the celebration</div>
+        </div>
     </div>
-  </div>
 
-  <footer>
-    <i class="fas fa-heart" style="color:#e8825a;"></i> With love from the families <i class="fas fa-heart" style="color:#e8825a;"></i><br>
-    <span style="font-size:0.7rem;">Vivaah Creations — crafting timeless celebrations</span>
-  </footer>
-</div>
+    <!-- MAIN CONTENT (hidden until tap) -->
+    <div id="mainContent" class="main-content">
+        <!-- intro family section -->
+        <section style="padding-top: 3rem;">
+            <div class="wedding-header">
+                <div class="gold-text">Together with our families</div>
+                <h1 class="couple-name-large">Aarav & Diya</h1>
+                <p style="font-size: 1.1rem; max-width: 400px; margin: 0.8rem auto;">Invite you to join us in the celebration of our love</p>
+                <div style="margin: 1rem 0 0.5rem;">
+                    <span style="font-weight: 600;">DECEMBER 12, 2026</span> &nbsp; | &nbsp; 
+                    <span>UDAIPUR, RAJASTHAN</span>
+                </div>
+            </div>
+        </section>
 
-<!-- RSVP MODAL -->
-<div id="modernRsvpModal" class="modal-modern">
-  <div class="modal-content-modern">
-    <i class="fas fa-feather-alt" style="font-size: 2rem; color: #e8825a;"></i>
-    <h3 style="margin: 12px 0; color:#3b2a2a;">Kindly Respond</h3>
-    <input type="text" id="guestNameModal" placeholder="Your name">
-    <input type="email" id="guestEmailModal" placeholder="Email (optional)">
-    <input type="text" id="guestCountModal" placeholder="Number of guests">
-    <button id="submitRsvpModalBtn">I Will Be There ✨</button>
-    <button id="closeModalBtn" style="background:#e0cfbf;">Cancel</button>
-  </div>
+        <!-- Our Story -->
+        <section>
+            <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Our Story</h2>
+            <div class="story-grid">
+                <div class="story-card">
+                    <h3>Aarav</h3>
+                    <p class="quote">“The moment I saw her, I knew my search was over.”</p>
+                </div>
+                <div class="story-card">
+                    <h3>Diya</h3>
+                    <p class="quote">“In him, I found my love, my best friend, and my home.”</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wedding Events -->
+        <section class="events">
+            <h2 style="font-size: 2rem;">Wedding Events</h2>
+            <p style="margin-bottom: 1rem;">A celebration of love and tradition</p>
+            <div class="event-list">
+                <!-- Engagement -->
+                <div class="event-item">
+                    <div class="event-name">💍 The Engagement</div>
+                    <div class="event-datetime">Dec 10, 2026 | 7:00 PM</div>
+                    <div class="event-location">Hotel Taj Lake Palace</div>
+                    <div class="event-desc">Ring Ceremony — "The beginning of forever."</div>
+                </div>
+                <!-- Mehendi -->
+                <div class="event-item">
+                    <div class="event-name">🌿 Mehendi Ceremony</div>
+                    <div class="event-datetime">Dec 11, 2026 | 11:00 AM</div>
+                    <div class="event-location">Poolside, The Oberoi Udaivilas</div>
+                    <div class="event-desc">Henna & Folk Songs — "Color of love on hands."</div>
+                </div>
+                <!-- Sangeet -->
+                <div class="event-item">
+                    <div class="event-name">🎶 Sangeet Night</div>
+                    <div class="event-datetime">Dec 11, 2026 | 8:00 PM</div>
+                    <div class="event-location">Grand Ballroom, Udaivilas</div>
+                    <div class="event-desc">Dance & Music — "Dance the night away!"</div>
+                </div>
+                <!-- Wedding -->
+                <div class="event-item">
+                    <div class="event-name">👰‍♀️🤵‍♂️ The Wedding</div>
+                    <div class="event-datetime">Dec 12, 2026 | 5:00 PM</div>
+                    <div class="event-location">Jagmandir Island Palace</div>
+                    <div class="event-desc">Pheras & Reception — "The Royal Union."</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blessings From -->
+        <section>
+            <h2 style="font-size: 2rem;">Blessings From</h2>
+            <div class="blessings-flex">
+                <div class="bless-card">
+                    <h4>Groom's Parents</h4>
+                    <p>Mr. Rajesh & Mrs. Sunita Sharma</p>
+                </div>
+                <div class="bless-card">
+                    <h4>Bride's Parents</h4>
+                    <p>Mr. Vikram & Mrs. Anjali Mehta</p>
+                </div>
+            </div>
+            <p style="font-size: 0.9rem;">And Grandparents</p>
+        </section>
+
+        <!-- The Royal Venue -->
+        <section class="venue">
+            <h2 style="font-size: 2rem;">The Royal Venue</h2>
+            <div class="venue-map">
+                <p style="font-weight: 600; font-size: 1.3rem;">The Oberoi Udaivilas, Udaipur</p>
+                <a href="#" id="fakeDirections" class="btn-outline">Get Directions</a>
+                <p style="font-size: 0.75rem; margin-top: 10px;">📍 Majestic palace overlooking Lake Pichola</p>
+            </div>
+        </section>
+
+        <!-- RSVP Section (with fallback local storage) -->
+        <section class="rsvp-section">
+            <h2 style="font-size: 2rem;">RSVP</h2>
+            <p>Please confirm your presence by <strong>November 1st, 2026</strong></p>
+            <div class="rsvp-form">
+                <div class="form-group">
+                    <input type="text" id="guestName" placeholder="Your full name" required>
+                </div>
+                <div class="form-group">
+                    <select id="attendingStatus">
+                        <option value="attending">Joyfully Attending</option>
+                        <option value="notAttending">Unable to Attend</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="number" id="guestCount" placeholder="Number of guests (including you)" min="1" max="6">
+                </div>
+                <button id="submitRsvpBtn">Submit RSVP</button>
+            </div>
+            <div id="thankyouMessage" class="thankyou-message">
+                ✔ Thank You! Your response has been recorded.<br>
+                We look forward to seeing you.
+            </div>
+        </section>
+
+        <div class="footer-note">
+            ✨ Aarav & Diya ✨
+        </div>
+    </div>
 </div>
 
 <script>
-  // --- wedding target: 20 March 2027, 5:30 PM
-  const weddingDate = new Date(2027, 2, 20, 17, 30, 0);
+    (function() {
+        // Get elements
+        const cover = document.getElementById('coverPage');
+        const mainContent = document.getElementById('mainContent');
 
-  // update live clock + countdown
-  function updateTimeAndCountdown() {
-    const now = new Date();
-    // live clock
-    const timeStr = now.toLocaleTimeString('en-US', { hour12: false });
-    document.getElementById('liveClockElegant').innerText = timeStr;
+        // Detect if already visited? We'll always show cover first, but after tap we reveal.
+        // For seamless demo, we also ensure that after tap we store in session to avoid re-show cover on accidental refresh? 
+        // But for wedding card it's fine to always start with cover.
+        
+        function revealWebsite() {
+            if (!cover || !mainContent) return;
+            // fade cover out
+            cover.style.transition = "opacity 0.6s ease";
+            cover.style.opacity = "0";
+            setTimeout(() => {
+                cover.style.display = "none";
+                mainContent.classList.add("visible");
+                // trigger smooth scroll to top of main content
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                // optional play subtle entrance
+            }, 550);
+        }
 
-    const diff = weddingDate - now;
-    if (diff <= 0) {
-      // if passed, show zeros or message
-      document.getElementById('cdDays').innerText = '00';
-      document.getElementById('cdHours').innerText = '00';
-      document.getElementById('cdMins').innerText = '00';
-      document.getElementById('cdSecs').innerText = '00';
-      return;
-    }
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (86400000)) / 3600000);
-    const mins = Math.floor((diff % 3600000) / 60000);
-    const secs = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cdDays').innerText = days.toString().padStart(2, '0');
-    document.getElementById('cdHours').innerText = hours.toString().padStart(2, '0');
-    document.getElementById('cdMins').innerText = mins.toString().padStart(2, '0');
-    document.getElementById('cdSecs').innerText = secs.toString().padStart(2, '0');
-  }
-  setInterval(updateTimeAndCountdown, 1000);
-  updateTimeAndCountdown();
+        // tap anywhere on cover to begin
+        if (cover) {
+            cover.addEventListener('click', revealWebsite);
+            // also support touch
+            cover.addEventListener('touchstart', revealWebsite);
+        }
 
-  // --- GSAP entrance animations (stylish)
-  gsap.fromTo('.hero-card', 
-    { opacity: 0, y: 40, scale: 0.96 },
-    { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "power3.out" }
-  );
-  gsap.fromTo('.photo-elegant', 
-    { scale: 0, rotation: -8 },
-    { scale: 1, rotation: 0, duration: 0.8, stagger: 0.15, ease: "back.out(1.2)" }
-  );
-  gsap.fromTo('.countdown-row .cd-item', 
-    { opacity: 0, y: 30 },
-    { opacity: 1, y: 0, stagger: 0.1, duration: 0.7, delay: 0.4 }
-  );
-  gsap.fromTo('.btn-primary, .btn-outline', 
-    { opacity: 0, scale: 0.9 },
-    { opacity: 1, scale: 1, stagger: 0.1, duration: 0.5, delay: 0.7 }
-  );
+        // --- RSVP Logic (store in localStorage for demo) ---
+        const submitBtn = document.getElementById('submitRsvpBtn');
+        const thankYouDiv = document.getElementById('thankyouMessage');
+        const guestNameInput = document.getElementById('guestName');
+        const attendingSelect = document.getElementById('attendingStatus');
+        const guestCountInput = document.getElementById('guestCount');
 
-  // --- Scroll reveal for fun (even though everything is in view, but nice)
-  const revealItems = document.querySelectorAll('.reveal-item');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-      }
-    });
-  }, { threshold: 0.2 });
-  document.querySelectorAll('.cd-item, .map-stylish, .btn-primary, .btn-outline').forEach(el => {
-    el.classList.add('reveal-item');
-    observer.observe(el);
-  });
+        function showThankYouMessage() {
+            thankYouDiv.style.display = "block";
+            // Optionally clear form fields after submission (optional but polite)
+            if(guestNameInput) guestNameInput.value = '';
+            if(guestCountInput) guestCountInput.value = '';
+            if(attendingSelect) attendingSelect.value = 'attending';
+            // auto hide after 6 seconds? but keep visible (user can see confirmation)
+            setTimeout(() => {
+                if(thankYouDiv) {
+                    thankYouDiv.style.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+                }
+            }, 100);
+        }
 
-  // --- floating colourful flowers / petals (stylish & playful)
-  function createFloatingElement() {
-    const emojis = ['🌸', '🌼', '🌺', '✨', '💐', '🌿', '🍃', '🌸'];
-    const el = document.createElement('div');
-    el.classList.add('floating-flower');
-    el.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-    const size = 14 + Math.random() * 20;
-    el.style.fontSize = size + 'px';
-    el.style.left = Math.random() * window.innerWidth + 'px';
-    el.style.top = '-30px';
-    el.style.opacity = 0.5 + Math.random() * 0.4;
-    // pastel colors
-    const colors = ['#f5a97f', '#f9c9b6', '#c2e0c0', '#f3cfb5', '#c9b1ff'];
-    el.style.color = colors[Math.floor(Math.random() * colors.length)];
-    document.body.appendChild(el);
-    const duration = 5 + Math.random() * 8;
-    gsap.to(el, {
-      y: window.innerHeight + 100,
-      x: `+=${Math.random() * 100 - 50}`,
-      rotation: Math.random() * 360,
-      duration: duration,
-      ease: "none",
-      onComplete: () => el.remove()
-    });
-  }
-  // start heavy floating petals
-  let petalInterval = setInterval(() => {
-    if (document.hasFocus()) {
-      for (let i = 0; i < 2; i++) createFloatingElement();
-    }
-  }, 800);
+        if(submitBtn) {
+            submitBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const guestName = guestNameInput ? guestNameInput.value.trim() : '';
+                if(!guestName) {
+                    alert("Please enter your name to RSVP.");
+                    return;
+                }
+                const guestCountVal = guestCountInput ? parseInt(guestCountInput.value) : 1;
+                if(isNaN(guestCountVal) || guestCountVal < 1) {
+                    alert("Please enter a valid number of guests (1 or more).");
+                    return;
+                }
+                const status = attendingSelect ? attendingSelect.value : 'attending';
+                // Save to localStorage to simulate response record
+                const rsvpData = {
+                    name: guestName,
+                    status: status,
+                    guests: guestCountVal,
+                    timestamp: new Date().toISOString()
+                };
+                let allResponses = [];
+                const existing = localStorage.getItem('wedding_rsvp_responses');
+                if(existing) {
+                    try {
+                        allResponses = JSON.parse(existing);
+                    } catch(e) { allResponses = []; }
+                }
+                allResponses.push(rsvpData);
+                localStorage.setItem('wedding_rsvp_responses', JSON.stringify(allResponses));
+                // Show thank you message
+                showThankYouMessage();
+                // Optional: additional console log
+                console.log("RSVP saved:", rsvpData);
+            });
+        }
 
-  // --- RSVP Modal
-  const modal = document.getElementById('modernRsvpModal');
-  const openRsvp = document.getElementById('rsvpModernBtn');
-  const closeModalBtn = document.getElementById('closeModalBtn');
-  const submitRsvp = document.getElementById('submitRsvpModalBtn');
+        // If "Get Directions" simulator - just alert as demo but also it's okay (we can make external link mock)
+        const directionsBtn = document.getElementById('fakeDirections');
+        if(directionsBtn) {
+            directionsBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert("📍 The Oberoi Udaivilas, Udaipur, Rajasthan. We recommend using Google Maps for the exact route.");
+            });
+        }
 
-  openRsvp.addEventListener('click', () => {
-    modal.style.display = 'flex';
-    gsap.fromTo('.modal-content-modern', 
-      { scale: 0.85, opacity: 0, y: -20 },
-      { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1)" }
-    );
-  });
-  function closeModalFunc() {
-    gsap.to('.modal-content-modern', { scale: 0.9, opacity: 0, duration: 0.2, onComplete: () => modal.style.display = 'none' });
-  }
-  closeModalBtn.addEventListener('click', closeModalFunc);
-  window.addEventListener('click', (e) => { if (e.target === modal) closeModalFunc(); });
-
-  submitRsvp.addEventListener('click', () => {
-    const guestName = document.getElementById('guestNameModal').value.trim();
-    if (guestName === "") {
-      alert("Please share your lovely name 💐");
-      return;
-    }
-    alert(`✨ Yay! ${guestName}, we can't wait to celebrate with you! ✨`);
-    closeModalFunc();
-    document.getElementById('guestNameModal').value = '';
-    document.getElementById('guestEmailModal').value = '';
-    document.getElementById('guestCountModal').value = '';
-  });
-
-  // --- WhatsApp share (stylish & modern)
-  const whatsBtn = document.getElementById('whatsModernBtn');
-  const shareText = `🌸 You're invited! 🌸\n\nJoin Samaira & Rohan for their elegant wedding celebration on 20th March 2027 at The Elysian Fields, Lonavala. 5:30 PM onwards.\n\nLet's make memories together ✨\n\nView full invitation: (link)`;
-  whatsBtn.addEventListener('click', () => {
-    window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank');
-  });
-
-  // optional: hover animation on couple images
-  const photos = document.querySelectorAll('.photo-elegant');
-  photos.forEach(photo => {
-    photo.addEventListener('mouseenter', () => gsap.to(photo, { scale: 1.05, duration: 0.3 }));
-    photo.addEventListener('mouseleave', () => gsap.to(photo, { scale: 1, duration: 0.3 }));
-  });
-
-  // small background shimmer on hero
-  gsap.to('.hero-elegant', {
-    backgroundPosition: '100% 50%',
-    duration: 18,
-    repeat: -1,
-    yoyo: true,
-    ease: "sine.inOut"
-  });
+        // Edge case: If user refreshes while main content visible, cover might re-appear? 
+        // In typical flow, we want cover initially. But after tap we hide cover permanently.
+        // That's correct. But when refreshing, we reset to cover. That's fine for a standalone invite.
+        // However we could check localStorage if user already tapped? Not needed, but we might keep the elegance.
+        // No further action needed.
+    })();
 </script>
-
 </body>
 </html>
