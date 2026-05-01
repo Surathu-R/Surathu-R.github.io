@@ -3,68 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Vivaah Creations | Imperial Gold | Aarav & Ishita</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <title>Vivaah Creations | Maharaja Sapphire | Samarth & Ananya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #0a0412; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
-    .invitation-1 { max-width: 1300px; margin: 40px auto; background: radial-gradient(ellipse at 30% 40%, #1f152f, #0a0318); border-radius: 64px 32px 64px 32px; box-shadow: 0 40px 70px rgba(0,0,0,0.6); border: 1px solid #d4af37; overflow: hidden; }
-    .hero-1 { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 60px 28px; }
-    .glass-1 { background: rgba(15,8,28,0.65); backdrop-filter: blur(16px); border-radius: 80px 24px 80px 24px; padding: 3rem 2rem; max-width: 1000px; width: 100%; border: 1px solid #d4af37; text-align: center; }
-    .gold { color: #e8c96e; text-shadow: 0 0 8px #d4af37; }
-    .couple-row { display: flex; justify-content: center; gap: 40px; margin: 30px 0; flex-wrap: wrap; }
-    .photo-frame { width: 150px; height: 150px; border-radius: 50%; border: 3px solid #d4af37; overflow: hidden; box-shadow: 0 0 40px rgba(212,175,55,0.5); }
-    .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
-    .names-1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 700; background: linear-gradient(135deg, #fff3df, #e5bc7c, #f9e0a0); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .clock-lux { font-family: 'Cinzel', monospace; font-size: 1.6rem; background: #00000066; display: inline-block; padding: 10px 28px; border-radius: 60px; letter-spacing: 5px; margin: 20px 0; border: 1px solid #d4af37; }
-    .countdown-1 { display: flex; gap: 25px; justify-content: center; margin: 35px 0; flex-wrap: wrap; }
-    .cd-1 { background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); padding: 12px 18px; border-radius: 28px; min-width: 85px; border: 0.5px solid #d4af37; }
-    .cd-1 span { font-size: 2rem; font-weight: 700; color: #f3d382; font-family: 'Cinzel'; display: block; }
-    .map-embed { border-radius: 28px; border: 1px solid #d4af37; width: 100%; height: 250px; margin: 20px 0; }
-    .btn-1 { background: linear-gradient(135deg, #d4af37, #b48c2c); border: none; padding: 12px 32px; border-radius: 50px; margin: 15px 8px; cursor: pointer; font-family: 'Cinzel', serif; font-weight: bold; transition: 0.3s; }
-    .btn-1:hover { transform: scale(1.03); box-shadow: 0 0 30px gold; }
-    .petal { position: fixed; pointer-events: none; z-index: 999; font-size: 1.2rem; }
-    footer { text-align: center; padding: 30px; color: #d4af37; font-family: 'Cormorant Garamond'; }
+    body { background: #050210; font-family: 'Montserrat', sans-serif; }
+    .invitation-2 { max-width: 1300px; margin: 40px auto; background: radial-gradient(ellipse at 70% 30%, #1b0f3a, #03000f); border-radius: 60px 60px 40px 40px; border: 1px solid #a855f7; box-shadow: 0 40px 70px rgba(0,0,0,0.7); overflow: hidden; }
+    .hero-2 { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 60px 28px; }
+    .glass-2 { background: rgba(25,12,55,0.7); backdrop-filter: blur(14px); border-radius: 70px 30px 70px 30px; padding: 3rem 2rem; max-width: 1000px; width: 100%; border: 1px solid #c084fc; text-align: center; }
+    .purple { color: #c084fc; text-shadow: 0 0 6px #a855f7; }
+    .photo-duo { display: flex; justify-content: center; gap: 35px; margin: 25px 0; }
+    .photo-duo div { width: 140px; height: 140px; border-radius: 50%; overflow: hidden; border: 3px solid #c084fc; box-shadow: 0 0 30px #a855f7; }
+    .photo-duo img { width: 100%; height: 100%; object-fit: cover; }
+    .names-2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 7vw, 4.5rem); background: linear-gradient(135deg, #e9d5ff, #c084fc, #a855f7); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .clock-purple { font-family: monospace; font-size: 1.7rem; background: #00000055; display: inline-block; padding: 8px 25px; border-radius: 50px; margin: 20px 0; border: 1px solid #c084fc; }
+    .countdown-2 { display: flex; gap: 20px; justify-content: center; margin: 30px 0; flex-wrap: wrap; }
+    .cd-2 { background: rgba(0,0,0,0.5); padding: 12px 18px; border-radius: 30px; min-width: 80px; border: 0.5px solid #c084fc; }
+    .cd-2 span { font-size: 1.8rem; font-weight: bold; color: #e9d5ff; display: block; font-family: 'Cinzel'; }
+    .btn-purple { background: linear-gradient(135deg, #a855f7, #7e22ce); border: none; padding: 12px 32px; border-radius: 50px; margin: 10px; cursor: pointer; font-weight: bold; color: white; }
+    .btn-purple-outline { background: transparent; border: 1px solid #c084fc; padding: 12px 32px; border-radius: 50px; color: #c084fc; cursor: pointer; }
+    .map-2 { border-radius: 28px; border: 1px solid #a855f7; width: 100%; height: 240px; margin: 20px 0; }
+    .diamond { position: fixed; pointer-events: none; z-index: 999; }
   </style>
 </head>
 <body>
-<div class="invitation-1">
-  <div class="hero-1">
-    <div class="glass-1">
-      <div class="gold" style="letter-spacing: 8px;">✦ VIVAAH CREATIONS ✦</div>
-      <div class="couple-row">
-        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Groom"></div>
-        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Bride"></div>
-      </div>
-      <h1 class="names-1">Aarav & Ishita</h1>
-      <div class="clock-lux gold" id="liveClock1">--:--:--</div>
-      <div class="countdown-1" id="countdown1">
-        <div class="cd-1"><span id="d1">00</span>DAYS</div>
-        <div class="cd-1"><span id="h1">00</span>HRS</div>
-        <div class="cd-1"><span id="m1">00</span>MINS</div>
-        <div class="cd-1"><span id="s1">00</span>SECS</div>
-      </div>
-      <p><i class="fas fa-map-marker-alt gold"></i> Amber Palace, Jaipur | 28 December 2026 | 7:30 PM</p>
-      <iframe class="map-embed" src="https://maps.google.com/maps?q=Amber%20Palace%2C%20Jaipur&output=embed"></iframe>
-      <button class="btn-1" id="rsvp1"><i class="fas fa-feather-alt"></i> RSVP NOW</button>
-      <button class="btn-1" id="whats1"><i class="fab fa-whatsapp"></i> SHARE</button>
+<div class="invitation-2">
+  <div class="hero-2">
+    <div class="glass-2">
+      <i class="fas fa-crown" style="font-size: 2.5rem; color: #c084fc;"></i>
+      <div class="photo-duo"><div><img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Groom"></div><div><img src="https://randomuser.me/api/portraits/women/89.jpg" alt="Bride"></div></div>
+      <h1 class="names-2">Samarth & Ananya</h1>
+      <div class="clock-purple purple" id="liveClock2">--:--:--</div>
+      <div class="countdown-2"><div class="cd-2"><span id="d2">00</span>DAYS</div><div class="cd-2"><span id="h2">00</span>HRS</div><div class="cd-2"><span id="m2">00</span>MINS</div><div class="cd-2"><span id="s2">00</span>SECS</div></div>
+      <p><i class="fas fa-map-marker-alt purple"></i> Udaivilas Palace, Udaipur | 15 January 2027 | 6:00 PM</p>
+      <iframe class="map-2" src="https://maps.google.com/maps?q=Udaivilas%20Palace%2C%20Udaipur&output=embed"></iframe>
+      <button class="btn-purple" id="rsvp2"><i class="fas fa-envelope"></i> RSVP</button>
+      <button class="btn-purple-outline" id="whats2"><i class="fab fa-whatsapp"></i> WhatsApp</button>
     </div>
   </div>
-  <footer><i class="fas fa-crown"></i> A Royal Celebration of Love <i class="fas fa-crown"></i></footer>
 </div>
-<div id="modal1" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); backdrop-filter:blur(12px); z-index:10000; align-items:center; justify-content:center;">
-  <div style="background:#1d142b; border-radius:48px; padding:2rem; max-width:400px; width:90%; text-align:center; border:1px solid #d4af37;"><h3 style="color:#d4af37;">Royal RSVP</h3><input type="text" id="name1" placeholder="Your Name" style="width:100%; margin:12px 0; padding:12px; background:#2e1e3a; border:1px solid #d4af37; color:white; border-radius:40px;"><button id="submit1" style="background:#d4af37; border:none; padding:10px 28px; border-radius:40px; cursor:pointer;">Confirm</button><button id="close1" style="background:transparent; border:1px solid #d4af37; padding:10px 28px; border-radius:40px; color:#d4af37;">Cancel</button></div>
-</div>
+<div id="modal2" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.96); backdrop-filter:blur(14px); z-index:10000; align-items:center; justify-content:center;"><div style="background:#1b0f2c; border-radius:48px; padding:2rem; max-width:400px; border:1px solid #c084fc;"><h3 style="color:#c084fc;">Sapphire RSVP</h3><input type="text" id="name2" placeholder="Your Name" style="width:100%; margin:12px 0; padding:12px; background:#2a1a42; border:1px solid #c084fc; border-radius:40px; color:white;"><button id="submit2" style="background:#a855f7; border:none; padding:10px 28px; border-radius:40px;">Confirm</button><button id="close2" style="background:transparent; border:1px solid #c084fc; padding:10px 28px; border-radius:40px; color:#c084fc;">Close</button></div></div>
 <script>
-  const target1 = new Date(2026, 11, 28, 19, 30, 0);
-  function update1() { const now = new Date(); document.getElementById('liveClock1').innerText = now.toLocaleTimeString('en-US', { hour12: false }); const diff = target1 - now; if(diff>0){ document.getElementById('d1').innerText = Math.floor(diff/864e5).toString().padStart(2,'0'); document.getElementById('h1').innerText = Math.floor((diff%864e5)/36e5).toString().padStart(2,'0'); document.getElementById('m1').innerText = Math.floor((diff%36e5)/6e4).toString().padStart(2,'0'); document.getElementById('s1').innerText = Math.floor((diff%6e4)/1e3).toString().padStart(2,'0'); } }
-  setInterval(update1,1000); update1();
-  setInterval(()=>{ let p=document.createElement('div'); p.classList.add('petal'); p.innerHTML='🌹'; p.style.left=Math.random()*window.innerWidth+'px'; p.style.top='-20px'; p.style.color=`rgba(212,175,55,${0.5+Math.random()*0.5})`; document.body.appendChild(p); gsap.to(p,{y:window.innerHeight+50,rotation:360,duration:5+Math.random()*6,onComplete:()=>p.remove()}); },700);
-  gsap.fromTo('.glass-1',{opacity:0,y:50},{opacity:1,y:0,duration:1.2});
-  const modal=document.getElementById('modal1'); document.getElementById('rsvp1').onclick=()=>{modal.style.display='flex';}; document.getElementById('close1').onclick=()=>{modal.style.display='none';}; document.getElementById('submit1').onclick=()=>{let n=document.getElementById('name1').value.trim(); if(n) alert(`✨ Welcome ${n}! ✨`); modal.style.display='none';}; document.getElementById('whats1').onclick=()=>window.open(`https://wa.me/?text=${encodeURIComponent("✨ Royal Wedding: Aarav & Ishita, 28 Dec 2026 at Amber Palace. Join us! ✨")}`,'_blank');
+  const target2 = new Date(2027, 0, 15, 18, 0, 0);
+  function update2(){ const now=new Date(); document.getElementById('liveClock2').innerText=now.toLocaleTimeString('en-US',{hour12:false}); let diff=target2-now; if(diff>0){ document.getElementById('d2').innerText=Math.floor(diff/864e5).toString().padStart(2,'0'); document.getElementById('h2').innerText=Math.floor((diff%864e5)/36e5).toString().padStart(2,'0'); document.getElementById('m2').innerText=Math.floor((diff%36e5)/6e4).toString().padStart(2,'0'); document.getElementById('s2').innerText=Math.floor((diff%6e4)/1e3).toString().padStart(2,'0'); } }
+  setInterval(update2,1000); update2();
+  setInterval(()=>{ let d=document.createElement('div'); d.classList.add('diamond'); d.innerHTML='💎'; d.style.left=Math.random()*window.innerWidth+'px'; d.style.top='-20px'; d.style.color=`rgba(168,85,247,${0.6})`; document.body.appendChild(d); gsap.to(d,{y:window.innerHeight+50,rotation:360,duration:6+Math.random()*7,onComplete:()=>d.remove()}); },800);
+  gsap.fromTo('.glass-2',{scale:0.95,opacity:0},{scale:1,opacity:1,duration:1.2});
+  const modal2=document.getElementById('modal2'); document.getElementById('rsvp2').onclick=()=>modal2.style.display='flex'; document.getElementById('close2').onclick=()=>modal2.style.display='none'; document.getElementById('submit2').onclick=()=>{let nm=document.getElementById('name2').value; if(nm) alert(`💜 ${nm}, your presence honors us!`); modal2.style.display='none';}; document.getElementById('whats2').onclick=()=>window.open(`https://wa.me/?text=${encodeURIComponent("💜 Royal Wedding: Samarth & Ananya at Udaivilas Palace, 15 Jan 2027. Join us! 💜")}`,'_blank');
 </script>
 </body>
 </html>
