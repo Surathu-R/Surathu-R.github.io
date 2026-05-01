@@ -1,57 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Vivaah Creations | Maharaja Sapphire | Samarth & Ananya</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #050210; font-family: 'Montserrat', sans-serif; }
-    .invitation-2 { max-width: 1300px; margin: 40px auto; background: radial-gradient(ellipse at 70% 30%, #1b0f3a, #03000f); border-radius: 60px 60px 40px 40px; border: 1px solid #a855f7; box-shadow: 0 40px 70px rgba(0,0,0,0.7); overflow: hidden; }
-    .hero-2 { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 60px 28px; }
-    .glass-2 { background: rgba(25,12,55,0.7); backdrop-filter: blur(14px); border-radius: 70px 30px 70px 30px; padding: 3rem 2rem; max-width: 1000px; width: 100%; border: 1px solid #c084fc; text-align: center; }
-    .purple { color: #c084fc; text-shadow: 0 0 6px #a855f7; }
-    .photo-duo { display: flex; justify-content: center; gap: 35px; margin: 25px 0; }
-    .photo-duo div { width: 140px; height: 140px; border-radius: 50%; overflow: hidden; border: 3px solid #c084fc; box-shadow: 0 0 30px #a855f7; }
-    .photo-duo img { width: 100%; height: 100%; object-fit: cover; }
-    .names-2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 7vw, 4.5rem); background: linear-gradient(135deg, #e9d5ff, #c084fc, #a855f7); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .clock-purple { font-family: monospace; font-size: 1.7rem; background: #00000055; display: inline-block; padding: 8px 25px; border-radius: 50px; margin: 20px 0; border: 1px solid #c084fc; }
-    .countdown-2 { display: flex; gap: 20px; justify-content: center; margin: 30px 0; flex-wrap: wrap; }
-    .cd-2 { background: rgba(0,0,0,0.5); padding: 12px 18px; border-radius: 30px; min-width: 80px; border: 0.5px solid #c084fc; }
-    .cd-2 span { font-size: 1.8rem; font-weight: bold; color: #e9d5ff; display: block; font-family: 'Cinzel'; }
-    .btn-purple { background: linear-gradient(135deg, #a855f7, #7e22ce); border: none; padding: 12px 32px; border-radius: 50px; margin: 10px; cursor: pointer; font-weight: bold; color: white; }
-    .btn-purple-outline { background: transparent; border: 1px solid #c084fc; padding: 12px 32px; border-radius: 50px; color: #c084fc; cursor: pointer; }
-    .map-2 { border-radius: 28px; border: 1px solid #a855f7; width: 100%; height: 240px; margin: 20px 0; }
-    .diamond { position: fixed; pointer-events: none; z-index: 999; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Vivaah Creations | Royal Heritage | Vikram & Aditi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700;800&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0806;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        .invitation-heritage {
+            max-width: 1300px;
+            margin: 40px auto;
+            background: radial-gradient(ellipse at 30% 40%, #2a1810, #0a0502);
+            border-radius: 60px 20px 60px 20px;
+            box-shadow: 0 40px 70px rgba(0,0,0,0.7), inset 0 0 50px rgba(212,175,55,0.1);
+            border: 1px solid #c9a03d;
+            overflow: hidden;
+        }
+        .hero-heritage {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 28px;
+            position: relative;
+        }
+        .glass-heritage {
+            background: rgba(20, 12, 8, 0.75);
+            backdrop-filter: blur(16px);
+            border-radius: 70px 25px 70px 25px;
+            padding: 3rem 2rem;
+            max-width: 1000px;
+            width: 100%;
+            border: 1px solid #c9a03d;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+        .gold { color: #e8c96e; text-shadow: 0 0 10px #c9a03d; }
+        .couple-images {
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .img-circle {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 3px solid #c9a03d;
+            overflow: hidden;
+            box-shadow: 0 0 45px rgba(201,160,61,0.6);
+            transition: transform 0.3s;
+        }
+        .img-circle:hover { transform: scale(1.05); }
+        .img-circle img { width: 100%; height: 100%; object-fit: cover; }
+        .names-heritage {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 8vw, 5.2rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff3df, #e5bc7c, #f9e0a0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 20px 0;
+        }
+        .ticking-clock {
+            font-family: 'Cinzel', monospace;
+            font-size: 1.7rem;
+            background: rgba(0,0,0,0.6);
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 60px;
+            letter-spacing: 6px;
+            margin: 20px 0;
+            border: 1px solid #c9a03d;
+        }
+        .countdown-wrapper {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            margin: 35px 0;
+            flex-wrap: wrap;
+        }
+        .countdown-item {
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            padding: 14px 22px;
+            border-radius: 32px;
+            min-width: 90px;
+            border: 0.5px solid #c9a03d;
+        }
+        .countdown-item .number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #f3d382;
+            font-family: 'Cinzel', serif;
+            display: block;
+        }
+        .countdown-item .label {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .map-premium {
+            border-radius: 30px;
+            border: 1px solid #c9a03d;
+            width: 100%;
+            height: 260px;
+            margin: 20px 0;
+        }
+        .btn-gold-premium {
+            background: linear-gradient(135deg, #d4af37, #b48c2c);
+            border: none;
+            padding: 14px 38px;
+            border-radius: 50px;
+            margin: 15px 10px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .btn-gold-premium:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 35px gold;
+        }
+        .btn-outline-premium {
+            background: transparent;
+            border: 1.5px solid #c9a03d;
+            padding: 14px 38px;
+            border-radius: 50px;
+            color: #e8c96e;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-outline-premium:hover {
+            background: rgba(201,160,61,0.2);
+            box-shadow: 0 0 20px rgba(201,160,61,0.5);
+        }
+        .floating-petal {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            font-size: 1.3rem;
+        }
+        footer {
+            text-align: center;
+            padding: 35px;
+            font-family: 'Cormorant Garamond', serif;
+            color: #c9a03d;
+            border-top: 0.5px solid rgba(201,160,61,0.3);
+        }
+        @media (max-width: 700px) {
+            .countdown-item { min-width: 70px; padding: 8px 12px; }
+            .img-circle { width: 120px; height: 120px; }
+        }
+    </style>
 </head>
 <body>
-<div class="invitation-2">
-  <div class="hero-2">
-    <div class="glass-2">
-      <i class="fas fa-crown" style="font-size: 2.5rem; color: #c084fc;"></i>
-      <div class="photo-duo"><div><img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Groom"></div><div><img src="https://randomuser.me/api/portraits/women/89.jpg" alt="Bride"></div></div>
-      <h1 class="names-2">Samarth & Ananya</h1>
-      <div class="clock-purple purple" id="liveClock2">--:--:--</div>
-      <div class="countdown-2"><div class="cd-2"><span id="d2">00</span>DAYS</div><div class="cd-2"><span id="h2">00</span>HRS</div><div class="cd-2"><span id="m2">00</span>MINS</div><div class="cd-2"><span id="s2">00</span>SECS</div></div>
-      <p><i class="fas fa-map-marker-alt purple"></i> Udaivilas Palace, Udaipur | 15 January 2027 | 6:00 PM</p>
-      <iframe class="map-2" src="https://maps.google.com/maps?q=Udaivilas%20Palace%2C%20Udaipur&output=embed"></iframe>
-      <button class="btn-purple" id="rsvp2"><i class="fas fa-envelope"></i> RSVP</button>
-      <button class="btn-purple-outline" id="whats2"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+
+<div class="invitation-heritage">
+    <div class="hero-heritage">
+        <div class="glass-heritage">
+            <div class="gold" style="letter-spacing: 10px;">✦ VIVAAH CREATIONS ✦</div>
+            <div class="couple-images">
+                <div class="img-circle"><img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Vikram"></div>
+                <div class="img-circle"><img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Aditi"></div>
+            </div>
+            <h1 class="names-heritage">Vikram & Aditi</h1>
+            <div class="ticking-clock gold" id="clockHeritage">--:--:--</div>
+            <div class="countdown-wrapper" id="countdownHeritage">
+                <div class="countdown-item"><span class="number" id="dHeritage">00</span><span class="label">DAYS</span></div>
+                <div class="countdown-item"><span class="number" id="hHeritage">00</span><span class="label">HOURS</span></div>
+                <div class="countdown-item"><span class="number" id="mHeritage">00</span><span class="label">MINUTES</span></div>
+                <div class="countdown-item"><span class="number" id="sHeritage">00</span><span class="label">SECONDS</span></div>
+            </div>
+            <p><i class="fas fa-map-marker-alt gold"></i> City Palace, Jaipur | Saturday, 12th December 2026 | 7:00 PM</p>
+            <iframe class="map-premium" src="https://maps.google.com/maps?q=City%20Palace%2C%20Jaipur&output=embed" allowfullscreen></iframe>
+            <button class="btn-gold-premium" id="rsvpHeritage"><i class="fas fa-feather-alt"></i> CONFIRM ATTENDANCE</button>
+            <button class="btn-outline-premium" id="whatsHeritage"><i class="fab fa-whatsapp"></i> SHARE INVITATION</button>
+        </div>
     </div>
-  </div>
+    <footer>
+        <i class="fas fa-crown"></i> A Royal Celebration of Eternal Love <i class="fas fa-crown"></i>
+    </footer>
 </div>
-<div id="modal2" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.96); backdrop-filter:blur(14px); z-index:10000; align-items:center; justify-content:center;"><div style="background:#1b0f2c; border-radius:48px; padding:2rem; max-width:400px; border:1px solid #c084fc;"><h3 style="color:#c084fc;">Sapphire RSVP</h3><input type="text" id="name2" placeholder="Your Name" style="width:100%; margin:12px 0; padding:12px; background:#2a1a42; border:1px solid #c084fc; border-radius:40px; color:white;"><button id="submit2" style="background:#a855f7; border:none; padding:10px 28px; border-radius:40px;">Confirm</button><button id="close2" style="background:transparent; border:1px solid #c084fc; padding:10px 28px; border-radius:40px; color:#c084fc;">Close</button></div></div>
+
+<!-- RSVP MODAL -->
+<div id="modalHeritage" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.96); backdrop-filter:blur(16px); z-index:10000; align-items:center; justify-content:center;">
+    <div style="background:#1e1510; border-radius:48px; padding:2.2rem; max-width:420px; width:90%; text-align:center; border:1px solid #c9a03d;">
+        <i class="fas fa-envelope-open-text" style="font-size:2.5rem; color:#c9a03d;"></i>
+        <h3 style="color:#e8c96e; margin:15px 0;">Royal RSVP</h3>
+        <input type="text" id="nameHeritage" placeholder="Your Full Name" style="width:100%; margin:12px 0; padding:14px; background:#2d2018; border:1px solid #c9a03d; color:white; border-radius:40px;">
+        <input type="number" id="guestsHeritage" placeholder="Number of Guests" style="width:100%; margin:12px 0; padding:14px; background:#2d2018; border:1px solid #c9a03d; color:white; border-radius:40px;">
+        <button id="submitHeritage" style="background:#c9a03d; border:none; padding:12px 32px; border-radius:40px; cursor:pointer; font-weight:bold; margin:8px;">CONFIRM</button>
+        <button id="closeHeritage" style="background:transparent; border:1px solid #c9a03d; padding:12px 32px; border-radius:40px; color:#c9a03d; cursor:pointer;">CANCEL</button>
+    </div>
+</div>
+
 <script>
-  const target2 = new Date(2027, 0, 15, 18, 0, 0);
-  function update2(){ const now=new Date(); document.getElementById('liveClock2').innerText=now.toLocaleTimeString('en-US',{hour12:false}); let diff=target2-now; if(diff>0){ document.getElementById('d2').innerText=Math.floor(diff/864e5).toString().padStart(2,'0'); document.getElementById('h2').innerText=Math.floor((diff%864e5)/36e5).toString().padStart(2,'0'); document.getElementById('m2').innerText=Math.floor((diff%36e5)/6e4).toString().padStart(2,'0'); document.getElementById('s2').innerText=Math.floor((diff%6e4)/1e3).toString().padStart(2,'0'); } }
-  setInterval(update2,1000); update2();
-  setInterval(()=>{ let d=document.createElement('div'); d.classList.add('diamond'); d.innerHTML='💎'; d.style.left=Math.random()*window.innerWidth+'px'; d.style.top='-20px'; d.style.color=`rgba(168,85,247,${0.6})`; document.body.appendChild(d); gsap.to(d,{y:window.innerHeight+50,rotation:360,duration:6+Math.random()*7,onComplete:()=>d.remove()}); },800);
-  gsap.fromTo('.glass-2',{scale:0.95,opacity:0},{scale:1,opacity:1,duration:1.2});
-  const modal2=document.getElementById('modal2'); document.getElementById('rsvp2').onclick=()=>modal2.style.display='flex'; document.getElementById('close2').onclick=()=>modal2.style.display='none'; document.getElementById('submit2').onclick=()=>{let nm=document.getElementById('name2').value; if(nm) alert(`💜 ${nm}, your presence honors us!`); modal2.style.display='none';}; document.getElementById('whats2').onclick=()=>window.open(`https://wa.me/?text=${encodeURIComponent("💜 Royal Wedding: Samarth & Ananya at Udaivilas Palace, 15 Jan 2027. Join us! 💜")}`,'_blank');
+    // Wedding Date: December 12, 2026 at 7:00 PM
+    const weddingDateHeritage = new Date(2026, 11, 12, 19, 0, 0);
+    
+    function updateHeritage() {
+        const now = new Date();
+        document.getElementById('clockHeritage').innerText = now.toLocaleTimeString('en-US', { hour12: false });
+        const diff = weddingDateHeritage - now;
+        if (diff > 0) {
+            document.getElementById('dHeritage').innerText = Math.floor(diff / 86400000).toString().padStart(2, '0');
+            document.getElementById('hHeritage').innerText = Math.floor((diff % 86400000) / 3600000).toString().padStart(2, '0');
+            document.getElementById('mHeritage').innerText = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
+            document.getElementById('sHeritage').innerText = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
+        }
+    }
+    setInterval(updateHeritage, 1000);
+    updateHeritage();
+    
+    // Floating Petals Animation
+    setInterval(() => {
+        let petal = document.createElement('div');
+        petal.classList.add('floating-petal');
+        petal.innerHTML = ['🌹', '🌸', '🌺', '✨', '🌼'][Math.floor(Math.random() * 5)];
+        petal.style.left = Math.random() * window.innerWidth + 'px';
+        petal.style.top = '-30px';
+        petal.style.color = `rgba(212, 175, 55, ${0.4 + Math.random() * 0.5})`;
+        petal.style.fontSize = (12 + Math.random() * 18) + 'px';
+        document.body.appendChild(petal);
+        gsap.to(petal, {
+            y: window.innerHeight + 80,
+            rotation: 360,
+            duration: 5 + Math.random() * 7,
+            ease: "none",
+            onComplete: () => petal.remove()
+        });
+    }, 600);
+    
+    // GSAP Entrance Animation
+    gsap.fromTo('.glass-heritage', { opacity: 0, y: 60, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "power3.out" });
+    gsap.fromTo('.img-circle', { scale: 0, rotation: -20 }, { scale: 1, rotation: 0, stagger: 0.2, duration: 0.8, delay: 0.3 });
+    gsap.fromTo('.btn-gold-premium, .btn-outline-premium', { opacity: 0, y: 30 }, { opacity: 1, y: 0, stagger: 0.15, duration: 0.7, delay: 0.6 });
+    
+    // RSVP Modal Logic
+    const modalH = document.getElementById('modalHeritage');
+    document.getElementById('rsvpHeritage').onclick = () => { modalH.style.display = 'flex'; };
+    document.getElementById('closeHeritage').onclick = () => { modalH.style.display = 'none'; };
+    document.getElementById('submitHeritage').onclick = () => {
+        let name = document.getElementById('nameHeritage').value.trim();
+        if (name) {
+            alert(`✨ Your Highness ${name}, your presence is graciously confirmed! ✨`);
+            modalH.style.display = 'none';
+            document.getElementById('nameHeritage').value = '';
+            document.getElementById('guestsHeritage').value = '';
+        } else {
+            alert("Please enter your name.");
+        }
+    };
+    window.onclick = (e) => { if (e.target === modalH) modalH.style.display = 'none'; };
+    
+    // WhatsApp Share
+    document.getElementById('whatsHeritage').onclick = () => {
+        window.open(`https://wa.me/?text=${encodeURIComponent("✨ ROYAL WEDDING INVITATION ✨\n\nYou are cordially invited to the grand wedding of Vikram & Aditi on 12th December 2026 at City Palace, Jaipur.\n\nJoin us in celebrating this majestic union!")}`, '_blank');
+    };
 </script>
 </body>
 </html>
