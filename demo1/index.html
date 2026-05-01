@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Vivaah Creations | Royal Opulence — Aarav & Ishita | High-Ticket Wedding</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;500;600;700;800;900&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0415; font-family: 'Montserrat', sans-serif; overflow-x: hidden; color: #f8f3e6; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #1c1326; }
+    ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 20px; }
+
+    /* INVITATION 1: ROYAL AMBER & GOLD (Timeless) */
+    .invite-card {
+      max-width: 1300px;
+      margin: 40px auto;
+      background: radial-gradient(ellipse at 30% 40%, #1f152f, #0a0318);
+      border-radius: 64px 32px 64px 32px;
+      box-shadow: 0 40px 70px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,215,0,0.2);
+      overflow: hidden;
+      position: relative;
+      border: 1px solid #d4af3766;
+    }
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 28px;
+      position: relative;
+      background: radial-gradient(circle at 20% 30%, rgba(30,18,45,0.8), rgba(5,2,15,0.95));
+    }
+    .hero-glass {
+      background: rgba(15,8,28,0.55);
+      backdrop-filter: blur(16px);
+      border-radius: 80px 24px 80px 24px;
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      width: 100%;
+      border: 1px solid rgba(212,175,55,0.6);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    .gold-text { color: #e8c96e; text-shadow: 0 0 8px rgba(212,175,55,0.5); }
+    .couple-photo {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .photo-frame {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #d4af37;
+      box-shadow: 0 0 35px rgba(212,175,55,0.5);
+      background: #1a1128;
+    }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .names-lux {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 7vw, 4.5rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff3df, #e5bc7c, #f9e0a0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .ticking-clock {
+      font-family: 'Cinzel', monospace;
+      font-size: 1.8rem;
+      background: #00000066;
+      display: inline-block;
+      padding: 10px 25px;
+      border-radius: 60px;
+      letter-spacing: 4px;
+      margin: 20px 0;
+      border: 1px solid #d4af37;
+    }
+    .countdown-premium {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .cd-box {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      padding: 12px 18px;
+      border-radius: 28px;
+      min-width: 85px;
+      border: 0.5px solid #d4af37;
+    }
+    .cd-num { font-size: 2rem; font-weight: 700; color: #f3d382; font-family: 'Cinzel'; }
+    .map-iframe { border-radius: 28px; border: 1px solid #d4af37; width: 100%; height: 250px; margin: 20px 0; }
+    .btn-gold {
+      background: linear-gradient(135deg, #d4af37, #b48c2c);
+      border: none;
+      padding: 12px 36px;
+      font-weight: bold;
+      border-radius: 50px;
+      margin: 20px 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-family: 'Cinzel', serif;
+    }
+    .btn-gold:hover { transform: scale(1.03); box-shadow: 0 0 25px gold; }
+    .petal { position: fixed; pointer-events: none; z-index: 999; font-size: 1.2rem; opacity: 0.7; }
+    @media (max-width: 700px) { .cd-box { min-width: 65px; } .photo-frame { width: 120px; height: 120px; } }
+  </style>
+</head>
+<body>
+
+<!-- INVITATION 1: ROYAL AMBER & GOLD (with couple photos, map, clock, petals) -->
+<div class="invite-card" id="invite1">
+  <div class="hero-section">
+    <div class="hero-glass">
+      <div class="gold-text" style="letter-spacing: 6px;">✦ VIVAAH CREATIONS ✦</div>
+      <div class="couple-photo">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Groom"></div>
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Bride"></div>
+      </div>
+      <h1 class="names-lux">Aarav & Ishita</h1>
+      <div class="ticking-clock" id="liveClock1">--:--:--</div>
+      <div class="countdown-premium" id="countdown1">
+        <div class="cd-box"><span class="cd-num" id="days1">00</span><br>DAYS</div>
+        <div class="cd-box"><span class="cd-num" id="hours1">00</span><br>HRS</div>
+        <div class="cd-box"><span class="cd-num" id="mins1">00</span><br>MINS</div>
+        <div class="cd-box"><span class="cd-num" id="secs1">00</span><br>SECS</div>
+      </div>
+      <p><i class="fas fa-map-marker-alt gold-text"></i> Amber Palace, Jaipur | 28 December 2026 | 7:30 PM</p>
+      <iframe class="map-iframe" src="https://maps.google.com/maps?q=Amber%20Palace%2C%20Jaipur&output=embed" allowfullscreen></iframe>
+      <button class="btn-gold" id="rsvpBtn1"><i class="fas fa-feather-alt"></i> RSVP NOW</button>
+      <button class="btn-gold" id="whatsBtn1"><i class="fab fa-whatsapp"></i> Share</button>
+    </div>
+  </div>
+</div>
+
+<!-- INVITATION 2: MAHARAJA SAPPHIRE & VELVET (Elegant Blue-Purple theme) -->
+<div class="invite-card" id="invite2" style="background: radial-gradient(ellipse at 70% 30%, #1b0f3a, #04001a); border-color: #a855f7;">
+  <div class="hero-section">
+    <div class="hero-glass" style="background: rgba(25,12,55,0.7); backdrop-filter: blur(12px); border-color: #a855f7;">
+      <i class="fas fa-crown" style="font-size: 2.5rem; color: #c084fc;"></i>
+      <div class="couple-photo">
+        <div class="photo-frame" style="border-color: #c084fc;"><img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Groom"></div>
+        <div class="photo-frame" style="border-color: #c084fc;"><img src="https://randomuser.me/api/portraits/women/89.jpg" alt="Bride"></div>
+      </div>
+      <h1 class="names-lux" style="background: linear-gradient(135deg, #e9d5ff, #c084fc, #a855f7); -webkit-background-clip: text;">Samarth & Ananya</h1>
+      <div class="ticking-clock" id="liveClock2" style="color:#c084fc;">--:--:--</div>
+      <div class="countdown-premium" id="countdown2">
+        <div class="cd-box"><span class="cd-num" id="days2">00</span><br>DAYS</div>
+        <div class="cd-box"><span class="cd-num" id="hours2">00</span><br>HRS</div>
+        <div class="cd-box"><span class="cd-num" id="mins2">00</span><br>MINS</div>
+        <div class="cd-box"><span class="cd-num" id="secs2">00</span><br>SECS</div>
+      </div>
+      <p><i class="fas fa-map-marker-alt" style="color:#c084fc;"></i> Udaivilas Palace, Udaipur | 15 January 2027 | 6:00 PM</p>
+      <iframe class="map-iframe" src="https://maps.google.com/maps?q=Udaivilas%20Palace%2C%20Udaipur&output=embed" style="border-color:#c084fc;"></iframe>
+      <button class="btn-gold" id="rsvpBtn2" style="background: linear-gradient(135deg,#a855f7,#7e22ce);">✨ RSVP ✨</button>
+      <button class="btn-gold" id="whatsBtn2"><i class="fab fa-whatsapp"></i> Invite</button>
+    </div>
+  </div>
+</div>
+
+<!-- INVITATION 3: ROSE GOLD BLOSSOM (Pink & Rose theme with heavy petals) -->
+<div class="invite-card" id="invite3" style="background: radial-gradient(ellipse at 40% 50%, #2c1a2b, #110511); border-color: #f9a8d4;">
+  <div class="hero-section">
+    <div class="hero-glass" style="background: rgba(35,15,38,0.65); border-color: #f9a8d4;">
+      <i class="fas fa-feather-alt" style="font-size: 2rem; color: #f9a8d4;"></i>
+      <div class="couple-photo">
+        <div class="photo-frame" style="border-color: #f9a8d4;"><img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Groom"></div>
+        <div class="photo-frame" style="border-color: #f9a8d4;"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Bride"></div>
+      </div>
+      <h1 class="names-lux" style="background: linear-gradient(135deg, #ffe0f0, #f9a8d4, #ff7eb3); -webkit-background-clip: text;">Kabir & Myra</h1>
+      <div class="ticking-clock" id="liveClock3" style="color:#ffb7d2;">--:--:--</div>
+      <div class="countdown-premium" id="countdown3">
+        <div class="cd-box"><span class="cd-num" id="days3">00</span><br>DAYS</div>
+        <div class="cd-box"><span class="cd-num" id="hours3">00</span><br>HRS</div>
+        <div class="cd-box"><span class="cd-num" id="mins3">00</span><br>MINS</div>
+        <div class="cd-box"><span class="cd-num" id="secs3">00</span><br>SECS</div>
+      </div>
+      <p><i class="fas fa-map-marker-alt" style="color:#f9a8d4;"></i> The Leela Palace, New Delhi | 5 February 2027 | 7:00 PM</p>
+      <iframe class="map-iframe" src="https://maps.google.com/maps?q=Leela%20Palace%20New%20Delhi&output=embed" style="border-color:#f9a8d4;"></iframe>
+      <button class="btn-gold" id="rsvpBtn3" style="background: linear-gradient(135deg,#f9a8d4,#ec489a);">✧ CONFIRM ✧</button>
+      <button class="btn-gold" id="whatsBtn3"><i class="fab fa-whatsapp"></i> Share Joy</button>
+    </div>
+  </div>
+</div>
+
+<!-- RSVP MODAL (Universal Luxury) -->
+<div id="rsvpModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); backdrop-filter:blur(12px); z-index:10000; align-items:center; justify-content:center;">
+  <div style="background:#1d142b; border-radius:48px; padding:2rem; max-width:450px; width:90%; text-align:center; border:1px solid #d4af37;">
+    <h3 style="color:#d4af37;">Royal RSVP</h3>
+    <input type="text" id="rsvpName" placeholder="Your Name" style="width:100%; margin:12px 0; padding:12px; background:#2e1e3a; border:1px solid #d4af37; color:white; border-radius:40px;">
+    <input type="text" id="rsvpGuests" placeholder="Number of Guests" style="width:100%; margin:12px 0; padding:12px; background:#2e1e3a; border:1px solid #d4af37; border-radius:40px;">
+    <button id="submitRsvp" style="background:#d4af37; border:none; padding:12px 28px; border-radius:40px; font-weight:bold; cursor:pointer;">Submit</button>
+    <button id="closeModalBtn" style="background:transparent; border:1px solid #d4af37; padding:12px 28px; border-radius:40px; color:#d4af37; margin-left:12px;">Cancel</button>
+  </div>
+</div>
+
+<script>
+  // --- LIVE TICKING CLOCKS & COUNTDOWN (for all 3 invites)
+  const weddingDates = [
+    new Date(2026, 11, 28, 19, 30, 0), // invite1
+    new Date(2027, 0, 15, 18, 0, 0),  // invite2
+    new Date(2027, 1, 5, 19, 0, 0)    // invite3
+  ];
+  
+  function updateClocksAndCountdowns() {
+    const now = new Date();
+    // Live clock HH:MM:SS
+    const timeStr = now.toLocaleTimeString('en-US', { hour12: false });
+    document.querySelectorAll('[id^="liveClock"]').forEach((el, idx) => { if(el) el.innerText = timeStr; });
+    
+    for(let i=0; i<weddingDates.length; i++) {
+      const diff = weddingDates[i] - now;
+      if(diff <= 0) {
+        document.getElementById(`days${i+1}`).innerText = "00";
+        document.getElementById(`hours${i+1}`).innerText = "00";
+        document.getElementById(`mins${i+1}`).innerText = "00";
+        document.getElementById(`secs${i+1}`).innerText = "00";
+        continue;
+      }
+      const days = Math.floor(diff / (1000*60*60*24));
+      const hours = Math.floor((diff % (86400000)) / 3600000);
+      const mins = Math.floor((diff % 3600000) / 60000);
+      const secs = Math.floor((diff % 60000) / 1000);
+      document.getElementById(`days${i+1}`).innerText = days.toString().padStart(2,'0');
+      document.getElementById(`hours${i+1}`).innerText = hours.toString().padStart(2,'0');
+      document.getElementById(`mins${i+1}`).innerText = mins.toString().padStart(2,'0');
+      document.getElementById(`secs${i+1}`).innerText = secs.toString().padStart(2,'0');
+    }
+  }
+  setInterval(updateClocksAndCountdowns, 1000);
+  updateClocksAndCountdowns();
+  
+  // --- ROSE PETALS HEAVY ANIMATION (all 3 have unique floating petals)
+  function startPetals(themeColor, containerId) {
+    const colors = themeColor === 'gold' ? ['#d4af37','#f5c842','#ffdf80'] : (themeColor === 'purple' ? ['#c084fc','#a855f7','#d8b4fe'] : ['#f9a8d4','#ffb7d2','#f472b6']);
+    setInterval(() => {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      petal.innerHTML = Math.random() > 0.5 ? '🌹' : '🌸';
+      petal.style.left = Math.random() * window.innerWidth + 'px';
+      petal.style.top = '-20px';
+      petal.style.fontSize = (12 + Math.random() * 18) + 'px';
+      petal.style.color = colors[Math.floor(Math.random() * colors.length)];
+      petal.style.opacity = 0.6 + Math.random() * 0.4;
+      document.body.appendChild(petal);
+      gsap.to(petal, { y: window.innerHeight + 50, rotation: 360, duration: 5 + Math.random() * 7, ease: "none", onComplete: () => petal.remove() });
+    }, 600);
+  }
+  startPetals('gold', 'invite1');
+  startPetals('purple', 'invite2');
+  startPetals('pink', 'invite3');
+  
+  // --- GSAP entrance animations for each invitation
+  function animateInvite(inviteId) {
+    const inv = document.getElementById(inviteId);
+    gsap.fromTo(inv.querySelector('.hero-glass'), { opacity: 0, y: 60, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 1.2, scrollTrigger: { trigger: inv, start: "top 85%", toggleActions: "play none none reverse" } });
+    gsap.fromTo(inv.querySelectorAll('.photo-frame'), { scale: 0, rotation: -15 }, { scale: 1, rotation: 0, stagger: 0.2, duration: 0.8, scrollTrigger: { trigger: inv, start: "top 80%" } });
+    gsap.fromTo(inv.querySelector('.countdown-premium'), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.9, scrollTrigger: { trigger: inv, start: "top 75%" } });
+  }
+  animateInvite('invite1');
+  animateInvite('invite2');
+  animateInvite('invite3');
+  
+  // --- RSVP Modal Logic (Universal)
+  const modal = document.getElementById('rsvpModal');
+  let currentRsvpCallback = null;
+  function openModal(callback) { currentRsvpCallback = callback; modal.style.display = 'flex'; gsap.fromTo(modal.children[0], { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5 }); }
+  function closeModal() { modal.style.display = 'none'; }
+  document.getElementById('closeModalBtn').onclick = closeModal;
+  document.getElementById('submitRsvp').onclick = () => {
+    const name = document.getElementById('rsvpName').value.trim();
+    if(name) alert(`✨ Thank you ${name}, Your presence is royally recorded! ✨`);
+    else alert("Please enter your name.");
+    closeModal();
+    document.getElementById('rsvpName').value = '';
+    document.getElementById('rsvpGuests').value = '';
+  };
+  // Attach RSVP buttons
+  document.getElementById('rsvpBtn1').onclick = () => openModal();
+  document.getElementById('rsvpBtn2').onclick = () => openModal();
+  document.getElementById('rsvpBtn3').onclick = () => openModal();
+  
+  // WhatsApp share buttons (custom per invitation)
+  document.getElementById('whatsBtn1').onclick = () => { window.open(`https://wa.me/?text=${encodeURIComponent("✨ Royal Wedding: Aarav & Ishita on 28 Dec 2026 at Amber Palace. Join us! ✨")}`, '_blank'); };
+  document.getElementById('whatsBtn2').onclick = () => { window.open(`https://wa.me/?text=${encodeURIComponent("💜 Samarth & Ananya's Royal Wedding at Udaivilas Palace, 15 Jan 2027. Blessed Occasion! 💜")}`, '_blank'); };
+  document.getElementById('whatsBtn3').onclick = () => { window.open(`https://wa.me/?text=${encodeURIComponent("🌸 Kabir & Myra's Grand Wedding — 5 Feb 2027 at The Leela Palace. Join the celebration! 🌸")}`, '_blank'); };
+  
+  // Adding extra floating gold stars & diamonds
+  function addSparkles() {
+    setInterval(() => {
+      let star = document.createElement('div');
+      star.innerHTML = '✦';
+      star.style.position = 'fixed';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.bottom = '-20px';
+      star.style.fontSize = (8 + Math.random() * 12) + 'px';
+      star.style.color = `rgba(212,175,55,${0.4+Math.random()*0.5})`;
+      star.style.pointerEvents = 'none';
+      star.style.zIndex = '998';
+      document.body.appendChild(star);
+      gsap.to(star, { y: -window.innerHeight - 50, rotation: 360, duration: 6 + Math.random() * 8, ease: "none", onComplete: () => star.remove() });
+    }, 1500);
+  }
+  addSparkles();
+  
+  // Dynamic background shimmer on hover for cards
+  const cards = document.querySelectorAll('.invite-card');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+      card.style.boxShadow = `0 30px 50px rgba(0,0,0,0.7), inset 0 0 60px rgba(212,175,55,0.2)`;
+      card.style.background = `radial-gradient(ellipse at ${x*100}% ${y*100}%, #2d1d3a, #0a0318)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.background = ""; card.style.boxShadow = ""; });
+  });
+  
+  console.log("Vivaah Creations — Ultra Luxury Templates Loaded with Photos, Maps, RSVP, Petals & Live Clock");
+</script>
+
+<!-- Additional decorative note: Fully responsive and elegant -->
+<div style="text-align: center; padding: 30px 12px; font-family: 'Cormorant Garamond'; font-size: 1rem; color: #d4af37;">
+  <i class="fas fa-gem"></i> Vivaah Creations — Where Love Meets Royalty <i class="fas fa-gem"></i>
+</div>
+</body>
+</html>
