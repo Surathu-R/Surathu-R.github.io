@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathrubhoomi Rice – Gold from the Fields</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font for classic elegance -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fafaf5;  /* soft white base */
+            font-family: 'Inter', sans-serif;
+            color: #1e2a1b;
+            line-height: 1.6;
+        }
+
+        /* ----- COLOR THEME -----
+            Gold (grains): #d4af37, #c9a236, #f5e7b2
+            Green (farmers, fields): #2d5e2a, #3f7843, #6a9c5a
+            White (purity, rice): #fcfcf7, #f5f3ed
+        */
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ----- HEADER & NAV ----- */
+        .header {
+            background-color: #fcfcf7;
+            border-bottom: 3px solid #d4af37;
+            padding: 16px 0;
+            box-shadow: 0 4px 12px rgba(45, 94, 42, 0.06);
+        }
+
+        .header-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 88px;
+            height: 88px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: #f5f3ed;
+            padding: 4px;
+            border: 2px solid #d4af37;
+            transition: all 0.2s;
+        }
+
+        .logo-img:hover {
+            border-color: #2d5e2a;
+        }
+
+        .brand-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.9rem;
+            color: #2d5e2a;
+            letter-spacing: 1px;
+        }
+
+        .brand-text span {
+            color: #d4af37;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: #4f6b3c;
+            background: #f5e7b2;
+            display: inline-block;
+            padding: 2px 16px;
+            border-radius: 30px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            margin-top: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1e2a1b;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+            border-bottom-color: #d4af37;
+        }
+
+        /* ----- HERO (classic rice & farming) ----- */
+        .hero {
+            background: linear-gradient(145deg, #f5f3ed 0%, #e8e3d4 100%);
+            padding: 48px 0 56px;
+            border-bottom: 2px solid #d4af37;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1 1 45%;
+        }
+
+        .hero-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #1e2a1b;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .hero-text h2 i {
+            color: #d4af37;
+            font-style: normal;
+            background: #2d5e2a;
+            color: #f5e7b2;
+            padding: 0 8px;
+            display: inline-block;
+            transform: rotate(-2deg);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #2d4a2a;
+            max-width: 500px;
+            margin-bottom: 28px;
+            font-weight: 300;
+        }
+
+        .hero-highlight {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .hero-highlight span {
+            background: #2d5e2a;
+            color: #fcfcf7;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            border: 1px solid #d4af37;
+        }
+
+        .hero-image {
+            flex: 1 1 45%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-image-wrapper {
+            background: #fcfcf7;
+            padding: 12px;
+            border-radius: 50% 50% 0 0;
+            box-shadow: 0 20px 30px rgba(45, 94, 42, 0.15);
+            border: 2px solid #d4af37;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 50% 50% 0 0;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 1/1;
+        }
+
+        /* rice grains pattern (classic) */
+        .grain-pattern {
+            background: repeating-linear-gradient(45deg, #f5e7b2 0px, #f5e7b2 6px, #d4af37 6px, #d4af37 10px);
+            height: 12px;
+            width: 100%;
+            opacity: 0.35;
+            margin: 12px 0 0;
+        }
+
+        /* ----- FEATURE: FARMERS & FIELDS ----- */
+        .farmers-section {
+            padding: 60px 0;
+            background: #fcfcf7;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #2d5e2a;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .section-title span {
+            color: #d4af37;
+        }
+
+        .section-sub {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 48px;
+            color: #3b5a33;
+            border-bottom: 2px dashed #d4af37;
+            padding-bottom: 12px;
+        }
+
+        .farmer-card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .farmer-card {
+            background: #f5f3ed;
+            border-radius: 24px 24px 12px 12px;
+            padding: 24px 24px 32px;
+            flex: 1 1 240px;
+            max-width: 300px;
+            text-align: center;
+            border: 1px solid #d4af37;
+            transition: all 0.25s;
+            box-shadow: 0 6px 14px rgba(45, 94, 42, 0.04);
+        }
+
+        .farmer-card:hover {
+            transform: translateY(-6px);
+            border-color: #2d5e2a;
+            background: #fcfcf7;
+        }
+
+        .farmer-card i {
+            font-size: 2.8rem;
+            color: #2d5e2a;
+            background: #d4af37;
+            padding: 14px;
+            border-radius: 60px;
+            color: #fcfcf7;
+            margin-bottom: 16px;
+            width: 70px;
+            height: 70px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .farmer-card h3 {
+            color: #1e2a1b;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .farmer-card p {
+            color: #2d4a2a;
+            font-size: 0.95rem;
+        }
+
+        .gold-badge {
+            background: #d4af37;
+            color: #1e2a1b;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.8rem;
+        }
+
+        /* ----- RICE GRAINS SHOWCASE (GOLD) ----- */
+        .grain-showcase {
+            background: #2d5e2a;  /* deep green from farmers */
+            padding: 60px 0 70px;
+            color: #fcfcf7;
+            border-top: 6px solid #d4af37;
+            border-bottom: 6px solid #d4af37;
+        }
+
+        .grain-showcase .section-title {
+            color: #f5e7b2;
+        }
+
+        .grain-showcase .section-title span {
+            color: #fcfcf7;
+        }
+
+        .grain-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .grain-item {
+            background: #fcfcf7;
+            color: #1e2a1b;
+            padding: 20px 24px;
+            border-radius: 60px 20px 60px 20px;
+            min-width: 160px;
+            text-align: center;
+            border: 2px solid #d4af37;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: 0.2s;
+            flex: 1 1 150px;
+        }
+
+        .grain-item i {
+            font-size: 2.2rem;
+            color: #d4af37;
+            margin-bottom: 6px;
+        }
+
+        .grain-item span {
+            display: block;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #2d5e2a;
+        }
+
+        .grain-item small {
+            color: #4f6b3c;
+        }
+
+        /* ----- FOOTER & SOCIAL BUTTONS (whatsapp, insta) ----- */
+        .footer {
+            background: #f5f3ed;
+            padding: 36px 0 24px;
+            border-top: 4px solid #d4af37;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #2d5e2a;
+            font-size: 1.6rem;
+        }
+
+        .footer-brand span {
+            color: #d4af37;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            border-radius: 60px;
+            background: #fcfcf7;
+            border: 2px solid #2d5e2a;
+            color: #2d5e2a;
+            font-size: 1.8rem;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .social-btn:hover {
+            background: #d4af37;
+            border-color: #d4af37;
+            color: #1e2a1b;
+            transform: scale(1.06);
+        }
+
+        .social-btn.whatsapp:hover {
+            background: #25d366;
+            border-color: #25d366;
+            color: white;
+        }
+
+        .social-btn.instagram:hover {
+            background: #d62976;
+            border-color: #d62976;
+            color: white;
+        }
+
+        .footer-copy {
+            width: 100%;
+            text-align: center;
+            margin-top: 28px;
+            color: #2d4a2a;
+            border-top: 1px solid #d4af37;
+            padding-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 16px;
+            }
+            .hero-text h2 {
+                font-size: 2.2rem;
+            }
+            .hero-grid {
+                flex-direction: column-reverse;
+            }
+            .hero-image-wrapper img {
+                max-width: 280px;
+            }
+        }
+
+        /* logo reference fallback (logo attached as image) */
+        .logo-ref {
+            display: none;
+        }
+
+        /* small decoration */
+        .rice-bg-pattern {
+            background-image: radial-gradient(circle at 20% 30%, rgba(212,175,55,0.08) 0%, transparent 25%);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- header with logo & nav -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo-area">
+                <!-- logo attached as reference (Mathrubhoomi Rice logo) -->
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232d5e2a'/%3E%3Ccircle cx='50' cy='50' r='38' fill='%23f5f3ed'/%3E%3Ccircle cx='50' cy='38' r='12' fill='%23d4af37'/%3E%3Cpath d='M30 60 Q50 50 70 60 L75 72 Q50 62 25 72 Z' fill='%236a9c5a'/%3E%3Ctext x='50' y='85' text-anchor='middle' fill='%23d4af37' font-size='9' font-family='serif' font-weight='bold'%3ERICE%3C/text%3E%3C/svg%3E"
+                     alt="Mathrubhoomi Rice logo" class="logo-img">
+                <div class="brand-text">
+                    <h1>Mathrubhoomi <span>Rice</span></h1>
+                    <div class="tagline"><i class="fas fa-seedling" style="color:#2d5e2a;"></i> Gold from the fields</div>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Our grains</a>
+                <a href="#">Farmers</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO section: classic farming, rice, white & gold -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <h2>Pure <i>Gold</i> <br> <span style="background: #2d5e2a; color: #f5e7b2; padding: 0 12px;">from the</span> Farmer's hand</h2>
+                <p>Every grain tells a story of dedication, soil, and tradition. Mathrubhoomi Rice — where gold meets green.</p>
+                <div class="hero-highlight">
+                    <span><i class="fas fa-leaf"></i> 100% farmer sourced</span>
+                    <span style="background: #d4af37; color: #1e2a1b;"><i class="fas fa-seedling"></i> Golden grains</span>
+                </div>
+                <div class="grain-pattern" style="margin-top: 28px;"></div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-wrapper">
+                    <!-- rice grains & farming visual : classic paddy image -->
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f5f3ed'/%3E%3Ccircle cx='200' cy='160' r='60' fill='%23d4af37' opacity='0.9'/%3E%3Cpath d='M60 280 Q150 200 200 240 Q260 200 340 280 L340 330 Q200 270 60 330Z' fill='%236a9c5a'/%3E%3Cpath d='M20 310 Q100 260 200 290 Q300 260 380 310 L380 370 Q200 310 20 370Z' fill='%232d5e2a'/%3E%3Cpath d='M100 280 L110 240 L120 280 M180 270 L190 220 L200 270 M280 280 L290 230 L300 280' stroke='%23d4af37' stroke-width='4' fill='none'/%3E%3Ctext x='200' y='380' text-anchor='middle' fill='%232d5e2a' font-size='22' font-family='serif' font-weight='bold'%3EMathrubhoomi%3C/text%3E%3C/svg%3E"
+                         alt="Rice farming illustration" style="background: #fcfcf7;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FARMERS SECTION (green & gold) -->
+    <section class="farmers-section">
+        <div class="container">
+            <h2 class="section-title">Our <span>Farmers</span>, Our Roots</h2>
+            <div class="section-sub">White rice, green fields, golden hearts — every harvest honors the hands that sow.</div>
+            <div class="farmer-card-grid">
+                <div class="farmer-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Smallholder pride</h3>
+                    <p>We work directly with 200+ farming families across the region.</p>
+                    <span class="gold-badge">direct trade</span>
+                </div>
+                <div class="farmer-card">
+                    <i class="fas fa-tractor"></i>
+                    <h3>Traditional wisdom</h3>
+                    <p>Age-old methods meet sustainable practices, preserving the soil.</p>
+                    <span class="gold-badge">organic practices</span>
+                </div>
+                <div class="farmer-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>Golden harvest</h3>
+                    <p>Each grain is sun-dried and hand-picked for premium quality.</p>
+                    <span class="gold-badge">gold standard</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RICE GRAINS SHOWCASE (gold) -->
+    <section class="grain-showcase">
+        <div class="container">
+            <h2 class="section-title">Grains of <span>Gold</span></h2>
+            <div class="section-sub" style="color: #f5e7b2; border-bottom-color: #d4af37;">White. Aromatic. Nutritious. </div>
+            <div class="grain-grid">
+                <div class="grain-item">
+                    <i class="fas fa-seedling"></i>
+                    <span>Basmati</span>
+                    <small>long grain · golden aroma</small>
+                </div>
+                <div class="grain-item">
+                    <i class="fas fa-circle" style="color: #f5e7b2;"></i>
+                    <span>Ponni</span>
+                    <small>white · soft & fluffy</small>
+                </div>
+                <div class="grain-item">
+                    <i class="fas fa-leaf"></i>
+                    <span>Jasmine</span>
+                    <small>fragrant · premium white</small>
+                </div>
+                <div class="grain-item">
+                    <i class="fas fa-sun"></i>
+                    <span>Raw</span>
+                    <small>golden · traditional</small>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <span style="background: #d4af37; color: #1e2a1b; padding: 8px 30px; border-radius: 40px; font-weight: 600; display: inline-block;">100% pure · naturally grown</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER with WhatsApp & Instagram buttons -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                Mathrubhoomi <span>Rice</span> <i class="fas fa-seedling" style="color: #2d5e2a;"></i>
+            </div>
+            <div class="social-buttons">
+                <!-- WhatsApp button -->
+                <a href="https://wa.me/919999999999" target="_blank" class="social-btn whatsapp" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <!-- Instagram button -->
+                <a href="https://instagram.com/mathrubhoomirice" target="_blank" class="social-btn instagram" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <!-- optional phone / mail but kept minimal -->
+            </div>
+            <div class="footer-copy">
+                <span style="color: #2d5e2a;">Gold · Green · White</span> — © 2025 Mathrubhoomi Rice. Traders of premium rice.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
