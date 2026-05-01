@@ -1,1 +1,167 @@
-t
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Vivaah Creations | Rose Gold Blossom | Kabir & Myra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0e0516; font-family: 'Montserrat', sans-serif; }
+    .rose-card {
+      max-width: 1300px;
+      margin: 40px auto;
+      background: radial-gradient(ellipse at 40% 50%, #2c1a2b, #110511);
+      border-radius: 70px 30px 70px 30px;
+      border: 1px solid #f9a8d4;
+      box-shadow: 0 40px 70px rgba(0,0,0,0.6);
+      overflow: hidden;
+    }
+    .hero-rose {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 28px;
+    }
+    .glass-rose {
+      background: rgba(35,15,38,0.7);
+      backdrop-filter: blur(14px);
+      border-radius: 80px 20px 80px 20px;
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      width: 100%;
+      border: 1px solid #f9a8d4;
+      text-align: center;
+    }
+    .pink-text { color: #f9a8d4; text-shadow: 0 0 6px #f472b6; }
+    .couple-pink {
+      display: flex;
+      justify-content: center;
+      gap: 45px;
+      margin: 30px 0;
+    }
+    .img-pink {
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      border: 3px solid #f9a8d4;
+      overflow: hidden;
+      box-shadow: 0 0 35px #f9a8d4;
+    }
+    .img-pink img { width: 100%; height: 100%; object-fit: cover; }
+    .names-pink {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 7vw, 4.8rem);
+      background: linear-gradient(135deg, #ffe0f0, #f9a8d4, #ff7eb3);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .rose-clock {
+      font-family: monospace;
+      font-size: 1.6rem;
+      background: #00000055;
+      display: inline-block;
+      padding: 8px 25px;
+      border-radius: 60px;
+      margin: 20px 0;
+      border: 1px solid #f9a8d4;
+    }
+    .countdown-rose {
+      display: flex;
+      gap: 22px;
+      justify-content: center;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .cd-rose {
+      background: rgba(0,0,0,0.5);
+      padding: 12px 18px;
+      border-radius: 30px;
+      min-width: 80px;
+      border: 0.5px solid #f9a8d4;
+    }
+    .cd-rose span { font-size: 1.9rem; font-weight: bold; color: #ffb7d2; display: block; font-family: 'Cinzel'; }
+    .btn-rose {
+      background: linear-gradient(135deg, #f9a8d4, #ec489a);
+      border: none;
+      padding: 12px 35px;
+      border-radius: 50px;
+      margin: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #1a041f;
+    }
+    .btn-rose-outline {
+      background: transparent;
+      border: 1px solid #f9a8d4;
+      padding: 12px 35px;
+      border-radius: 50px;
+      color: #f9a8d4;
+      cursor: pointer;
+    }
+    .map-rose { border-radius: 28px; border: 1px solid #f9a8d4; width: 100%; height: 240px; margin: 20px 0; }
+    .petal-rose { position: fixed; pointer-events: none; z-index: 999; }
+  </style>
+</head>
+<body>
+
+<div class="rose-card">
+  <div class="hero-rose">
+    <div class="glass-rose">
+      <i class="fas fa-feather-alt" style="font-size: 2rem; color: #f9a8d4;"></i>
+      <div class="couple-pink">
+        <div class="img-pink"><img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Groom"></div>
+        <div class="img-pink"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Bride"></div>
+      </div>
+      <h1 class="names-pink">Kabir & Myra</h1>
+      <div class="rose-clock pink-text" id="roseLiveClock">--:--:--</div>
+      <div class="countdown-rose">
+        <div class="cd-rose"><span id="rDays">00</span>DAYS</div>
+        <div class="cd-rose"><span id="rHours">00</span>HRS</div>
+        <div class="cd-rose"><span id="rMins">00</span>MINS</div>
+        <div class="cd-rose"><span id="rSecs">00</span>SECS</div>
+      </div>
+      <p><i class="fas fa-map-marker-alt pink-text"></i> The Leela Palace, New Delhi | 5 February 2027 | 7:00 PM</p>
+      <iframe class="map-rose" src="https://maps.google.com/maps?q=Leela%20Palace%20New%20Delhi&output=embed"></iframe>
+      <button class="btn-rose" id="rsvpRoseBtn"><i class="fas fa-heart"></i> RSVP</button>
+      <button class="btn-rose-outline" id="whatsRoseBtn"><i class="fab fa-whatsapp"></i> Share</button>
+    </div>
+  </div>
+</div>
+
+<div id="modalRose" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); backdrop-filter:blur(14px); z-index:10000; align-items:center; justify-content:center;">
+  <div style="background:#2a1125; border-radius:48px; padding:2rem; max-width:400px; border:1px solid #f9a8d4;">
+    <h3 style="color:#f9a8d4;">Blossom RSVP</h3>
+    <input type="text" id="roseName" placeholder="Your Name" style="width:100%; margin:12px 0; padding:12px; background:#3e1a32; border:1px solid #f9a8d4; border-radius:40px; color:white;">
+    <button id="submitRose" style="background:#f9a8d4; border:none; padding:10px 28px; border-radius:40px;">Confirm</button>
+    <button id="closeRose" style="background:transparent; border:1px solid #f9a8d4; padding:10px 28px; border-radius:40px; color:#f9a8d4;">Close</button>
+  </div>
+</div>
+
+<script>
+  const targetRose = new Date(2027, 1, 5, 19, 0, 0);
+  function updateRose(){
+    const now=new Date();
+    document.getElementById('roseLiveClock').innerText=now.toLocaleTimeString('en-US',{hour12:false});
+    let diff=targetRose-now;
+    if(diff>0){
+      document.getElementById('rDays').innerText=Math.floor(diff/864e5).toString().padStart(2,'0');
+      document.getElementById('rHours').innerText=Math.floor((diff%864e5)/36e5).toString().padStart(2,'0');
+      document.getElementById('rMins').innerText=Math.floor((diff%36e5)/6e4).toString().padStart(2,'0');
+      document.getElementById('rSecs').innerText=Math.floor((diff%6e4)/1e3).toString().padStart(2,'0');
+    }
+  }
+  setInterval(updateRose,1000); updateRose();
+  setInterval(()=>{ let pet=document.createElement('div'); pet.classList.add('petal-rose'); pet.innerHTML='🌸'; pet.style.left=Math.random()*window.innerWidth+'px'; pet.style.top='-20px'; pet.style.fontSize=(12+Math.random()*14)+'px'; pet.style.color=`rgba(249,168,212,${0.7})`; document.body.appendChild(pet); gsap.to(pet,{y:window.innerHeight+50,rotation:360,duration:5+Math.random()*8,onComplete:()=>pet.remove()}); },600);
+  gsap.fromTo('.glass-rose',{opacity:0,scale:0.95},{opacity:1,scale:1,duration:1.2});
+  const modalR=document.getElementById('modalRose');
+  document.getElementById('rsvpRoseBtn').onclick=()=>modalR.style.display='flex';
+  document.getElementById('closeRose').onclick=()=>modalR.style.display='none';
+  document.getElementById('submitRose').onclick=()=>{let nm=document.getElementById('roseName').value; if(nm) alert(`🌸 Welcome ${nm}, we await your presence!`); modalR.style.display='none';};
+  document.getElementById('whatsRoseBtn').onclick=()=>window.open(`https://wa.me/?text=${encodeURIComponent("🌸 Kabir & Myra's Wedding at The Leela Palace, 5 Feb 2027. Join the celebration! 🌸")}`,'_blank');
+</script>
+</body>
+</html>
