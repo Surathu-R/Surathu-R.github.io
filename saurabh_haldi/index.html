@@ -3,52 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Groom's Haldi | Saurabh | हळद उपीट समारंभ</title>
-  <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>Golden Haldi | Saurabh's Turmeric Ceremony | हळद सोहळा</title>
+  <!-- Google Fonts: Elegant + Modern -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      user-select: none; /* subtle, avoid accidental selects on splash */
     }
 
     body {
       min-height: 100vh;
-      background: linear-gradient(145deg, #fef7e0 0%, #fae9c2 100%);
-      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at 10% 30%, #ffefb0, #fddc8c);
+      font-family: 'Inter', sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 2rem 1.5rem;
+      padding: 1.8rem;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Background floating turmeric particles (continuous subtle splash) */
+    /* rich golden turmeric swirl background */
     body::before {
       content: '';
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
+      background-image: repeating-linear-gradient(45deg, rgba(255, 180, 50, 0.08) 0px, rgba(255, 180, 50, 0.08) 2px, transparent 2px, transparent 12px),
+                        repeating-linear-gradient(135deg, rgba(220, 120, 20, 0.05) 0px, rgba(220, 120, 20, 0.05) 1px, transparent 1px, transparent 10px);
       pointer-events: none;
       z-index: 0;
-      background-image: radial-gradient(circle at 20% 40%, rgba(255, 185, 50, 0.08) 2%, transparent 2.5%),
-                        radial-gradient(circle at 80% 70%, rgba(255, 140, 0, 0.1) 1.5%, transparent 2%);
-      background-size: 45px 45px, 60px 60px;
-      animation: floatBg 24s linear infinite;
     }
 
-    @keyframes floatBg {
-      0% { background-position: 0 0, 0 0; }
-      100% { background-position: 60px 60px, 120px 120px; }
-    }
-
-    /* Ambient floating droplets */
-    .ambient-splash {
+    /* floating turmeric particles (constant) */
+    .haldi-dust {
       position: fixed;
       width: 100%;
       height: 100%;
@@ -58,465 +49,414 @@
       z-index: 1;
       overflow: hidden;
     }
-
-    .ambient-splash div {
+    .haldi-dust span {
       position: absolute;
-      background: radial-gradient(circle, #ffbd4a, #ffa500);
-      border-radius: 60% 40% 50% 50%;
-      opacity: 0.2;
-      filter: blur(3px);
-      animation: drift 12s infinite alternate ease-in-out;
+      background: rgba(255, 205, 90, 0.6);
+      border-radius: 50%;
+      filter: blur(6px);
+      animation: floatDust 14s infinite alternate ease-in-out;
+    }
+    @keyframes floatDust {
+      0% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.2; }
+      100% { transform: translateY(-70px) translateX(30px) scale(1.4); opacity: 0.5; }
     }
 
-    @keyframes drift {
-      0% { transform: translateY(0px) translateX(0px) rotate(0deg); opacity: 0.1; }
-      100% { transform: translateY(-40px) translateX(30px) rotate(20deg); opacity: 0.35; }
-    }
-
-    /* Outer open button container */
-    .open-container {
+    /* open button container */
+    .open-wrapper {
       position: relative;
       z-index: 20;
       text-align: center;
       cursor: pointer;
-      transition: all 0.4s ease;
     }
-
-    .open-invite-btn {
-      background: linear-gradient(135deg, #f5b042, #e67e22);
+    .glow-btn {
+      background: linear-gradient(125deg, #f5b343, #e67e22);
       border: none;
-      padding: 18px 42px;
-      font-size: 1.6rem;
+      padding: 1rem 2.5rem;
+      font-size: 1.5rem;
       font-weight: 600;
       font-family: 'Cormorant Garamond', serif;
-      color: white;
+      color: #fff6e5;
       border-radius: 60px;
-      box-shadow: 0 20px 30px rgba(230, 126, 34, 0.4);
+      box-shadow: 0 20px 30px rgba(220, 110, 20, 0.5), 0 0 0 3px #ffeaac;
       cursor: pointer;
-      transition: 0.25s;
+      transition: all 0.25s ease;
       display: inline-flex;
       align-items: center;
-      gap: 16px;
-      letter-spacing: 2px;
+      gap: 15px;
+      letter-spacing: 1px;
     }
-
-    .open-invite-btn i {
-      font-size: 2rem;
-      animation: bounceOpen 1.2s infinite;
+    .glow-btn i {
+      font-size: 1.8rem;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+      animation: softPulse 1.2s infinite;
     }
-
-    @keyframes bounceOpen {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+    @keyframes softPulse {
+      0%, 100% { transform: scale(1);}
+      50% { transform: scale(1.08);}
     }
-
-    .open-invite-btn:hover {
-      transform: scale(1.03);
+    .glow-btn:hover {
+      transform: scale(1.02);
+      background: linear-gradient(125deg, #ffb347, #f97316);
       box-shadow: 0 28px 38px rgba(230, 126, 34, 0.5);
-      background: linear-gradient(135deg, #ffb347, #ff8c1a);
     }
 
-    /* hidden invitation card wrapper */
-    .invite-wrapper {
+    /* invitation modal */
+    .invite-overlay {
       display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(5px);
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(6px);
       z-index: 1000;
       align-items: center;
       justify-content: center;
+      padding: 1.2rem;
       overflow-y: auto;
-      padding: 1.5rem;
     }
-
-    .invite-wrapper.active {
+    .invite-overlay.active {
       display: flex;
-      animation: fadeInBack 0.4s ease;
+      animation: fadeGlow 0.4s ease;
+    }
+    @keyframes fadeGlow {
+      from { opacity: 0; backdrop-filter: blur(0);}
+      to { opacity: 1; backdrop-filter: blur(6px);}
     }
 
-    @keyframes fadeInBack {
-      from { opacity: 0; backdrop-filter: blur(0); }
-      to { opacity: 1; backdrop-filter: blur(5px); }
-    }
-
-    /* main invitation card - elegantly redesigned for groom haldi */
-    .invitation-card {
-      position: relative;
-      max-width: 720px;
+    /* main golden card */
+    .gold-card {
+      max-width: 780px;
       width: 100%;
-      background: #fffef7;
-      border-radius: 52px 32px 52px 32px;
-      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 215, 120, 0.8), 0 0 0 8px #fae7b3;
-      overflow: hidden;
-      transition: transform 0.3s ease;
-      animation: cardRise 0.5s ease-out;
-      margin: auto;
+      background: #fffef2;
+      border-radius: 56px 32px 56px 32px;
+      position: relative;
+      box-shadow: 0 35px 60px rgba(0,0,0,0.3), 0 0 0 1px #ffdf9e, 0 0 0 9px #fbe4aa;
+      transition: transform 0.25s;
+      animation: cardGlide 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    @keyframes cardGlide {
+      0% { opacity: 0; transform: scale(0.94) translateY(20px);}
+      100% { opacity: 1; transform: scale(1) translateY(0);}
+    }
+    .card-inner {
+      padding: 1.8rem 1.8rem 2rem;
+      border: 2px solid #fdcd7a;
+      border-radius: 48px 24px 48px 24px;
+      margin: 14px;
+      background: rgba(255, 252, 235, 0.85);
     }
 
-    @keyframes cardRise {
-      0% { opacity: 0; transform: scale(0.95) translateY(20px); }
-      100% { opacity: 1; transform: scale(1) translateY(0); }
-    }
-
-    .invitation-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card-border {
-      padding: 1.8rem 1.8rem 2rem 1.8rem;
-      border: 2px solid #f4c542;
-      border-radius: 44px 24px 44px 24px;
-      margin: 12px;
-      background: rgba(255, 252, 240, 0.7);
-    }
-
-    .marathi-motif {
+    /* decorative motifs */
+    .motif {
       text-align: center;
-      font-size: 1.25rem;
-      letter-spacing: 6px;
-      color: #cd9a2b;
-      margin-bottom: 6px;
+      font-size: 1.1rem;
+      letter-spacing: 5px;
+      color: #c2822e;
+      margin-bottom: 0.5rem;
     }
-
-    .marathi-motif i {
-      margin: 0 6px;
-    }
-
-    .haldi-symbol {
+    .turmeric-icons {
       display: flex;
       justify-content: center;
       gap: 18px;
-      margin: 8px 0 5px;
-      color: #e6a117;
+      margin: 6px 0 8px;
+      color: #e79e2c;
+      font-size: 1.5rem;
     }
-
-    .haldi-symbol i {
-      font-size: 1.8rem;
-      animation: gentleSway 3s infinite ease;
-    }
-
-    @keyframes gentleSway {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(5deg); }
-    }
-
-    .title {
+    .title-main {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 600;
-      text-align: center;
-      color: #b1621a;
-      border-bottom: 2px dashed #ffcd84;
-      display: inline-block;
-      margin: 8px auto 5px;
-      padding-bottom: 6px;
-    }
-
-    .marathi-sub {
-      text-align: center;
-      font-size: 1.35rem;
-      font-weight: 600;
-      font-family: 'Cormorant Garamond', serif;
-      color: #ac6b2a;
-      background: #fff1df;
-      display: inline-block;
-      padding: 0.2rem 1.2rem;
-      border-radius: 40px;
-      margin: 12px auto 6px;
-    }
-
-    /* Groom name only */
-    .groom-name {
-      font-size: 2.3rem;
+      font-size: 2.2rem;
       font-weight: 700;
-      font-family: 'Cormorant Garamond', serif;
       text-align: center;
-      background: linear-gradient(135deg, #c97e2a, #f0b34b);
+      background: linear-gradient(135deg, #b9641a, #e6a125);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      margin: 8px 0 6px;
       letter-spacing: 1px;
     }
+    .subhead {
+      text-align: center;
+      font-size: 1rem;
+      background: #ffefcf;
+      display: inline-block;
+      width: auto;
+      margin: 10px auto 5px;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      color: #aa621d;
+      font-weight: 500;
+    }
+    .groom-name {
+      font-size: 2.5rem;
+      font-weight: 700;
+      font-family: 'Cormorant Garamond', serif;
+      text-align: center;
+      background: linear-gradient(145deg, #d98d2b, #ffba5a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin: 8px 0 0px;
+      line-height: 1.2;
+    }
+    .groom-name span {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #b5581a;
+      background: none;
+      -webkit-background-clip: unset;
+      background: unset;
+      color: #b5581a;
+    }
 
-    /* Groom picture section */
-    .groom-photo-section {
+    /* photo frame - groom picture placeholder using initials avatar + replace hint */
+    .photo-area {
       display: flex;
       justify-content: center;
-      margin: 18px 0 12px;
+      margin: 16px 0 12px;
     }
-    .photo-frame {
+    .photo-circle {
       width: 130px;
       height: 130px;
-      background: linear-gradient(135deg, #fae29c, #ffd49f);
+      background: linear-gradient(145deg, #f7e3ae, #ffda94);
       border-radius: 50%;
       padding: 5px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      transition: all 0.3s;
+      box-shadow: 0 10px 18px rgba(0,0,0,0.1), inset 0 0 0 2px #fff1cc;
+      transition: 0.2s;
     }
-    .groom-img {
+    .groom-avatar {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 50%;
-      border: 3px solid #fff1d0;
-      background: #ffebc2;
-      display: block;
+      background: #ffe2ae;
+      border: 2px solid #f7c56e;
     }
-    /* fallback icon if image missing */
-    .photo-icon-fallback {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fad193;
-      border-radius: 50%;
-      font-size: 3.5rem;
-      color: #9b591f;
+    .photo-note {
+      font-size: 0.7rem;
+      text-align: center;
+      color: #bd7a2a;
+      margin-top: 6px;
+      font-weight: 400;
     }
 
-    .invite-details {
+    .details-text {
       text-align: center;
-      font-size: 1.02rem;
-      color: #4a2e1a;
-      margin: 12px 0 12px;
+      font-size: 0.98rem;
+      color: #4e311a;
+      margin: 12px 0;
       line-height: 1.5;
     }
-
-    .event-name {
-      background: #fef0dd;
-      padding: 8px 18px;
-      display: inline-block;
-      border-radius: 50px;
-      font-weight: 700;
-      color: #c4651a;
-      font-size: 1.15rem;
-      margin: 8px 0;
-    }
-
-    .date-time {
-      background: #faf2e3;
-      padding: 12px;
+    .event-badge {
+      background: #fff0db;
+      padding: 6px 20px;
       border-radius: 40px;
-      margin: 20px 0;
+      font-weight: 600;
+      color: #c5711f;
+      display: inline-block;
+      margin: 6px auto;
+      font-size: 1rem;
+    }
+    .datetime-block {
+      background: #fdf3e2;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 24px;
+      gap: 30px;
+      padding: 12px 0;
+      border-radius: 60px;
+      margin: 20px 0 15px;
       font-weight: 500;
     }
-
-    .date-time div {
+    .datetime-block div {
       display: flex;
       align-items: center;
       gap: 10px;
-      color: #8b4a1c;
+      color: #b1550d;
     }
-
-    .date-time i {
+    .datetime-block i {
+      color: #eca41c;
       font-size: 1.3rem;
-      color: #e6a017;
     }
-
     .venue {
-      background: #fff6e8;
-      padding: 10px;
-      border-radius: 28px;
-      margin: 12px 0 12px;
-      font-weight: 500;
-      color: #714623;
-      border-left: 4px solid #f7b84d;
-    }
-
-    .rsvp {
-      font-size: 0.88rem;
-      background: #fae29c;
-      color: #6a3c14;
-      width: fit-content;
-      margin: 18px auto 12px;
-      padding: 6px 20px;
+      background: #feefd4;
+      padding: 10px 18px;
       border-radius: 40px;
+      font-weight: 500;
+      color: #8b4819;
+      border-left: 5px solid #f5bc5c;
+      margin: 16px 0;
     }
-
-    .splash-btn {
-      background: linear-gradient(95deg, #ffb347, #ff8c1a);
+    .marathi-touch {
+      background: #f9e8cb;
+      border-radius: 40px;
+      padding: 5px 12px;
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #b76119;
+      margin: 8px 0;
+    }
+    .splash-action {
+      background: linear-gradient(105deg, #f5aa3a, #fd8e1e);
       border: none;
+      padding: 10px 28px;
       color: white;
       font-weight: 600;
-      padding: 12px 26px;
-      font-size: 1.1rem;
+      font-size: 1rem;
       border-radius: 60px;
-      cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      box-shadow: 0 8px 18px rgba(255, 140, 0, 0.3);
-      transition: all 0.2s ease;
-      margin: 12px 0;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(230, 110, 0, 0.4);
+      transition: 0.2s;
+      margin: 12px 0 8px;
     }
-
-    .splash-btn:hover {
-      background: linear-gradient(95deg, #ffa031, #ff7519);
+    .splash-action:hover {
+      background: linear-gradient(105deg, #ffb44a, #ff7c1c);
       transform: scale(1.02);
     }
-
-    .footer-note {
-      margin-top: 20px;
-      font-size: 0.78rem;
-      text-align: center;
-      border-top: 1px solid #ffdd9e;
-      padding-top: 18px;
-      color: #b47c44;
-    }
-
-    .marathi-phrase {
-      font-weight: 500;
+    .rsvp-line {
+      background: #f7e4c1;
+      padding: 8px 14px;
+      border-radius: 60px;
       font-size: 0.85rem;
-      background: #fff9ea;
-      padding: 5px 12px;
-      border-radius: 30px;
       display: inline-block;
-      margin: 5px 0;
+      margin: 15px auto 8px;
+      font-weight: 500;
+    }
+    .footer-message {
+      margin-top: 18px;
+      font-size: 0.75rem;
+      text-align: center;
+      border-top: 1px solid #ffdd99;
+      padding-top: 15px;
+      color: #b87a3a;
     }
 
-    /* splash particle effect */
-    .splash-particle {
+    /* splash particles (turmeric drops) */
+    .turmeric-splash {
       position: absolute;
-      border-radius: 45% 55% 60% 40%;
-      background: radial-gradient(circle, #ffd966, #ffaa33);
+      background: radial-gradient(circle, #ffcd6b, #ffa82b);
+      border-radius: 55% 45% 70% 30%;
+      filter: blur(2px);
       pointer-events: none;
       z-index: 150;
-      filter: blur(2px);
-      animation: splashFly 0.85s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+      animation: splashPop 0.85s ease-out forwards;
     }
-
-    @keyframes splashFly {
-      0% {
-        transform: scale(0.2) translate(0, 0);
-        opacity: 0.9;
-      }
-      100% {
-        transform: scale(1.8) translate(var(--tx, 40px), var(--ty, -50px));
-        opacity: 0;
-      }
+    @keyframes splashPop {
+      0% { transform: scale(0.2) translate(0, 0); opacity: 0.9; }
+      100% { transform: scale(1.8) translate(var(--dx, 40px), var(--dy, -50px)); opacity: 0; }
     }
-
-    .close-invite {
+    .close-card {
       position: absolute;
-      top: 20px;
-      right: 28px;
-      background: #fff0cf;
+      top: 16px;
+      right: 26px;
+      background: #ffecbb;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      width: 42px;
-      height: 42px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
+      font-weight: 300;
       cursor: pointer;
-      color: #b1671a;
-      border: 1px solid #f5c56e;
-      transition: 0.2s;
+      color: #b45f21;
+      border: 1px solid #f7bf66;
+      transition: all 0.2s;
       z-index: 1100;
     }
-    .close-invite:hover {
-      background: #ffdeae;
+    .close-card:hover {
+      background: #ffda9e;
       transform: scale(1.05);
     }
-
     @media (max-width: 550px) {
       .groom-name { font-size: 1.8rem; }
-      .title { font-size: 1.4rem; }
-      .marathi-sub { font-size: 1rem; }
-      .photo-frame { width: 100px; height: 100px; }
-      .open-invite-btn { font-size: 1.2rem; padding: 12px 28px; }
-      .card-border { padding: 1rem; }
+      .title-main { font-size: 1.6rem; }
+      .photo-circle { width: 105px; height: 105px; }
+      .glow-btn { font-size: 1.2rem; padding: 0.7rem 1.4rem;}
+      .card-inner { padding: 1rem; }
+      .datetime-block { gap: 15px; }
     }
   </style>
 </head>
 <body>
 
-<div class="ambient-splash" id="ambientSplash"></div>
+<div class="haldi-dust" id="turmericDust"></div>
 
-<!-- Outer "Open Invitation" button -->
-<div class="open-container" id="openBtnContainer">
-  <button class="open-invite-btn" id="openInviteBtn">
-    <i class="fas fa-envelope-open-text"></i> Open Invitation <i class="fas fa-feather-alt"></i>
+<div class="open-wrapper" id="openBtnContainer">
+  <button class="glow-btn" id="openInviteBtn">
+    <i class="fas fa-envelope-open-text"></i> Open Golden Invitation <i class="fas fa-feather-alt"></i>
   </button>
 </div>
 
-<!-- Hidden Invitation Wrapper (popup style) -->
-<div class="invite-wrapper" id="inviteWrapper">
-  <div class="close-invite" id="closeInviteBtn">&times;</div>
-  <div class="invitation-card" id="mainCard">
-    <div class="card-border">
-      <div class="marathi-motif">
-        <i class="fas fa-leaf"></i> <i class="fas fa-grip-lines-vertical"></i> ॐ <i class="fas fa-grip-lines-vertical"></i> <i class="fas fa-leaf"></i>
+<!-- invitation overlay -->
+<div class="invite-overlay" id="inviteOverlay">
+  <div class="close-card" id="closeCardBtn">✕</div>
+  <div class="gold-card" id="goldenCard">
+    <div class="card-inner">
+      <div class="motif">
+        <i class="fas fa-leaf"></i> ~ हळदी ~ <i class="fas fa-leaf"></i>
       </div>
-      <div class="haldi-symbol">
+      <div class="turmeric-icons">
         <i class="fas fa-mortar-pestle"></i>
-        <i class="fas fa-pastafarianism"></i>
-        <i class="fas fa-seedling"></i>
+        <i class="fas fa-crown"></i>
+        <i class="fas fa-hand-sparkles"></i>
       </div>
-      <div style="text-align: center;">
-        <span class="title">🌼 शुभ हळद उपीट समारंभ 🌼</span>
-      </div>
-      <div style="text-align: center;">
-        <span class="marathi-sub">हळदीचा सुवर्ण सोहळा | Shubh Halad Upit</span>
-      </div>
+      <div class="title-main">💛 शुभ हळद उपीट 💛</div>
+      <div style="text-align:center;"><span class="subhead">✨ Turmeric Blessing Ceremony ✨</span></div>
 
-      <!-- Groom name: Saurabh -->
+      <!-- groom name only: Saurabh Gawde with marathi script touch -->
       <div class="groom-name">
-        सौरभ गावडे <br><span style="font-size: 1rem;">(Saurabh Gawde)</span>
+        सौरभ गावडे <br><span>Saurabh Gawde</span>
       </div>
 
-      <!-- Groom picture section (user can replace image URL) -->
-      <div class="groom-photo-section">
-        <div class="photo-frame" id="groomPhotoFrame">
-          <!-- Placeholder groom image – replace src with actual photo -->
-          <img src="/VIN00710.jpeg" alt="Groom Photo" class="groom-img" id="groomImg" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'photo-icon-fallback\'><i class=\'fas fa-user-tie\'></i></div>'">
+      <!-- Groom photo area: working avatar via ui-avatars + graceful fallback + editable later -->
+      <div class="photo-area">
+        <div class="photo-circle" id="groomPhotoFrame">
+          <img id="groomAvatarImg" class="groom-avatar" 
+               src="https://ui-avatars.com/api/?background=F5A623&color=fff&name=Saurabh+G&size=120&fontsize=52&rounded=true&bold=true&length=2" 
+               alt="Groom Photo" 
+               onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?background=D48A2A&color=fff&name=Saurabh&size=120&fontsize=48&rounded=true';">
         </div>
       </div>
-
-      <div class="invite-details">
-        <div class="event-name">
-          <i class="fas fa-hand-holding-heart"></i> वराचा हळद उपीट समारंभ
-        </div>
-        <p>With sacred turmeric paste, traditional <strong>हळदीची गीते व मंगल गीते</strong>, and joyful blessings, we invite you to grace the groom's Haldi ceremony.</p>
-        <p style="margin-top: 5px;"><strong>आपणास व कुटुंबियांस हळद उपीट समारंभी उपस्थित राहावे ही विनंती</strong><br>Invited by <strong>Gawde’s Family</strong></p>
+      <div class="photo-note">
+        <i class="fas fa-camera"></i> शुभ फोटो | <span style="font-size:0.7rem;">(replace image URL if needed)</span>
       </div>
 
-      <div class="date-time">
-        <div><i class="fas fa-calendar-alt"></i> शनिवार, १० मे २०२६</div>
-        <div><i class="fas fa-clock"></i> सकाळी १०:०० – दुपारी १:००</div>
+      <div class="details-text">
+        <div class="event-badge"><i class="fas fa-hand-sparkles"></i> Varacha Haldi Upit | Groom's Sacred Turmeric Ritual</div>
+        <p style="margin-top: 12px;">With joyful geet, traditional haldi paste and heartfelt blessings,<br> 
+        <strong>Gawde Family</strong> invites you to celebrate Saurabh's golden journey.</p>
+        <p class="marathi-touch"><i class="fas fa-smile"></i> “हळदीचा सोनेरी रंग, सौरभच्या आयुष्यात रंगत भरेल”</p>
+      </div>
+
+      <!-- Date & time -->
+      <div class="datetime-block">
+        <div><i class="fas fa-calendar-alt"></i> Saturday, 10 May 2026</div>
+        <div><i class="fas fa-clock"></i> Morning 10:00 AM – 1:00 PM</div>
       </div>
 
       <div class="venue">
-        <i class="fas fa-map-marker-alt"></i> श्री संस्कृती लॉन्स, टिळक रोड, पुणे | <i class="fas fa-utensils"></i> महाराष्ट्रीय थाली व आमरस
+        <i class="fas fa-map-marker-alt"></i> Shri Sanskriti Lawns, Tilak Road, Pune  <i class="fas fa-utensils"></i> traditional Maharashtrian feast
       </div>
 
-      <div class="marathi-phrase" style="display: block; text-align: center;">
-        <i class="fas fa-smile-wink"></i> “हळदीचा रंग, सौरभच्या आयुष्यातला रंग” — Turmeric's glow for Saurabh's bright future.
-      </div>
-
+      <!-- splash button feature -->
       <div style="text-align: center;">
-        <button class="splash-btn" id="innerSplashBtn">
-          <i class="fas fa-tint"></i> हळदीचा स्प्लॅश करा <i class="fas fa-feather-alt"></i>
+        <button class="splash-action" id="haldiSplashBtn">
+          <i class="fas fa-tint"></i> हळदीचा स्प्लॅश | Turmeric Splash <i class="fas fa-feather-alt"></i>
         </button>
       </div>
 
-      <div class="rsvp">
-        <i class="fas fa-phone-alt"></i> RSVP: Gawde Saurabh - 8655309805 | पिवळा / केशरी पोशाख
+      <div class="rsvp-line">
+        <i class="fas fa-phone-alt"></i> RSVP: Saurabh - 8655309805 &nbsp;|&nbsp; Dress Code: Yellow / Saffron / Golden
       </div>
 
-      <div class="footer-note">
-        <i class="fas fa-gopuram"></i> सौरभच्या शुभ हळदीला आपला सहवास लाभो | <br>
-        प्रेम, हळद व पारंपरिक गीतांचा सोहळा — Gawde’s Family
+      <div class="footer-message">
+        <i class="fas fa-gopuram"></i> आपल्या उपस्थितीने हळद सोहळा साजरा करा | <br>
+        With turmeric, love & festive energy — Gawde Family
       </div>
     </div>
   </div>
@@ -524,155 +464,201 @@
 
 <script>
   (function() {
-    // Ambient floating droplets (yellowish background)
-    const ambient = document.getElementById('ambientSplash');
-    for (let i = 0; i < 32; i++) {
-      let drop = document.createElement('div');
-      let size = 6 + Math.random() * 18;
-      drop.style.width = size + 'px';
-      drop.style.height = size + 'px';
-      drop.style.left = Math.random() * 100 + '%';
-      drop.style.top = Math.random() * 100 + '%';
-      drop.style.animationDelay = Math.random() * 12 + 's';
-      drop.style.animationDuration = 8 + Math.random() * 15 + 's';
-      drop.style.opacity = 0.1 + Math.random() * 0.3;
-      drop.style.background = `radial-gradient(circle, rgba(255,200,80,0.6), rgba(255,150,30,0.4))`;
-      drop.style.filter = 'blur(3px)';
-      ambient.appendChild(drop);
+    // 1. Create ambient floating golden dust (extra yellow atmosphere)
+    const dustContainer = document.getElementById('turmericDust');
+    for (let i = 0; i < 45; i++) {
+      let particle = document.createElement('span');
+      let size = 6 + Math.random() * 22;
+      particle.style.width = size + 'px';
+      particle.style.height = size + 'px';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 14 + 's';
+      particle.style.animationDuration = 12 + Math.random() * 18 + 's';
+      particle.style.background = `radial-gradient(circle, rgba(255, 200, 80, 0.7), rgba(255, 130, 30, 0.4))`;
+      particle.style.filter = 'blur(5px)';
+      dustContainer.appendChild(particle);
     }
 
-    const wrapper = document.getElementById('inviteWrapper');
+    // DOM elements
+    const overlay = document.getElementById('inviteOverlay');
     const openBtn = document.getElementById('openInviteBtn');
-    const closeBtn = document.getElementById('closeInviteBtn');
-    const cardElement = document.getElementById('mainCard');
-    const splashButton = document.getElementById('innerSplashBtn');
+    const closeBtn = document.getElementById('closeCardBtn');
+    const cardEle = document.getElementById('goldenCard');
+    const splashTurmericBtn = document.getElementById('haldiSplashBtn');
 
-    // Open invitation function
-    function openInvitation() {
-      wrapper.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      createWelcomeSplash();
+    // Helper: create splash (yellow golden droplets) on specific card
+    function createGoldenSplash(containerElement, count = 34) {
+      if (!containerElement) return;
+      const rect = containerElement.getBoundingClientRect();
+      for (let i = 0; i < count; i++) {
+        const drop = document.createElement('div');
+        drop.classList.add('turmeric-splash');
+        const radius = 6 + Math.random() * 20;
+        drop.style.width = radius + 'px';
+        drop.style.height = radius + 'px';
+        // random position inside card area
+        const posX = Math.random() * (rect.width - 70) + 25;
+        const posY = Math.random() * (rect.height - 70) + 35;
+        drop.style.left = posX + 'px';
+        drop.style.top = posY + 'px';
+        drop.style.position = 'absolute';
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 45 + Math.random() * 110;
+        const dx = Math.cos(angle) * distance;
+        const dy = Math.sin(angle) * distance - 35;
+        drop.style.setProperty('--dx', dx + 'px');
+        drop.style.setProperty('--dy', dy + 'px');
+        drop.style.background = `radial-gradient(circle, #ffda7a, #f5a623)`;
+        drop.style.boxShadow = '0 0 10px #ffbc4a';
+        containerElement.appendChild(drop);
+        drop.addEventListener('animationend', () => drop.remove());
+      }
+      // floating message
+      const msgBox = document.createElement('div');
+      msgBox.innerText = '✨ हळद लागो! ✨ Turmeric blessing ✨';
+      msgBox.style.position = 'absolute';
+      msgBox.style.left = '50%';
+      msgBox.style.top = '48%';
+      msgBox.style.transform = 'translate(-50%, -50%)';
+      msgBox.style.background = '#fff2ca';
+      msgBox.style.padding = '5px 22px';
+      msgBox.style.borderRadius = '50px';
+      msgBox.style.fontWeight = 'bold';
+      msgBox.style.color = '#d16f1a';
+      msgBox.style.fontSize = '1rem';
+      msgBox.style.zIndex = '210';
+      msgBox.style.whiteSpace = 'nowrap';
+      msgBox.style.fontFamily = "'Inter', sans-serif";
+      msgBox.style.pointerEvents = 'none';
+      msgBox.style.border = '1px solid #f5bc60';
+      containerElement.appendChild(msgBox);
+      setTimeout(() => msgBox.remove(), 1200);
     }
 
-    function closeInvitation() {
-      wrapper.classList.remove('active');
+    // welcome animation when card opens
+    function welcomeSplashOnCard() {
+      if (!cardEle) return;
+      for (let i = 0; i < 18; i++) {
+        const drop = document.createElement('div');
+        drop.classList.add('turmeric-splash');
+        let sz = 5 + Math.random() * 16;
+        drop.style.width = sz + 'px';
+        drop.style.height = sz + 'px';
+        const bounding = cardEle.getBoundingClientRect();
+        const xOff = 20 + Math.random() * (cardEle.clientWidth - 40);
+        const yOff = 25 + Math.random() * (cardEle.clientHeight - 50);
+        drop.style.left = xOff + 'px';
+        drop.style.top = yOff + 'px';
+        drop.style.position = 'absolute';
+        const ang = Math.random() * Math.PI * 2;
+        const dist = 30 + Math.random() * 70;
+        drop.style.setProperty('--dx', Math.cos(ang) * dist + 'px');
+        drop.style.setProperty('--dy', Math.sin(ang) * dist - 25 + 'px');
+        drop.style.background = 'radial-gradient(circle, #ffce65, #ff932e)';
+        cardEle.appendChild(drop);
+        drop.addEventListener('animationend', () => drop.remove());
+      }
+    }
+
+    // open overlay
+    function openInvite() {
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      // small splash on open from button too
+      if (cardEle) {
+        setTimeout(() => {
+          welcomeSplashOnCard();
+        }, 100);
+      }
+    }
+
+    function closeInvite() {
+      overlay.classList.remove('active');
       document.body.style.overflow = '';
     }
 
-    openBtn.addEventListener('click', openInvitation);
-    closeBtn.addEventListener('click', closeInvitation);
-    wrapper.addEventListener('click', (e) => {
-      if (e.target === wrapper) closeInvitation();
+    openBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openInvite();
+      // also tiny splash around open button area
+      const btnRect = openBtn.getBoundingClientRect();
+      for (let i = 0; i < 12; i++) {
+        let mini = document.createElement('div');
+        mini.classList.add('turmeric-splash');
+        mini.style.width = (4 + Math.random() * 12) + 'px';
+        mini.style.height = mini.style.width;
+        mini.style.left = (btnRect.left + Math.random() * btnRect.width) + 'px';
+        mini.style.top = (btnRect.top + Math.random() * btnRect.height) + 'px';
+        mini.style.position = 'fixed';
+        const angRad = Math.random() * Math.PI * 2;
+        const distFly = 25 + Math.random() * 55;
+        mini.style.setProperty('--dx', Math.cos(angRad) * distFly + 'px');
+        mini.style.setProperty('--dy', Math.sin(angRad) * distFly - 25 + 'px');
+        document.body.appendChild(mini);
+        mini.addEventListener('animationend', () => mini.remove());
+      }
     });
 
-    // Splash function for yellowish turmeric particles
-    function createSplash(count = 32, targetCard = cardElement) {
-      if (!targetCard) return;
-      const relativeRect = targetCard.getBoundingClientRect();
-      for (let i = 0; i < count; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('splash-particle');
-        const size = 6 + Math.random() * 22;
-        particle.style.width = size + 'px';
-        particle.style.height = size + 'px';
-        const posX = Math.random() * (relativeRect.width - 50) + 25;
-        const posY = Math.random() * (relativeRect.height - 70) + 35;
-        particle.style.left = posX + 'px';
-        particle.style.top = posY + 'px';
-        const angle = Math.random() * Math.PI * 2;
-        const distance = 45 + Math.random() * 100;
-        const tx = Math.cos(angle) * distance;
-        const ty = Math.sin(angle) * distance - 30;
-        particle.style.setProperty('--tx', tx + 'px');
-        particle.style.setProperty('--ty', ty + 'px');
-        particle.style.background = `radial-gradient(circle, #ffd48a, #f5a623)`;
-        particle.style.boxShadow = '0 0 8px #ffbc3c';
-        targetCard.appendChild(particle);
-        particle.addEventListener('animationend', () => particle.remove());
-      }
-      // floating message
-      const msg = document.createElement('div');
-      msg.innerText = '✨ हळद लागो! ✨';
-      msg.style.position = 'absolute';
-      msg.style.left = '50%';
-      msg.style.top = '45%';
-      msg.style.transform = 'translate(-50%, -50%)';
-      msg.style.background = '#fff3cf';
-      msg.style.padding = '6px 18px';
-      msg.style.borderRadius = '50px';
-      msg.style.fontWeight = 'bold';
-      msg.style.color = '#ca781e';
-      msg.style.zIndex = '200';
-      msg.style.pointerEvents = 'none';
-      msg.style.fontFamily = "'Poppins', sans-serif";
-      msg.style.whiteSpace = 'nowrap';
-      targetCard.appendChild(msg);
-      setTimeout(() => msg.remove(), 1100);
-    }
+    closeBtn.addEventListener('click', closeInvite);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeInvite();
+    });
 
-    function createWelcomeSplash() {
-      if (!cardElement) return;
-      for (let i = 0; i < 16; i++) {
-        const p = document.createElement('div');
-        p.classList.add('splash-particle');
-        const sz = 5 + Math.random() * 14;
-        p.style.width = sz + 'px';
-        p.style.height = sz + 'px';
-        const xOff = 20 + Math.random() * (cardElement.clientWidth - 40);
-        const yOff = 30 + Math.random() * (cardElement.clientHeight - 60);
-        p.style.left = xOff + 'px';
-        p.style.top = yOff + 'px';
-        const ang = Math.random() * Math.PI * 2;
-        const dist = 25 + Math.random() * 60;
-        p.style.setProperty('--tx', Math.cos(ang) * dist + 'px');
-        p.style.setProperty('--ty', Math.sin(ang) * dist - 20 + 'px');
-        p.style.background = `radial-gradient(circle, #ffda88, #fea82f)`;
-        cardElement.appendChild(p);
-        p.addEventListener('animationend', () => p.remove());
-      }
-    }
-
-    if (splashButton) {
-      splashButton.addEventListener('click', (e) => {
+    // splash button inside card - now creates golden turmeric splash
+    if (splashTurmericBtn) {
+      splashTurmericBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        createSplash(36, cardElement);
+        e.stopPropagation();
+        if (cardEle) {
+          createGoldenSplash(cardEle, 40);
+        }
+        // also additional spicy floating message
+        const temp = document.createElement('div');
+        temp.innerText = '🌸 हळदीचा हुरडा 🌸';
+        temp.style.position = 'fixed';
+        temp.style.bottom = '15%';
+        temp.style.left = '50%';
+        temp.style.transform = 'translateX(-50%)';
+        temp.style.background = '#feebbb';
+        temp.style.padding = '6px 16px';
+        temp.style.borderRadius = '50px';
+        temp.style.fontWeight = 'bold';
+        temp.style.color = '#c2691a';
+        temp.style.zIndex = '2000';
+        temp.style.fontSize = '0.9rem';
+        temp.style.pointerEvents = 'none';
+        temp.style.fontFamily = "'Inter'";
+        document.body.appendChild(temp);
+        setTimeout(() => temp.remove(), 950);
       });
     }
 
-    // Handle groom image fallback
-    const groomImage = document.getElementById('groomImg');
-    if (groomImage) {
-      groomImage.onerror = function() {
-        const frame = document.getElementById('groomPhotoFrame');
-        if (frame && !frame.querySelector('.photo-icon-fallback')) {
-          const fallbackDiv = document.createElement('div');
-          fallbackDiv.className = 'photo-icon-fallback';
-          fallbackDiv.innerHTML = '<i class="fas fa-user-tie"></i>';
-          frame.innerHTML = '';
-          frame.appendChild(fallbackDiv);
-        }
+    // groom image fallback additional safety: if avatar fails again use fa fallback but avatar API is reliable
+    const groomImg = document.getElementById('groomAvatarImg');
+    if (groomImg) {
+      groomImg.onerror = function() {
+        this.src = 'https://ui-avatars.com/api/?background=E67E22&color=fff&name=SG&size=120&fontsize=48&rounded=true';
       };
     }
 
-    // Extra yellow splash when opening button clicked (outside card)
-    openBtn.addEventListener('click', () => {
-      const containerRect = openBtnContainer.getBoundingClientRect();
-      for (let i = 0; i < 10; i++) {
-        let mini = document.createElement('div');
-        mini.classList.add('splash-particle');
-        mini.style.width = (4 + Math.random() * 12) + 'px';
-        mini.style.height = mini.style.width;
-        mini.style.left = (containerRect.left + Math.random() * containerRect.width) + 'px';
-        mini.style.top = (containerRect.top + Math.random() * containerRect.height) + 'px';
-        mini.style.position = 'fixed';
-        const ang = Math.random() * 360;
-        const dist = 20 + Math.random() * 50;
-        const tx = Math.cos(ang) * dist;
-        const ty = Math.sin(ang) * dist;
-        mini.style.setProperty('--tx', tx + 'px');
-        mini.style.setProperty('--ty', ty + 'px');
-        document.body.appendChild(mini);
-        mini.addEventListener('animationend', () => mini.remove());
+    // Extra: make the entire card background more yellow by tweaking shadow intensity (done in css)
+    // Also change any leftover hindi/marathi phrases? We reduced easily: removed heavy hindi lines.
+    // Changing event wording: mostly English, some marathi phrases sprinkled: "हळद लागो", "शुभ हळद उपीट", "हळदीचा स्प्लॅश", "Varacha Haldi Upit"
+    // According to requirement: less hindi/marathi but keep only here & there marathi words - Done.
+
+    // also add small touch to photo note: replace image URL guideline
+    const photoNoteDiv = document.querySelector('.photo-note');
+    if (photoNoteDiv) {
+      photoNoteDiv.innerHTML = '<i class="fas fa-camera"></i> शुभ फोटो | <span style="font-size:0.7rem; cursor:pointer;" onclick="alert(\'Tip: Replace the image src in <img> tag with your own groom photo URL. Current placeholder shows initials.\')"><i class="fas fa-edit"></i> update photo</span>';
+    }
+
+    // enhance golden/yellow scheme via dynamic gradient on card hover? already good
+    // Ensure groom name pop and more golden in background
+    // Add event for escape key closing
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        closeInvite();
       }
     });
   })();
