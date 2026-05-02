@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Groom's Haldi | हळद उपीट समारंभ</title>
+  <title>Groom's Haldi | Saurabh | हळद उपीट समारंभ</title>
   <!-- Google Fonts & Font Awesome -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -467,19 +467,19 @@
         <span class="title">🌼 शुभ हळद उपीट समारंभ 🌼</span>
       </div>
       <div style="text-align: center;">
-        <span class="marathi-sub">हळदीचा सुवर्ण सोहळा | Groom's Halad Upit</span>
+        <span class="marathi-sub">हळदीचा सुवर्ण सोहळा | Shubh Halad Upit</span>
       </div>
 
-      <!-- Groom name only (no couple) -->
+      <!-- Groom name: Saurabh -->
       <div class="groom-name">
-        आदित्य जोशी <br><span style="font-size: 1rem;">(Aditya Joshi)</span>
+        सौरभ गावडे <br><span style="font-size: 1rem;">(Saurabh Gawde)</span>
       </div>
 
-      <!-- Groom picture section -->
+      <!-- Groom picture section (user can replace image URL) -->
       <div class="groom-photo-section">
         <div class="photo-frame" id="groomPhotoFrame">
-          <!-- Groom image placeholder you can replace with actual image URL -->
-          <img src="https://placehold.co/400x400/ffdea4/bb6b2a?text=Groom+Photo" alt="Groom Photo" class="groom-img" id="groomImg" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'photo-icon-fallback\'><i class=\'fas fa-user-astronaut\'></i></div>'">
+          <!-- Placeholder groom image – replace src with actual photo -->
+          <img src="https://placehold.co/400x400/ffdea4/bb6b2a?text=Saurabh" alt="Groom Photo" class="groom-img" id="groomImg" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'photo-icon-fallback\'><i class=\'fas fa-user-tie\'></i></div>'">
         </div>
       </div>
 
@@ -488,10 +488,11 @@
           <i class="fas fa-hand-holding-heart"></i> वराचा हळद उपीट समारंभ
         </div>
         <p>With sacred turmeric paste, traditional <strong>हळदीची गीते व मंगल गीते</strong>, and joyful blessings, we invite you to grace the groom's Haldi ceremony.</p>
+        <p style="margin-top: 5px;"><strong>आपणास व कुटुंबियांस हळद उपीट समारंभी उपस्थित राहावे ही विनंती</strong><br>Invited by <strong>Gawde’s Family</strong></p>
       </div>
 
       <div class="date-time">
-        <div><i class="fas fa-calendar-alt"></i> शनिवार, २४ मे २०२६</div>
+        <div><i class="fas fa-calendar-alt"></i> शनिवार, १० मे २०२६</div>
         <div><i class="fas fa-clock"></i> सकाळी १०:०० – दुपारी १:००</div>
       </div>
 
@@ -500,7 +501,7 @@
       </div>
 
       <div class="marathi-phrase" style="display: block; text-align: center;">
-        <i class="fas fa-smile-wink"></i> “हळदीचा रंग, वराच्या आयुष्यातला रंग” — Turmeric's glow for the groom's bright future.
+        <i class="fas fa-smile-wink"></i> “हळदीचा रंग, सौरभच्या आयुष्यातला रंग” — Turmeric's glow for Saurabh's bright future.
       </div>
 
       <div style="text-align: center;">
@@ -510,12 +511,12 @@
       </div>
 
       <div class="rsvp">
-        <i class="fas fa-phone-alt"></i> RSVP: आई सुलोचना +91 98765 43210 | पिवळा / केशरी पोशाख
+        <i class="fas fa-phone-alt"></i> RSVP: Gawde Saurabh - 8655309805 | पिवळा / केशरी पोशाख
       </div>
 
       <div class="footer-note">
-        <i class="fas fa-gopuram"></i> आपणास व कुटुंबियांस हळद उपीट समारंभी उपस्थित राहावे ही विनंती | <br>
-        प्रेम, हळद व पारंपरिक गीतांचा सोहळा
+        <i class="fas fa-gopuram"></i> सौरभच्या शुभ हळदीला आपला सहवास लाभो | <br>
+        प्रेम, हळद व पारंपरिक गीतांचा सोहळा — Gawde’s Family
       </div>
     </div>
   </div>
@@ -550,7 +551,6 @@
     function openInvitation() {
       wrapper.classList.add('active');
       document.body.style.overflow = 'hidden';
-      // small extra yellow splash welcoming when opened
       createWelcomeSplash();
     }
 
@@ -568,7 +568,6 @@
     // Splash function for yellowish turmeric particles
     function createSplash(count = 32, targetCard = cardElement) {
       if (!targetCard) return;
-      const rect = targetCard.getBoundingClientRect();
       const relativeRect = targetCard.getBoundingClientRect();
       for (let i = 0; i < count; i++) {
         const particle = document.createElement('div');
@@ -591,7 +590,7 @@
         targetCard.appendChild(particle);
         particle.addEventListener('animationend', () => particle.remove());
       }
-      // short message
+      // floating message
       const msg = document.createElement('div');
       msg.innerText = '✨ हळद लागो! ✨';
       msg.style.position = 'absolute';
@@ -640,12 +639,9 @@
       });
     }
 
-    // small extra: on card hover or for more 'yellowish thing' we add dynamic splash on first open
-    // also ensure groom image fallback handled, and any custom image can be replaced
-    // For user to replace groom photo with real image, just change src of #groomImg
+    // Handle groom image fallback
     const groomImage = document.getElementById('groomImg');
-    if (groomImage && groomImage.complete && groomImage.naturalWidth === 0) {
-      // fallback if broken
+    if (groomImage) {
       groomImage.onerror = function() {
         const frame = document.getElementById('groomPhotoFrame');
         if (frame && !frame.querySelector('.photo-icon-fallback')) {
@@ -658,10 +654,8 @@
       };
     }
 
-    // Also allow any future yellow splash ambient effect on open button click? Already done.
-    // Option: throw tiny splash on open button click (outside card)
+    // Extra yellow splash when opening button clicked (outside card)
     openBtn.addEventListener('click', () => {
-      // just for fun, a little burst on the open container
       const containerRect = openBtnContainer.getBoundingClientRect();
       for (let i = 0; i < 10; i++) {
         let mini = document.createElement('div');
