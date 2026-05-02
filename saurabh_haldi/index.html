@@ -3,17 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Shubh Haldi | Marathi Wedding Invitation</title>
-  <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>हळद उपीट समारंभ | Marathi Haldi Invitation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       min-height: 100vh;
       background: linear-gradient(145deg, #fef7e0 0%, #fae9c2 100%);
@@ -25,8 +19,6 @@
       position: relative;
       overflow-x: hidden;
     }
-
-    /* Background floating turmeric particles (continuous subtle splash vibe) */
     body::before {
       content: '';
       position: fixed;
@@ -41,13 +33,10 @@
       background-size: 45px 45px, 60px 60px;
       animation: floatBg 24s linear infinite;
     }
-
     @keyframes floatBg {
       0% { background-position: 0 0, 0 0; }
       100% { background-position: 60px 60px, 120px 120px; }
     }
-
-    /* Floating golden droplets (splash ambiance) */
     .ambient-splash {
       position: fixed;
       width: 100%;
@@ -58,7 +47,6 @@
       z-index: 1;
       overflow: hidden;
     }
-
     .ambient-splash i {
       position: absolute;
       background: radial-gradient(circle, #ffbd4a, #ffa500);
@@ -69,62 +57,42 @@
       width: 12px;
       height: 12px;
     }
-
     @keyframes drift {
       0% { transform: translateY(0px) translateX(0px) rotate(0deg); opacity: 0.1; }
       100% { transform: translateY(-40px) translateX(30px) rotate(20deg); opacity: 0.3; }
     }
-
-    /* Main Card — Elegant & layered */
     .invitation-card {
       position: relative;
-      max-width: 680px;
+      max-width: 700px;
       width: 100%;
       background: #fffef7;
       border-radius: 52px 32px 52px 32px;
       box-shadow: 0 30px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 215, 120, 0.5), 0 0 0 8px #fae7b3;
       z-index: 10;
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      backdrop-filter: blur(0px);
+      transition: transform 0.3s ease;
       animation: cardGlow 2s ease-out;
     }
-
     @keyframes cardGlow {
-      0% { opacity: 0; transform: scale(0.96); box-shadow: 0 0 0 rgba(0,0,0,0); }
-      100% { opacity: 1; transform: scale(1); box-shadow: 0 30px 50px rgba(0,0,0,0.15); }
+      0% { opacity: 0; transform: scale(0.96); }
+      100% { opacity: 1; transform: scale(1); }
     }
-
-    .invitation-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 40px 60px rgba(0, 0, 0, 0.18);
-    }
-
-    /* Marathi decorative border */
+    .invitation-card:hover { transform: translateY(-6px); }
     .card-border {
       padding: 2rem 2rem 2rem 2rem;
       border: 2px solid #f4c542;
       border-radius: 44px 24px 44px 24px;
       margin: 12px;
       background: rgba(255, 252, 240, 0.6);
-      position: relative;
     }
-
-    /* Mehendi / Toran motif */
     .marathi-motif {
       text-align: center;
       font-size: 1.25rem;
       letter-spacing: 6px;
       color: #cd9a2b;
       margin-bottom: 10px;
-      font-family: 'Cormorant Garamond', serif;
     }
-
-    .marathi-motif i {
-      margin: 0 6px;
-      font-size: 1rem;
-    }
-
+    .marathi-motif i { margin: 0 6px; }
     .haldi-symbol {
       display: flex;
       justify-content: center;
@@ -132,36 +100,23 @@
       margin: 8px 0 10px;
       color: #e6a117;
     }
-
-    .haldi-symbol i {
-      font-size: 1.8rem;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-      animation: gentleSway 3s infinite ease;
-    }
-
-    @keyframes gentleSway {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(5deg); }
-    }
-
+    .haldi-symbol i { font-size: 1.8rem; animation: gentleSway 3s infinite ease; }
+    @keyframes gentleSway { 0%,100%{transform:rotate(0deg);} 50%{transform:rotate(5deg);} }
     .title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 600;
       text-align: center;
       color: #b1621a;
-      letter-spacing: 2px;
       border-bottom: 2px dashed #ffcd84;
       display: inline-block;
-      width: auto;
       margin: 10px auto 5px;
       padding-bottom: 6px;
     }
-
     .marathi-sub {
       text-align: center;
-      font-size: 1.3rem;
-      font-weight: 500;
+      font-size: 1.4rem;
+      font-weight: 600;
       font-family: 'Cormorant Garamond', serif;
       color: #ac6b2a;
       background: #fff1df;
@@ -169,9 +124,7 @@
       padding: 0.2rem 1.4rem;
       border-radius: 40px;
       margin: 12px auto 6px;
-      letter-spacing: 1px;
     }
-
     .couple-names {
       font-size: 2.6rem;
       font-weight: 600;
@@ -182,29 +135,18 @@
       -webkit-background-clip: text;
       color: transparent;
       margin: 12px 0 8px;
-      letter-spacing: 1px;
     }
-
-    .invite-details {
-      text-align: center;
-      font-size: 1.05rem;
-      color: #4a2e1a;
-      margin: 16px 0 12px;
-      line-height: 1.6;
-    }
-
+    .invite-details { text-align: center; font-size: 1.05rem; color: #4a2e1a; margin: 16px 0 12px; line-height: 1.6; }
     .event-name {
       background: #fef0dd;
       padding: 8px 18px;
       display: inline-block;
       border-radius: 50px;
-      font-weight: 600;
+      font-weight: 700;
       color: #c4651a;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       margin: 10px 0;
-      box-shadow: inset 0 0 0 1px #ffdfaa, 0 2px 5px rgba(0,0,0,0.02);
     }
-
     .date-time {
       background: #faf2e3;
       padding: 12px;
@@ -216,19 +158,8 @@
       gap: 24px;
       font-weight: 500;
     }
-
-    .date-time div {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #8b4a1c;
-    }
-
-    .date-time i {
-      font-size: 1.3rem;
-      color: #e6a017;
-    }
-
+    .date-time div { display: flex; align-items: center; gap: 10px; color: #8b4a1c; }
+    .date-time i { font-size: 1.3rem; color: #e6a017; }
     .venue {
       background: #fff6e8;
       padding: 10px;
@@ -238,9 +169,7 @@
       color: #714623;
       border-left: 4px solid #f7b84d;
     }
-
     .rsvp {
-      font-family: 'Poppins', sans-serif;
       font-size: 0.9rem;
       background: #fae29c;
       color: #6a3c14;
@@ -249,7 +178,6 @@
       padding: 6px 20px;
       border-radius: 40px;
     }
-
     .splash-btn {
       background: linear-gradient(95deg, #ffb347, #ff8c1a);
       border: none;
@@ -265,24 +193,8 @@
       box-shadow: 0 10px 20px rgba(255, 140, 0, 0.3);
       transition: all 0.25s ease;
       margin: 18px 0 12px;
-      font-family: 'Poppins', sans-serif;
     }
-
-    .splash-btn i {
-      font-size: 1.3rem;
-      transition: transform 0.2s;
-    }
-
-    .splash-btn:hover {
-      background: linear-gradient(95deg, #ffa031, #ff7519);
-      transform: scale(1.02);
-      box-shadow: 0 14px 24px rgba(255, 100, 0, 0.4);
-    }
-
-    .splash-btn:active i {
-      transform: scale(1.2);
-    }
-
+    .splash-btn:hover { background: linear-gradient(95deg, #ffa031, #ff7519); transform: scale(1.02); }
     .footer-note {
       margin-top: 25px;
       font-size: 0.8rem;
@@ -290,9 +202,7 @@
       border-top: 1px solid #ffdd9e;
       padding-top: 20px;
       color: #b47c44;
-      font-style: italic;
     }
-
     .marathi-phrase {
       font-weight: 500;
       font-size: 0.9rem;
@@ -302,8 +212,6 @@
       display: inline-block;
       margin: 5px 0;
     }
-
-    /* splash particle styling */
     .splash-particle {
       position: absolute;
       border-radius: 45% 55% 60% 40%;
@@ -312,126 +220,49 @@
       z-index: 100;
       filter: blur(2px);
       animation: splashFly 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
-      box-shadow: 0 0 6px #ffc107;
     }
-
     @keyframes splashFly {
-      0% {
-        transform: scale(0.2) translate(0, 0);
-        opacity: 0.9;
-      }
-      40% {
-        opacity: 0.8;
-      }
-      100% {
-        transform: scale(1.8) translate(var(--tx, 40px), var(--ty, -50px));
-        opacity: 0;
-      }
+      0% { transform: scale(0.2) translate(0, 0); opacity: 0.9; }
+      100% { transform: scale(1.8) translate(var(--tx, 40px), var(--ty, -50px)); opacity: 0; }
     }
-
-    /* responsive */
     @media (max-width: 550px) {
-      body {
-        padding: 1rem;
-      }
-      .card-border {
-        padding: 1rem;
-      }
-      .couple-names {
-        font-size: 1.9rem;
-      }
-      .title {
-        font-size: 1.7rem;
-      }
-      .marathi-sub {
-        font-size: 1rem;
-      }
-      .splash-btn {
-        padding: 10px 22px;
-        font-size: 1rem;
-      }
-    }
-
-    /* subtle pulse on card */
-    @keyframes softPulse {
-      0% { box-shadow: 0 0 0 0 rgba(229, 152, 48, 0.2);}
-      70% { box-shadow: 0 0 0 6px rgba(229, 152, 48, 0);}
-      100% { box-shadow: 0 0 0 0 rgba(229, 152, 48, 0);}
+      body { padding: 1rem; }
+      .card-border { padding: 1rem; }
+      .couple-names { font-size: 1.9rem; }
+      .title { font-size: 1.5rem; }
+      .marathi-sub { font-size: 1.1rem; }
     }
   </style>
 </head>
 <body>
-
-<!-- ambience floating particles (splash atmosphere) -->
 <div class="ambient-splash" id="ambientSplash"></div>
-
 <div class="invitation-card" id="inviteCard">
   <div class="card-border">
-    <div class="marathi-motif">
-      <i class="fas fa-leaf"></i> <i class="fas fa-grip-lines-vertical"></i> ॐ <i class="fas fa-grip-lines-vertical"></i> <i class="fas fa-leaf"></i>
-    </div>
-    <div class="haldi-symbol">
-      <i class="fas fa-mortar-pestle"></i>
-      <i class="fas fa-pastafarianism"></i>
-      <i class="fas fa-seedling"></i>
-    </div>
-    <div style="text-align: center;">
-      <span class="title">🌼 Saurabh's Haldi Ceremony 🌼</span>
-    </div>
-    <div style="text-align: center; margin-top: 6px;">
-      <span class="marathi-sub"> हळदीचा सुवर्ण सोहळा | Haladicha Suvarna Sohala</span>
-    </div>
-
-    <div class="couple-names">
-      Saurabh 🪔 Asha
-    </div>
-    <div style="text-align: center; font-size: 1rem; color:#ba7a36; font-family: 'Cormorant Garamond';">
-      ( Gawde's Family )
-    </div>
-    
+    <div class="marathi-motif"><i class="fas fa-leaf"></i> <i class="fas fa-grip-lines-vertical"></i> ॐ <i class="fas fa-grip-lines-vertical"></i> <i class="fas fa-leaf"></i></div>
+    <div class="haldi-symbol"><i class="fas fa-mortar-pestle"></i><i class="fas fa-pastafarianism"></i><i class="fas fa-seedling"></i></div>
+    <div style="text-align: center;"><span class="title">🌼 शुभ हळद उपीट समारंभ 🌼</span></div>
+    <div style="text-align: center;"><span class="marathi-sub">हळदीचा सुवर्ण सोहळा | Halad Upit Samarambha</span></div>
+    <div class="couple-names">सानिका 🪔 आदित्य<br><span style="font-size:1rem; color:#b97f42;">(जोशी – देशपांडे कुल)</span></div>
     <div class="invite-details">
-      <div class="event-name">
-        <i class="fas fa-hand-holding-heart"></i> हळद उपीट समारंभ 
-      </div>
-      <p style="margin: 12px 8px;">With hearts dipped in turmeric & love, we invite you to bless the bride & groom with holy halad paste,<br> traditional <strong>“Haladicha Suvarna” geet</strong>, and joyful splashes.</p>
+      <div class="event-name"><i class="fas fa-hand-holding-heart"></i> हळद उपीट समारंभ</div>
+      <p>With hearts dipped in turmeric and love, we invite you to bless the bride & groom with holy halad paste,<br> <strong>पारंपारिक हळदीची गीते व मंगल गीते</strong> (Traditional Haldi & Mangal Geet).</p>
     </div>
-
     <div class="date-time">
-      <div><i class="fas fa-calendar-alt"></i> Friday, 10th May 2026</div>
-      <div><i class="fas fa-clock"></i> 10:00 AM – 1:00 PM</div>
+      <div><i class="fas fa-calendar-alt"></i> शनिवार, २४ मे २०२६</div>
+      <div><i class="fas fa-clock"></i> सकाळी १०:०० – दुपारी १:००</div>
     </div>
-
-    <div class="venue">
-      <i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Shree Sanskruti Lawns, Tilak Road, Pune | <i class="fas fa-utensils"></i> Maharashtrian Thali followed by Aamras
-    </div>
-
-    <div class="marathi-phrase" style="display: block; text-align: center; margin: 8px auto;">
-      <i class="fas fa-smile-wink"></i> “हळदीचा रंग, आयुष्यातला रंग” — Turmeric's glow, life’s golden flow.
-    </div>
-
-    <div style="text-align: center;">
-      <button class="splash-btn" id="splashButton">
-        <i class="fas fa-tint"></i> Splash Turmeric Magic <i class="fas fa-feather-alt"></i>
-      </button>
-    </div>
-
-    <div class="rsvp">
-      <i class="fas fa-phone-alt"></i> RSVP: Gawde's Family - 8655309805   | Kindly wear yellow / ivory hues ✨
-    </div>
-
-    <div class="footer-note">
-      <i class="fas fa-gopuram"></i> आपणास व कुटुंबियांस हळदीच्या शुभ दिवशी उपस्थित राहावे ही विनंती | <br>
-      <strong>Elegance & Tradition — Halad Chadhav, Godi & Mangal Geet.</strong>
-    </div>
+    <div class="venue"><i class="fas fa-map-marker-alt"></i> श्री संस्कृती लॉन्स, टिळक रोड, पुणे | <i class="fas fa-utensils"></i> महाराष्ट्रीय थाली व आमरस</div>
+    <div class="marathi-phrase" style="display:block; text-align:center;"><i class="fas fa-smile-wink"></i> “हळदीचा रंग, आयुष्यातला रंग” — Turmeric’s glow, life’s golden flow.</div>
+    <div style="text-align: center;"><button class="splash-btn" id="splashButton"><i class="fas fa-tint"></i> हळदीचा स्प्लॅश करा <i class="fas fa-feather-alt"></i></button></div>
+    <div class="rsvp"><i class="fas fa-phone-alt"></i> RSVP: आई (सुलोचना ताई) +91 98765 43210 | कृपया पिवळा / आयव्हरी रंग परिधान करावा ✨</div>
+    <div class="footer-note"><i class="fas fa-gopuram"></i> आपणास व कुटुंबियांस हळद उपीट समारंभी उपस्थित राहावे ही विनंती | <br>प्रेम, हळद व पारंपरिक गीतांचा सोहळा</div>
   </div>
 </div>
-
 <script>
   (function() {
-    // Create ambient floating droplets inside background (splash things)
     const ambientContainer = document.getElementById('ambientSplash');
-    for (let i = 0; i < 28; i++) {
-      const drop = document.createElement('div');
+    for (let i = 0; i < 24; i++) {
+      let drop = document.createElement('div');
       drop.style.position = 'absolute';
       drop.style.width = Math.random() * 14 + 4 + 'px';
       drop.style.height = drop.style.width;
@@ -442,226 +273,71 @@
       drop.style.animationDelay = Math.random() * 12 + 's';
       drop.style.animationDuration = 8 + Math.random() * 12 + 's';
       drop.style.filter = 'blur(3px)';
-      drop.style.opacity = 0.2 + Math.random() * 0.2;
       drop.style.animation = 'drift 14s infinite alternate ease-in-out';
       ambientContainer.appendChild(drop);
     }
-
-    // Main splash function: create splashes inside card (real splash effect)
-    const cardEl = document.getElementById('inviteCard');
-    const button = document.getElementById('splashButton');
-
-    function createSplash(burstCount = 28) {
-      if (!cardEl) return;
-      const rect = cardEl.getBoundingClientRect();
-      // we'll attach particles relative to the card
-      const cardRelative = cardEl;
-      const cardRect = cardRelative.getBoundingClientRect();
-      
-      for (let i = 0; i < burstCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('splash-particle');
-        
-        // random size between 5px and 24px
-        const size = 7 + Math.random() * 18;
-        particle.style.width = size + 'px';
-        particle.style.height = size + 'px';
-        
-        // random position inside the card area (avoid button hit edge but inside card)
-        const posX = Math.random() * (cardRect.width - 60) + 30;
-        const posY = Math.random() * (cardRect.height - 80) + 40;
-        
-        particle.style.left = posX + 'px';
-        particle.style.top = posY + 'px';
-        
-        // random direction for transform
-        const angle = Math.random() * Math.PI * 2;
-        const distance = 40 + Math.random() * 90;
-        const tx = Math.cos(angle) * distance;
-        const ty = Math.sin(angle) * distance - 25; // slight upward bias
-        
-        particle.style.setProperty('--tx', tx + 'px');
-        particle.style.setProperty('--ty', ty + 'px');
-        
-        // slight random rotation and color variation
-        const bgShade = `radial-gradient(circle, #ffcf6e, #ffa11a)`;
-        particle.style.background = bgShade;
-        particle.style.boxShadow = '0 0 6px #ffb229';
-        
-        cardRelative.appendChild(particle);
-        
-        // remove after animation ends
-        particle.addEventListener('animationend', () => {
-          if (particle && particle.remove) particle.remove();
-        });
+    const card = document.getElementById('inviteCard');
+    const btn = document.getElementById('splashButton');
+    function createSplash(count=30) {
+      if(!card) return;
+      const rect = card.getBoundingClientRect();
+      for(let i=0;i<count;i++) {
+        let p = document.createElement('div');
+        p.classList.add('splash-particle');
+        let s = 7+Math.random()*18;
+        p.style.width = s+'px';
+        p.style.height = s+'px';
+        let x = Math.random() * (rect.width - 60) + 30;
+        let y = Math.random() * (rect.height - 80) + 40;
+        p.style.left = x+'px';
+        p.style.top = y+'px';
+        let ang = Math.random() * Math.PI * 2;
+        let dist = 40+Math.random()*90;
+        let tx = Math.cos(ang)*dist;
+        let ty = Math.sin(ang)*dist - 25;
+        p.style.setProperty('--tx', tx+'px');
+        p.style.setProperty('--ty', ty+'px');
+        p.style.background = `radial-gradient(circle, #ffcf6e, #ffa11a)`;
+        card.appendChild(p);
+        p.addEventListener('animationend',()=>p.remove());
       }
-      
-      // extra sound-less shimmer: add a brief text effect and also create additional dynamic splash feeling via class ripple
-      button.style.transform = 'scale(0.98)';
-      setTimeout(() => {
-        if (button) button.style.transform = '';
-      }, 150);
-      
-      // also create a external "splash" pulse on the card border
-      cardEl.style.animation = 'softPulse 0.5s ease-out';
-      setTimeout(() => {
-        if (cardEl) cardEl.style.animation = '';
-      }, 500);
+      let msg = document.createElement('div');
+      msg.innerText = '✨ हळद लागो! ✨';
+      msg.style.position = 'absolute';
+      msg.style.left = '50%';
+      msg.style.top = '45%';
+      msg.style.transform = 'translate(-50%, -50%)';
+      msg.style.background = '#fff3cf';
+      msg.style.padding = '6px 18px';
+      msg.style.borderRadius = '50px';
+      msg.style.fontWeight = 'bold';
+      msg.style.color = '#cc7b2c';
+      msg.style.zIndex = '200';
+      msg.style.pointerEvents = 'none';
+      card.appendChild(msg);
+      setTimeout(()=>msg.remove(),1000);
     }
-
-    // initial welcoming gentle splash (few particles) on page load as a 'splash things'
+    if(btn) btn.addEventListener('click',()=>createSplash(32));
     function welcomeSplash() {
-      if (!cardEl) return;
-      const cardRect = cardEl.getBoundingClientRect();
-      for (let i = 0; i < 12; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('splash-particle');
-        const size = 6 + Math.random() * 15;
-        particle.style.width = size + 'px';
-        particle.style.height = size + 'px';
-        const posX = Math.random() * (cardRect.width - 40) + 20;
-        const posY = Math.random() * (cardRect.height - 60) + 30;
-        particle.style.left = posX + 'px';
-        particle.style.top = posY + 'px';
-        const angle = Math.random() * Math.PI * 2;
-        const dist = 30 + Math.random() * 65;
-        const tx = Math.cos(angle) * dist;
-        const ty = Math.sin(angle) * dist - 20;
-        particle.style.setProperty('--tx', tx + 'px');
-        particle.style.setProperty('--ty', ty + 'px');
-        particle.style.background = `radial-gradient(circle, #ffd27a, #f5931e)`;
-        cardEl.appendChild(particle);
-        particle.addEventListener('animationend', () => particle.remove());
+      for(let i=0;i<12;i++) {
+        let p = document.createElement('div');
+        p.classList.add('splash-particle');
+        p.style.width = (6+Math.random()*12)+'px';
+        p.style.height = p.style.width;
+        let x = Math.random() * (card.clientWidth - 40) + 20;
+        let y = Math.random() * (card.clientHeight - 60) + 30;
+        p.style.left = x+'px';
+        p.style.top = y+'px';
+        let ang = Math.random()*Math.PI*2;
+        let d = 30+Math.random()*60;
+        p.style.setProperty('--tx', Math.cos(ang)*d+'px');
+        p.style.setProperty('--ty', Math.sin(ang)*d-20+'px');
+        p.style.background = `radial-gradient(circle, #ffd27a, #f5931e)`;
+        card.appendChild(p);
+        p.addEventListener('animationend',()=>p.remove());
       }
-      // also slight flower petal effect? no but adds immediate splash elegance
-      const hintMsg = document.createElement('div');
-      hintMsg.innerText = '✨ हळदीची सरबत ✨';
-      hintMsg.style.position = 'absolute';
-      hintMsg.style.bottom = '15px';
-      hintMsg.style.right = '18px';
-      hintMsg.style.fontSize = '0.7rem';
-      hintMsg.style.color = '#c9852c';
-      hintMsg.style.fontWeight = 'bold';
-      hintMsg.style.background = 'rgba(255,245,215,0.8)';
-      hintMsg.style.padding = '2px 8px';
-      hintMsg.style.borderRadius = '30px';
-      hintMsg.style.pointerEvents = 'none';
-      hintMsg.style.zIndex = '30';
-      hintMsg.style.fontFamily = 'monospace';
-      cardEl.style.position = 'relative';
-      cardEl.appendChild(hintMsg);
-      setTimeout(() => hintMsg.remove(), 2100);
     }
-    
-    // Attach button event
-    if (button) {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        createSplash(32);   // burst of vibrant splash particles
-        // additionally add a 'splash text' inside as marathi cheer
-        const tempDiv = document.createElement('div');
-        tempDiv.innerText = '🌸 हळद फोफावो !! 🌸';
-        tempDiv.style.position = 'absolute';
-        tempDiv.style.left = '50%';
-        tempDiv.style.top = '40%';
-        tempDiv.style.transform = 'translate(-50%, -50%)';
-        tempDiv.style.fontSize = '1.1rem';
-        tempDiv.style.fontWeight = 'bold';
-        tempDiv.style.color = '#e67e22';
-        tempDiv.style.backgroundColor = 'rgba(255,250,210,0.9)';
-        tempDiv.style.padding = '6px 16px';
-        tempDiv.style.borderRadius = '60px';
-        tempDiv.style.whiteSpace = 'nowrap';
-        tempDiv.style.zIndex = '200';
-        tempDiv.style.pointerEvents = 'none';
-        tempDiv.style.fontFamily = "'Cormorant Garamond', serif";
-        tempDiv.style.boxShadow = '0 2px 12px rgba(255,140,0,0.3)';
-        cardEl.appendChild(tempDiv);
-        setTimeout(() => tempDiv.remove(), 1100);
-      });
-    }
-
-    // extra mini splashes when hovering over the button ( playful)
-    if (button) {
-      button.addEventListener('mouseenter', () => {
-        // tiny splash effect (2-3 droplets)
-        if (!cardEl) return;
-        const rect = cardEl.getBoundingClientRect();
-        for (let i = 0; i < 5; i++) {
-          const tinyP = document.createElement('div');
-          tinyP.classList.add('splash-particle');
-          tinyP.style.width = (5 + Math.random() * 9) + 'px';
-          tinyP.style.height = tinyP.style.width;
-          const randX = Math.random() * (rect.width - 40) + 20;
-          const randY = Math.random() * (rect.height - 60) + 30;
-          tinyP.style.left = randX + 'px';
-          tinyP.style.top = randY + 'px';
-          const ang = Math.random() * Math.PI * 2;
-          const d = 20 + Math.random() * 45;
-          const txMove = Math.cos(ang) * d;
-          const tyMove = Math.sin(ang) * d;
-          tinyP.style.setProperty('--tx', txMove + 'px');
-          tinyP.style.setProperty('--ty', tyMove + 'px');
-          tinyP.style.background = `radial-gradient(circle, #fccf6e, #fc9a2b)`;
-          cardEl.appendChild(tinyP);
-          tinyP.addEventListener('animationend', () => tinyP.remove());
-        }
-      });
-    }
-
-    // start after load with a welcoming splash series (splash things)
-    window.addEventListener('load', () => {
-      welcomeSplash();
-      // also create a festive Marathi blessing splash message fade
-      const blessing = document.createElement('div');
-      blessing.innerHTML = '🌿 शुभ हळदीच्या शुभेच्छा 🌿';
-      blessing.style.position = 'fixed';
-      blessing.style.bottom = '20px';
-      blessing.style.left = '20px';
-      blessing.style.backgroundColor = '#fff1da';
-      blessing.style.padding = '5px 15px';
-      blessing.style.borderRadius = '50px';
-      blessing.style.fontWeight = '500';
-      blessing.style.fontSize = '0.8rem';
-      blessing.style.color = '#bc6f25';
-      blessing.style.boxShadow = '0 3px 12px rgba(0,0,0,0.1)';
-      blessing.style.zIndex = '99';
-      blessing.style.fontFamily = "'Poppins', sans-serif";
-      blessing.style.borderLeft = '4px solid #f5b042';
-      document.body.appendChild(blessing);
-      setTimeout(() => blessing.style.opacity = '0', 4000);
-      setTimeout(() => blessing.remove(), 4800);
-    });
-    
-    // Add more splash particles periodically for vibrant effect? optionally subtle interactive
-    setInterval(() => {
-      // every 12 seconds gentle double splash sprinkle (keep dynamic but not intrusive)
-      if (document.hasFocus() && cardEl) {
-        const shouldSplash = Math.random() > 0.65;
-        if (shouldSplash) {
-          for (let i = 0; i < 4; i++) {
-            const randPart = document.createElement('div');
-            randPart.classList.add('splash-particle');
-            randPart.style.width = (4 + Math.random() * 12) + 'px';
-            randPart.style.height = randPart.style.width;
-            const cardBound = cardEl.getBoundingClientRect();
-            const localX = Math.random() * (cardBound.width - 30) + 15;
-            const localY = Math.random() * (cardBound.height - 40) + 20;
-            randPart.style.left = localX + 'px';
-            randPart.style.top = localY + 'px';
-            const angR = Math.random() * Math.PI * 2;
-            const distR = 20 + Math.random() * 50;
-            const txR = Math.cos(angR) * distR;
-            const tyR = Math.sin(angR) * distR;
-            randPart.style.setProperty('--tx', txR + 'px');
-            randPart.style.setProperty('--ty', tyR + 'px');
-            randPart.style.background = `radial-gradient(circle, #ffbe54, #fa9120)`;
-            cardEl.appendChild(randPart);
-            randPart.addEventListener('animationend', () => randPart.remove());
-          }
-        }
-      }
-    }, 11000);
+    window.addEventListener('load',()=> welcomeSplash());
   })();
 </script>
 </body>
