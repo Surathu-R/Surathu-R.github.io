@@ -3,22 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>हळद उपीट समारंभ | Marathi Haldi Invitation</title>
+  <title>Groom's Haldi | हळद उपीट समारंभ</title>
+  <!-- Google Fonts & Font Awesome -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       min-height: 100vh;
       background: linear-gradient(145deg, #fef7e0 0%, #fae9c2 100%);
       font-family: 'Poppins', sans-serif;
-      padding: 2rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 2rem 1.5rem;
       position: relative;
       overflow-x: hidden;
     }
+
+    /* Background floating turmeric particles (continuous subtle splash) */
     body::before {
       content: '';
       position: fixed;
@@ -33,10 +41,13 @@
       background-size: 45px 45px, 60px 60px;
       animation: floatBg 24s linear infinite;
     }
+
     @keyframes floatBg {
       0% { background-position: 0 0, 0 0; }
       100% { background-position: 60px 60px, 120px 120px; }
     }
+
+    /* Ambient floating droplets */
     .ambient-splash {
       position: fixed;
       width: 100%;
@@ -47,61 +58,152 @@
       z-index: 1;
       overflow: hidden;
     }
-    .ambient-splash i {
+
+    .ambient-splash div {
       position: absolute;
       background: radial-gradient(circle, #ffbd4a, #ffa500);
       border-radius: 60% 40% 50% 50%;
       opacity: 0.2;
       filter: blur(3px);
       animation: drift 12s infinite alternate ease-in-out;
-      width: 12px;
-      height: 12px;
     }
+
     @keyframes drift {
       0% { transform: translateY(0px) translateX(0px) rotate(0deg); opacity: 0.1; }
-      100% { transform: translateY(-40px) translateX(30px) rotate(20deg); opacity: 0.3; }
+      100% { transform: translateY(-40px) translateX(30px) rotate(20deg); opacity: 0.35; }
     }
+
+    /* Outer open button container */
+    .open-container {
+      position: relative;
+      z-index: 20;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+
+    .open-invite-btn {
+      background: linear-gradient(135deg, #f5b042, #e67e22);
+      border: none;
+      padding: 18px 42px;
+      font-size: 1.6rem;
+      font-weight: 600;
+      font-family: 'Cormorant Garamond', serif;
+      color: white;
+      border-radius: 60px;
+      box-shadow: 0 20px 30px rgba(230, 126, 34, 0.4);
+      cursor: pointer;
+      transition: 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      letter-spacing: 2px;
+    }
+
+    .open-invite-btn i {
+      font-size: 2rem;
+      animation: bounceOpen 1.2s infinite;
+    }
+
+    @keyframes bounceOpen {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .open-invite-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 28px 38px rgba(230, 126, 34, 0.5);
+      background: linear-gradient(135deg, #ffb347, #ff8c1a);
+    }
+
+    /* hidden invitation card wrapper */
+    .invite-wrapper {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+      padding: 1.5rem;
+    }
+
+    .invite-wrapper.active {
+      display: flex;
+      animation: fadeInBack 0.4s ease;
+    }
+
+    @keyframes fadeInBack {
+      from { opacity: 0; backdrop-filter: blur(0); }
+      to { opacity: 1; backdrop-filter: blur(5px); }
+    }
+
+    /* main invitation card - elegantly redesigned for groom haldi */
     .invitation-card {
       position: relative;
-      max-width: 700px;
+      max-width: 720px;
       width: 100%;
       background: #fffef7;
       border-radius: 52px 32px 52px 32px;
-      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 215, 120, 0.5), 0 0 0 8px #fae7b3;
-      z-index: 10;
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 215, 120, 0.8), 0 0 0 8px #fae7b3;
       overflow: hidden;
       transition: transform 0.3s ease;
-      animation: cardGlow 2s ease-out;
+      animation: cardRise 0.5s ease-out;
+      margin: auto;
     }
-    @keyframes cardGlow {
-      0% { opacity: 0; transform: scale(0.96); }
-      100% { opacity: 1; transform: scale(1); }
+
+    @keyframes cardRise {
+      0% { opacity: 0; transform: scale(0.95) translateY(20px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
     }
-    .invitation-card:hover { transform: translateY(-6px); }
+
+    .invitation-card:hover {
+      transform: translateY(-5px);
+    }
+
     .card-border {
-      padding: 2rem 2rem 2rem 2rem;
+      padding: 1.8rem 1.8rem 2rem 1.8rem;
       border: 2px solid #f4c542;
       border-radius: 44px 24px 44px 24px;
       margin: 12px;
-      background: rgba(255, 252, 240, 0.6);
+      background: rgba(255, 252, 240, 0.7);
     }
+
     .marathi-motif {
       text-align: center;
       font-size: 1.25rem;
       letter-spacing: 6px;
       color: #cd9a2b;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
-    .marathi-motif i { margin: 0 6px; }
+
+    .marathi-motif i {
+      margin: 0 6px;
+    }
+
     .haldi-symbol {
       display: flex;
       justify-content: center;
-      gap: 16px;
-      margin: 8px 0 10px;
+      gap: 18px;
+      margin: 8px 0 5px;
       color: #e6a117;
     }
-    .haldi-symbol i { font-size: 1.8rem; animation: gentleSway 3s infinite ease; }
-    @keyframes gentleSway { 0%,100%{transform:rotate(0deg);} 50%{transform:rotate(5deg);} }
+
+    .haldi-symbol i {
+      font-size: 1.8rem;
+      animation: gentleSway 3s infinite ease;
+    }
+
+    @keyframes gentleSway {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(5deg); }
+    }
+
     .title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2rem;
@@ -110,33 +212,82 @@
       color: #b1621a;
       border-bottom: 2px dashed #ffcd84;
       display: inline-block;
-      margin: 10px auto 5px;
+      margin: 8px auto 5px;
       padding-bottom: 6px;
     }
+
     .marathi-sub {
       text-align: center;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 600;
       font-family: 'Cormorant Garamond', serif;
       color: #ac6b2a;
       background: #fff1df;
       display: inline-block;
-      padding: 0.2rem 1.4rem;
+      padding: 0.2rem 1.2rem;
       border-radius: 40px;
       margin: 12px auto 6px;
     }
-    .couple-names {
-      font-size: 2.6rem;
-      font-weight: 600;
+
+    /* Groom name only */
+    .groom-name {
+      font-size: 2.3rem;
+      font-weight: 700;
       font-family: 'Cormorant Garamond', serif;
       text-align: center;
       background: linear-gradient(135deg, #c97e2a, #f0b34b);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      margin: 12px 0 8px;
+      margin: 8px 0 6px;
+      letter-spacing: 1px;
     }
-    .invite-details { text-align: center; font-size: 1.05rem; color: #4a2e1a; margin: 16px 0 12px; line-height: 1.6; }
+
+    /* Groom picture section */
+    .groom-photo-section {
+      display: flex;
+      justify-content: center;
+      margin: 18px 0 12px;
+    }
+    .photo-frame {
+      width: 130px;
+      height: 130px;
+      background: linear-gradient(135deg, #fae29c, #ffd49f);
+      border-radius: 50%;
+      padding: 5px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+    }
+    .groom-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #fff1d0;
+      background: #ffebc2;
+      display: block;
+    }
+    /* fallback icon if image missing */
+    .photo-icon-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fad193;
+      border-radius: 50%;
+      font-size: 3.5rem;
+      color: #9b591f;
+    }
+
+    .invite-details {
+      text-align: center;
+      font-size: 1.02rem;
+      color: #4a2e1a;
+      margin: 12px 0 12px;
+      line-height: 1.5;
+    }
+
     .event-name {
       background: #fef0dd;
       padding: 8px 18px;
@@ -144,9 +295,10 @@
       border-radius: 50px;
       font-weight: 700;
       color: #c4651a;
-      font-size: 1.2rem;
-      margin: 10px 0;
+      font-size: 1.15rem;
+      margin: 8px 0;
     }
+
     .date-time {
       background: #faf2e3;
       padding: 12px;
@@ -158,19 +310,31 @@
       gap: 24px;
       font-weight: 500;
     }
-    .date-time div { display: flex; align-items: center; gap: 10px; color: #8b4a1c; }
-    .date-time i { font-size: 1.3rem; color: #e6a017; }
+
+    .date-time div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #8b4a1c;
+    }
+
+    .date-time i {
+      font-size: 1.3rem;
+      color: #e6a017;
+    }
+
     .venue {
       background: #fff6e8;
       padding: 10px;
       border-radius: 28px;
-      margin: 20px 0 12px;
+      margin: 12px 0 12px;
       font-weight: 500;
       color: #714623;
       border-left: 4px solid #f7b84d;
     }
+
     .rsvp {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       background: #fae29c;
       color: #6a3c14;
       width: fit-content;
@@ -178,130 +342,257 @@
       padding: 6px 20px;
       border-radius: 40px;
     }
+
     .splash-btn {
       background: linear-gradient(95deg, #ffb347, #ff8c1a);
       border: none;
       color: white;
       font-weight: 600;
-      padding: 14px 28px;
-      font-size: 1.2rem;
+      padding: 12px 26px;
+      font-size: 1.1rem;
       border-radius: 60px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      box-shadow: 0 10px 20px rgba(255, 140, 0, 0.3);
-      transition: all 0.25s ease;
-      margin: 18px 0 12px;
+      box-shadow: 0 8px 18px rgba(255, 140, 0, 0.3);
+      transition: all 0.2s ease;
+      margin: 12px 0;
     }
-    .splash-btn:hover { background: linear-gradient(95deg, #ffa031, #ff7519); transform: scale(1.02); }
+
+    .splash-btn:hover {
+      background: linear-gradient(95deg, #ffa031, #ff7519);
+      transform: scale(1.02);
+    }
+
     .footer-note {
-      margin-top: 25px;
-      font-size: 0.8rem;
+      margin-top: 20px;
+      font-size: 0.78rem;
       text-align: center;
       border-top: 1px solid #ffdd9e;
-      padding-top: 20px;
+      padding-top: 18px;
       color: #b47c44;
     }
+
     .marathi-phrase {
       font-weight: 500;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       background: #fff9ea;
-      padding: 6px 12px;
+      padding: 5px 12px;
       border-radius: 30px;
       display: inline-block;
       margin: 5px 0;
     }
+
+    /* splash particle effect */
     .splash-particle {
       position: absolute;
       border-radius: 45% 55% 60% 40%;
       background: radial-gradient(circle, #ffd966, #ffaa33);
       pointer-events: none;
-      z-index: 100;
+      z-index: 150;
       filter: blur(2px);
-      animation: splashFly 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+      animation: splashFly 0.85s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
     }
+
     @keyframes splashFly {
-      0% { transform: scale(0.2) translate(0, 0); opacity: 0.9; }
-      100% { transform: scale(1.8) translate(var(--tx, 40px), var(--ty, -50px)); opacity: 0; }
+      0% {
+        transform: scale(0.2) translate(0, 0);
+        opacity: 0.9;
+      }
+      100% {
+        transform: scale(1.8) translate(var(--tx, 40px), var(--ty, -50px));
+        opacity: 0;
+      }
     }
+
+    .close-invite {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      background: #fff0cf;
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: #b1671a;
+      border: 1px solid #f5c56e;
+      transition: 0.2s;
+      z-index: 1100;
+    }
+    .close-invite:hover {
+      background: #ffdeae;
+      transform: scale(1.05);
+    }
+
     @media (max-width: 550px) {
-      body { padding: 1rem; }
+      .groom-name { font-size: 1.8rem; }
+      .title { font-size: 1.4rem; }
+      .marathi-sub { font-size: 1rem; }
+      .photo-frame { width: 100px; height: 100px; }
+      .open-invite-btn { font-size: 1.2rem; padding: 12px 28px; }
       .card-border { padding: 1rem; }
-      .couple-names { font-size: 1.9rem; }
-      .title { font-size: 1.5rem; }
-      .marathi-sub { font-size: 1.1rem; }
     }
   </style>
 </head>
 <body>
+
 <div class="ambient-splash" id="ambientSplash"></div>
-<div class="invitation-card" id="inviteCard">
-  <div class="card-border">
-    <div class="marathi-motif"><i class="fas fa-leaf"></i> <i class="fas fa-grip-lines-vertical"></i> ॐ <i class="fas fa-grip-lines-vertical"></i> <i class="fas fa-leaf"></i></div>
-    <div class="haldi-symbol"><i class="fas fa-mortar-pestle"></i><i class="fas fa-pastafarianism"></i><i class="fas fa-seedling"></i></div>
-    <div style="text-align: center;"><span class="title">🌼 शुभ हळद उपीट समारंभ 🌼</span></div>
-    <div style="text-align: center;"><span class="marathi-sub">हळदीचा सुवर्ण सोहळा | Halad Upit Samarambha</span></div>
-    <div class="couple-names">सानिका 🪔 आदित्य<br><span style="font-size:1rem; color:#b97f42;">(जोशी – देशपांडे कुल)</span></div>
-    <div class="invite-details">
-      <div class="event-name"><i class="fas fa-hand-holding-heart"></i> हळद उपीट समारंभ</div>
-      <p>With hearts dipped in turmeric and love, we invite you to bless the bride & groom with holy halad paste,<br> <strong>पारंपारिक हळदीची गीते व मंगल गीते</strong> (Traditional Haldi & Mangal Geet).</p>
+
+<!-- Outer "Open Invitation" button -->
+<div class="open-container" id="openBtnContainer">
+  <button class="open-invite-btn" id="openInviteBtn">
+    <i class="fas fa-envelope-open-text"></i> Open Invitation <i class="fas fa-feather-alt"></i>
+  </button>
+</div>
+
+<!-- Hidden Invitation Wrapper (popup style) -->
+<div class="invite-wrapper" id="inviteWrapper">
+  <div class="close-invite" id="closeInviteBtn">&times;</div>
+  <div class="invitation-card" id="mainCard">
+    <div class="card-border">
+      <div class="marathi-motif">
+        <i class="fas fa-leaf"></i> <i class="fas fa-grip-lines-vertical"></i> ॐ <i class="fas fa-grip-lines-vertical"></i> <i class="fas fa-leaf"></i>
+      </div>
+      <div class="haldi-symbol">
+        <i class="fas fa-mortar-pestle"></i>
+        <i class="fas fa-pastafarianism"></i>
+        <i class="fas fa-seedling"></i>
+      </div>
+      <div style="text-align: center;">
+        <span class="title">🌼 शुभ हळद उपीट समारंभ 🌼</span>
+      </div>
+      <div style="text-align: center;">
+        <span class="marathi-sub">हळदीचा सुवर्ण सोहळा | Groom's Halad Upit</span>
+      </div>
+
+      <!-- Groom name only (no couple) -->
+      <div class="groom-name">
+        आदित्य जोशी <br><span style="font-size: 1rem;">(Aditya Joshi)</span>
+      </div>
+
+      <!-- Groom picture section -->
+      <div class="groom-photo-section">
+        <div class="photo-frame" id="groomPhotoFrame">
+          <!-- Groom image placeholder you can replace with actual image URL -->
+          <img src="https://placehold.co/400x400/ffdea4/bb6b2a?text=Groom+Photo" alt="Groom Photo" class="groom-img" id="groomImg" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'photo-icon-fallback\'><i class=\'fas fa-user-astronaut\'></i></div>'">
+        </div>
+      </div>
+
+      <div class="invite-details">
+        <div class="event-name">
+          <i class="fas fa-hand-holding-heart"></i> वराचा हळद उपीट समारंभ
+        </div>
+        <p>With sacred turmeric paste, traditional <strong>हळदीची गीते व मंगल गीते</strong>, and joyful blessings, we invite you to grace the groom's Haldi ceremony.</p>
+      </div>
+
+      <div class="date-time">
+        <div><i class="fas fa-calendar-alt"></i> शनिवार, २४ मे २०२६</div>
+        <div><i class="fas fa-clock"></i> सकाळी १०:०० – दुपारी १:००</div>
+      </div>
+
+      <div class="venue">
+        <i class="fas fa-map-marker-alt"></i> श्री संस्कृती लॉन्स, टिळक रोड, पुणे | <i class="fas fa-utensils"></i> महाराष्ट्रीय थाली व आमरस
+      </div>
+
+      <div class="marathi-phrase" style="display: block; text-align: center;">
+        <i class="fas fa-smile-wink"></i> “हळदीचा रंग, वराच्या आयुष्यातला रंग” — Turmeric's glow for the groom's bright future.
+      </div>
+
+      <div style="text-align: center;">
+        <button class="splash-btn" id="innerSplashBtn">
+          <i class="fas fa-tint"></i> हळदीचा स्प्लॅश करा <i class="fas fa-feather-alt"></i>
+        </button>
+      </div>
+
+      <div class="rsvp">
+        <i class="fas fa-phone-alt"></i> RSVP: आई सुलोचना +91 98765 43210 | पिवळा / केशरी पोशाख
+      </div>
+
+      <div class="footer-note">
+        <i class="fas fa-gopuram"></i> आपणास व कुटुंबियांस हळद उपीट समारंभी उपस्थित राहावे ही विनंती | <br>
+        प्रेम, हळद व पारंपरिक गीतांचा सोहळा
+      </div>
     </div>
-    <div class="date-time">
-      <div><i class="fas fa-calendar-alt"></i> शनिवार, २४ मे २०२६</div>
-      <div><i class="fas fa-clock"></i> सकाळी १०:०० – दुपारी १:००</div>
-    </div>
-    <div class="venue"><i class="fas fa-map-marker-alt"></i> श्री संस्कृती लॉन्स, टिळक रोड, पुणे | <i class="fas fa-utensils"></i> महाराष्ट्रीय थाली व आमरस</div>
-    <div class="marathi-phrase" style="display:block; text-align:center;"><i class="fas fa-smile-wink"></i> “हळदीचा रंग, आयुष्यातला रंग” — Turmeric’s glow, life’s golden flow.</div>
-    <div style="text-align: center;"><button class="splash-btn" id="splashButton"><i class="fas fa-tint"></i> हळदीचा स्प्लॅश करा <i class="fas fa-feather-alt"></i></button></div>
-    <div class="rsvp"><i class="fas fa-phone-alt"></i> RSVP: आई (सुलोचना ताई) +91 98765 43210 | कृपया पिवळा / आयव्हरी रंग परिधान करावा ✨</div>
-    <div class="footer-note"><i class="fas fa-gopuram"></i> आपणास व कुटुंबियांस हळद उपीट समारंभी उपस्थित राहावे ही विनंती | <br>प्रेम, हळद व पारंपरिक गीतांचा सोहळा</div>
   </div>
 </div>
+
 <script>
   (function() {
-    const ambientContainer = document.getElementById('ambientSplash');
-    for (let i = 0; i < 24; i++) {
+    // Ambient floating droplets (yellowish background)
+    const ambient = document.getElementById('ambientSplash');
+    for (let i = 0; i < 32; i++) {
       let drop = document.createElement('div');
-      drop.style.position = 'absolute';
-      drop.style.width = Math.random() * 14 + 4 + 'px';
-      drop.style.height = drop.style.width;
-      drop.style.background = `radial-gradient(circle, rgba(255,210,90,0.5), rgba(255,180,50,0.3))`;
-      drop.style.borderRadius = '50%';
-      drop.style.top = Math.random() * 100 + '%';
+      let size = 6 + Math.random() * 18;
+      drop.style.width = size + 'px';
+      drop.style.height = size + 'px';
       drop.style.left = Math.random() * 100 + '%';
+      drop.style.top = Math.random() * 100 + '%';
       drop.style.animationDelay = Math.random() * 12 + 's';
-      drop.style.animationDuration = 8 + Math.random() * 12 + 's';
+      drop.style.animationDuration = 8 + Math.random() * 15 + 's';
+      drop.style.opacity = 0.1 + Math.random() * 0.3;
+      drop.style.background = `radial-gradient(circle, rgba(255,200,80,0.6), rgba(255,150,30,0.4))`;
       drop.style.filter = 'blur(3px)';
-      drop.style.animation = 'drift 14s infinite alternate ease-in-out';
-      ambientContainer.appendChild(drop);
+      ambient.appendChild(drop);
     }
-    const card = document.getElementById('inviteCard');
-    const btn = document.getElementById('splashButton');
-    function createSplash(count=30) {
-      if(!card) return;
-      const rect = card.getBoundingClientRect();
-      for(let i=0;i<count;i++) {
-        let p = document.createElement('div');
-        p.classList.add('splash-particle');
-        let s = 7+Math.random()*18;
-        p.style.width = s+'px';
-        p.style.height = s+'px';
-        let x = Math.random() * (rect.width - 60) + 30;
-        let y = Math.random() * (rect.height - 80) + 40;
-        p.style.left = x+'px';
-        p.style.top = y+'px';
-        let ang = Math.random() * Math.PI * 2;
-        let dist = 40+Math.random()*90;
-        let tx = Math.cos(ang)*dist;
-        let ty = Math.sin(ang)*dist - 25;
-        p.style.setProperty('--tx', tx+'px');
-        p.style.setProperty('--ty', ty+'px');
-        p.style.background = `radial-gradient(circle, #ffcf6e, #ffa11a)`;
-        card.appendChild(p);
-        p.addEventListener('animationend',()=>p.remove());
+
+    const wrapper = document.getElementById('inviteWrapper');
+    const openBtn = document.getElementById('openInviteBtn');
+    const closeBtn = document.getElementById('closeInviteBtn');
+    const cardElement = document.getElementById('mainCard');
+    const splashButton = document.getElementById('innerSplashBtn');
+
+    // Open invitation function
+    function openInvitation() {
+      wrapper.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      // small extra yellow splash welcoming when opened
+      createWelcomeSplash();
+    }
+
+    function closeInvitation() {
+      wrapper.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    openBtn.addEventListener('click', openInvitation);
+    closeBtn.addEventListener('click', closeInvitation);
+    wrapper.addEventListener('click', (e) => {
+      if (e.target === wrapper) closeInvitation();
+    });
+
+    // Splash function for yellowish turmeric particles
+    function createSplash(count = 32, targetCard = cardElement) {
+      if (!targetCard) return;
+      const rect = targetCard.getBoundingClientRect();
+      const relativeRect = targetCard.getBoundingClientRect();
+      for (let i = 0; i < count; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('splash-particle');
+        const size = 6 + Math.random() * 22;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        const posX = Math.random() * (relativeRect.width - 50) + 25;
+        const posY = Math.random() * (relativeRect.height - 70) + 35;
+        particle.style.left = posX + 'px';
+        particle.style.top = posY + 'px';
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 45 + Math.random() * 100;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance - 30;
+        particle.style.setProperty('--tx', tx + 'px');
+        particle.style.setProperty('--ty', ty + 'px');
+        particle.style.background = `radial-gradient(circle, #ffd48a, #f5a623)`;
+        particle.style.boxShadow = '0 0 8px #ffbc3c';
+        targetCard.appendChild(particle);
+        particle.addEventListener('animationend', () => particle.remove());
       }
-      let msg = document.createElement('div');
+      // short message
+      const msg = document.createElement('div');
       msg.innerText = '✨ हळद लागो! ✨';
       msg.style.position = 'absolute';
       msg.style.left = '50%';
@@ -311,33 +602,85 @@
       msg.style.padding = '6px 18px';
       msg.style.borderRadius = '50px';
       msg.style.fontWeight = 'bold';
-      msg.style.color = '#cc7b2c';
+      msg.style.color = '#ca781e';
       msg.style.zIndex = '200';
       msg.style.pointerEvents = 'none';
-      card.appendChild(msg);
-      setTimeout(()=>msg.remove(),1000);
+      msg.style.fontFamily = "'Poppins', sans-serif";
+      msg.style.whiteSpace = 'nowrap';
+      targetCard.appendChild(msg);
+      setTimeout(() => msg.remove(), 1100);
     }
-    if(btn) btn.addEventListener('click',()=>createSplash(32));
-    function welcomeSplash() {
-      for(let i=0;i<12;i++) {
-        let p = document.createElement('div');
+
+    function createWelcomeSplash() {
+      if (!cardElement) return;
+      for (let i = 0; i < 16; i++) {
+        const p = document.createElement('div');
         p.classList.add('splash-particle');
-        p.style.width = (6+Math.random()*12)+'px';
-        p.style.height = p.style.width;
-        let x = Math.random() * (card.clientWidth - 40) + 20;
-        let y = Math.random() * (card.clientHeight - 60) + 30;
-        p.style.left = x+'px';
-        p.style.top = y+'px';
-        let ang = Math.random()*Math.PI*2;
-        let d = 30+Math.random()*60;
-        p.style.setProperty('--tx', Math.cos(ang)*d+'px');
-        p.style.setProperty('--ty', Math.sin(ang)*d-20+'px');
-        p.style.background = `radial-gradient(circle, #ffd27a, #f5931e)`;
-        card.appendChild(p);
-        p.addEventListener('animationend',()=>p.remove());
+        const sz = 5 + Math.random() * 14;
+        p.style.width = sz + 'px';
+        p.style.height = sz + 'px';
+        const xOff = 20 + Math.random() * (cardElement.clientWidth - 40);
+        const yOff = 30 + Math.random() * (cardElement.clientHeight - 60);
+        p.style.left = xOff + 'px';
+        p.style.top = yOff + 'px';
+        const ang = Math.random() * Math.PI * 2;
+        const dist = 25 + Math.random() * 60;
+        p.style.setProperty('--tx', Math.cos(ang) * dist + 'px');
+        p.style.setProperty('--ty', Math.sin(ang) * dist - 20 + 'px');
+        p.style.background = `radial-gradient(circle, #ffda88, #fea82f)`;
+        cardElement.appendChild(p);
+        p.addEventListener('animationend', () => p.remove());
       }
     }
-    window.addEventListener('load',()=> welcomeSplash());
+
+    if (splashButton) {
+      splashButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        createSplash(36, cardElement);
+      });
+    }
+
+    // small extra: on card hover or for more 'yellowish thing' we add dynamic splash on first open
+    // also ensure groom image fallback handled, and any custom image can be replaced
+    // For user to replace groom photo with real image, just change src of #groomImg
+    const groomImage = document.getElementById('groomImg');
+    if (groomImage && groomImage.complete && groomImage.naturalWidth === 0) {
+      // fallback if broken
+      groomImage.onerror = function() {
+        const frame = document.getElementById('groomPhotoFrame');
+        if (frame && !frame.querySelector('.photo-icon-fallback')) {
+          const fallbackDiv = document.createElement('div');
+          fallbackDiv.className = 'photo-icon-fallback';
+          fallbackDiv.innerHTML = '<i class="fas fa-user-tie"></i>';
+          frame.innerHTML = '';
+          frame.appendChild(fallbackDiv);
+        }
+      };
+    }
+
+    // Also allow any future yellow splash ambient effect on open button click? Already done.
+    // Option: throw tiny splash on open button click (outside card)
+    openBtn.addEventListener('click', () => {
+      // just for fun, a little burst on the open container
+      const containerRect = openBtnContainer.getBoundingClientRect();
+      for (let i = 0; i < 10; i++) {
+        let mini = document.createElement('div');
+        mini.classList.add('splash-particle');
+        mini.style.width = (4 + Math.random() * 12) + 'px';
+        mini.style.height = mini.style.width;
+        mini.style.left = (containerRect.left + Math.random() * containerRect.width) + 'px';
+        mini.style.top = (containerRect.top + Math.random() * containerRect.height) + 'px';
+        mini.style.position = 'fixed';
+        const ang = Math.random() * 360;
+        const dist = 20 + Math.random() * 50;
+        const tx = Math.cos(ang) * dist;
+        const ty = Math.sin(ang) * dist;
+        mini.style.setProperty('--tx', tx + 'px');
+        mini.style.setProperty('--ty', ty + 'px');
+        document.body.appendChild(mini);
+        mini.addEventListener('animationend', () => mini.remove());
+      }
+    });
   })();
 </script>
 </body>
