@@ -366,13 +366,24 @@
       background: linear-gradient(180deg, var(--cream) 0%, var(--soft-yellow) 50%, var(--cream) 100%);
       padding: 5rem 2rem;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .photo-section .section-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
     }
 
     .photo-frame-wrapper {
       position: relative;
-      display: inline-block;
-      max-width: 350px;
-      width: 100%;
+      display: block;
+      width: 320px;
+      max-width: 85vw;
+      margin: 0 auto;
     }
 
     .photo-frame-outer {
@@ -1165,26 +1176,7 @@
             <span class="photo-flower-decoration">🌸</span>
             <span class="photo-flower-decoration">🌸</span>
             <div class="photo-frame-inner">
-
-              <!--
-                =============================================
-                HOW TO ADD SAURABH'S PHOTO:
-                =============================================
-                1. Place your photo file in the same folder as index.html
-                2. Rename it to: saurabh.jpg (or .png)
-                3. Uncomment the <img> line below and change the src:
-
-                <img src="saurabh.jpg" alt="Saurabh Gawde">
-
-                4. Delete the <div class="photo-placeholder"> block below
-
-                Alternative: Use any image URL:
-                <img src="https://example.com/photo.jpg" alt="Saurabh Gawde">
-                =============================================
-              -->
-
-            <img src="/IMG_0960.jpeg" alt="Saurabh Gawde">
-
+              <img id="groomPhoto" alt="Saurabh Gawde" src="./VIN00710.jpeg">
             </div>
           </div>
         </div>
@@ -1360,19 +1352,10 @@
     </footer>
   </div>
 
-  <!-- AUDIO ELEMENT - Add your music file here -->
-  <!--
-    HOW TO ADD BACKGROUND MUSIC:
-    1. Get an MP3 file (shehnai, dholki, or any wedding music)
-    2. Place it in the same folder as index.html
-    3. Rename it to: music.mp3
-    4. Uncomment the audio tag below by removing the HTML comments
-  -->
-  <!--
-  <audio id="bgMusic" loop preload="auto">
-    <source src="music.mp3" type="audio/mpeg">
+  <!-- BACKGROUND MUSIC -->
+  <audio id="bgMusic" loop preload="auto" crossorigin="anonymous">
+    <source src="https://raw.githubusercontent.com/shaikmustafa77/musta-salma-wedding/main/Wedding%20card%20video%20-%20invitation%20card%20video%20-%20pelli%20subhalekha%20video%20invitation%20%23weddinginvites.mp3" type="audio/mpeg">
   </audio>
-  -->
 
   <!-- MUSIC TOGGLE -->
   <button class="music-toggle" id="musicToggle" aria-label="Toggle Music">
@@ -1518,50 +1501,33 @@
     // ===== MUSIC TOGGLE =====
     const musicToggle = document.getElementById('musicToggle');
     const musicBars = document.getElementById('musicBars');
+    const bgMusic = document.getElementById('bgMusic');
     let isPlaying = false;
-    let audioContext;
-    let oscillator;
-    let gainNode;
 
     musicToggle.addEventListener('click', () => {
       isPlaying = !isPlaying;
       musicBars.classList.toggle('paused', !isPlaying);
 
-      const bgMusic = document.getElementById('bgMusic');
-
       if (isPlaying) {
-        if (bgMusic && bgMusic.querySelector('source')) {
-          bgMusic.volume = 0.4;
-          bgMusic.play().catch(() => {
-            useFallbackAudio();
-          });
-        } else {
-          useFallbackAudio();
-        }
+        bgMusic.volume = 0.4;
+        bgMusic.play().catch(() => {
+          musicBars.classList.add('paused');
+          isPlaying = false;
+        });
       } else {
-        if (bgMusic) {
-          bgMusic.pause();
-        }
-        if (oscillator) {
-          oscillator.stop();
-          oscillator = null;
-        }
+        bgMusic.pause();
       }
     });
 
-    function useFallbackAudio() {
-      if (!audioContext) {
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      oscillator = audioContext.createOscillator();
-      gainNode = audioContext.createGain();
-      oscillator.type = 'sine';
-      oscillator.frequency.setValueAtTime(261.63, audioContext.currentTime);
-      gainNode.gain.setValueAtTime(0.05, audioContext.currentTime);
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-      oscillator.start();
-    }
+    // ===== PHOTO FALLBACK =====
+    const groomPhoto = document.getElementById('groomPhoto');
+    groomPhoto.addEventListener('error', () => {
+      groomPhoto.style.display = 'none';
+      const fallback = document.createElement('div');
+      fallback.className = 'photo-placeholder';
+      fallback.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg><span>Saurabh\'s Photo</span>';
+      groomPhoto.parentNode.appendChild(fallback);
+    });
 
     // ===== PARALLAX EFFECT ON HERO =====
     window.addEventListener('scroll', () => {
