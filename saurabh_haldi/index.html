@@ -1,667 +1,1583 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Golden Haldi | Saurabh's Turmeric Ceremony | हळद सोहळा</title>
-  <!-- Google Fonts: Elegant + Modern -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saurabh Gawde - Haldi Ceremony</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Sans+Devanagari:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
+    *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      user-select: none; /* subtle, avoid accidental selects on splash */
+    }
+
+    :root {
+      --gold: #D4A843;
+      --turmeric: #E8B930;
+      --deep-yellow: #C49B2A;
+      --soft-yellow: #FFF8E7;
+      --cream: #FFFDF5;
+      --warm-white: #FEF9EF;
+      --marigold: #FF9933;
+      --saffron: #F4A460;
+      --deep-green: #2D5A27;
+      --rich-brown: #5C4033;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      min-height: 100vh;
-      background: radial-gradient(circle at 10% 30%, #ffefb0, #fddc8c);
-      font-family: 'Inter', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.8rem;
-      position: relative;
+      font-family: 'Cormorant Garamond', serif;
+      background: var(--cream);
+      color: var(--rich-brown);
       overflow-x: hidden;
     }
 
-    /* rich golden turmeric swirl background */
-    body::before {
-      content: '';
+    /* ===== SPLASH SCREEN ===== */
+    #splash {
       position: fixed;
       inset: 0;
-      background-image: repeating-linear-gradient(45deg, rgba(255, 180, 50, 0.08) 0px, rgba(255, 180, 50, 0.08) 2px, transparent 2px, transparent 12px),
-                        repeating-linear-gradient(135deg, rgba(220, 120, 20, 0.05) 0px, rgba(220, 120, 20, 0.05) 1px, transparent 1px, transparent 10px);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* floating turmeric particles (constant) */
-    .haldi-dust {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 1;
-      overflow: hidden;
-    }
-    .haldi-dust span {
-      position: absolute;
-      background: rgba(255, 205, 90, 0.6);
-      border-radius: 50%;
-      filter: blur(6px);
-      animation: floatDust 14s infinite alternate ease-in-out;
-    }
-    @keyframes floatDust {
-      0% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.2; }
-      100% { transform: translateY(-70px) translateX(30px) scale(1.4); opacity: 0.5; }
-    }
-
-    /* open button container */
-    .open-wrapper {
-      position: relative;
-      z-index: 20;
-      text-align: center;
-      cursor: pointer;
-    }
-    .glow-btn {
-      background: linear-gradient(125deg, #f5b343, #e67e22);
-      border: none;
-      padding: 1rem 2.5rem;
-      font-size: 1.5rem;
-      font-weight: 600;
-      font-family: 'Cormorant Garamond', serif;
-      color: #fff6e5;
-      border-radius: 60px;
-      box-shadow: 0 20px 30px rgba(220, 110, 20, 0.5), 0 0 0 3px #ffeaac;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 15px;
-      letter-spacing: 1px;
-    }
-    .glow-btn i {
-      font-size: 1.8rem;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-      animation: softPulse 1.2s infinite;
-    }
-    @keyframes softPulse {
-      0%, 100% { transform: scale(1);}
-      50% { transform: scale(1.08);}
-    }
-    .glow-btn:hover {
-      transform: scale(1.02);
-      background: linear-gradient(125deg, #ffb347, #f97316);
-      box-shadow: 0 28px 38px rgba(230, 126, 34, 0.5);
-    }
-
-    /* invitation modal */
-    .invite-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.65);
-      backdrop-filter: blur(6px);
       z-index: 1000;
+      background: linear-gradient(135deg, #FFF8E1 0%, #FFE082 30%, #FFD54F 60%, #FFCA28 100%);
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 1.2rem;
-      overflow-y: auto;
-    }
-    .invite-overlay.active {
-      display: flex;
-      animation: fadeGlow 0.4s ease;
-    }
-    @keyframes fadeGlow {
-      from { opacity: 0; backdrop-filter: blur(0);}
-      to { opacity: 1; backdrop-filter: blur(6px);}
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
-    /* main golden card */
-    .gold-card {
-      max-width: 780px;
+    #splash.hidden {
+      opacity: 0;
+      transform: scale(1.1);
+      pointer-events: none;
+    }
+
+    #splash-canvas {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      background: #fffef2;
-      border-radius: 56px 32px 56px 32px;
-      position: relative;
-      box-shadow: 0 35px 60px rgba(0,0,0,0.3), 0 0 0 1px #ffdf9e, 0 0 0 9px #fbe4aa;
-      transition: transform 0.25s;
-      animation: cardGlide 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    }
-    @keyframes cardGlide {
-      0% { opacity: 0; transform: scale(0.94) translateY(20px);}
-      100% { opacity: 1; transform: scale(1) translateY(0);}
-    }
-    .card-inner {
-      padding: 1.8rem 1.8rem 2rem;
-      border: 2px solid #fdcd7a;
-      border-radius: 48px 24px 48px 24px;
-      margin: 14px;
-      background: rgba(255, 252, 235, 0.85);
+      height: 100%;
+      pointer-events: none;
     }
 
-    /* decorative motifs */
-    .motif {
+    .splash-content {
+      position: relative;
+      z-index: 2;
       text-align: center;
-      font-size: 1.1rem;
-      letter-spacing: 5px;
-      color: #c2822e;
+      padding: 2rem;
+    }
+
+    .splash-om {
+      font-size: 3rem;
+      color: var(--deep-yellow);
+      margin-bottom: 1rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .splash-border {
+      width: 200px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.5rem auto;
+      animation: shimmer 2s ease-in-out infinite;
+    }
+
+    .splash-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 700;
+      color: var(--rich-brown);
+      text-shadow: 0 2px 10px rgba(212, 168, 67, 0.3);
+      line-height: 1.3;
       margin-bottom: 0.5rem;
     }
-    .turmeric-icons {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      margin: 6px 0 8px;
-      color: #e79e2c;
-      font-size: 1.5rem;
-    }
-    .title-main {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      text-align: center;
-      background: linear-gradient(135deg, #b9641a, #e6a125);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      letter-spacing: 1px;
-    }
-    .subhead {
-      text-align: center;
-      font-size: 1rem;
-      background: #ffefcf;
-      display: inline-block;
-      width: auto;
-      margin: 10px auto 5px;
-      padding: 0.3rem 1rem;
-      border-radius: 40px;
-      color: #aa621d;
-      font-weight: 500;
-    }
-    .groom-name {
-      font-size: 2.5rem;
-      font-weight: 700;
-      font-family: 'Cormorant Garamond', serif;
-      text-align: center;
-      background: linear-gradient(145deg, #d98d2b, #ffba5a);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      margin: 8px 0 0px;
-      line-height: 1.2;
-    }
-    .groom-name span {
-      font-size: 1.1rem;
+
+    .splash-subtitle {
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      color: var(--deep-yellow);
+      margin-bottom: 2rem;
       font-weight: 400;
-      color: #b5581a;
-      background: none;
-      -webkit-background-clip: unset;
-      background: unset;
-      color: #b5581a;
     }
 
-    /* photo frame - groom picture placeholder using initials avatar + replace hint */
-    .photo-area {
+    .splash-decoration {
       display: flex;
+      align-items: center;
       justify-content: center;
-      margin: 16px 0 12px;
+      gap: 1rem;
+      margin-bottom: 2rem;
     }
-    .photo-circle {
-      width: 130px;
-      height: 130px;
-      background: linear-gradient(145deg, #f7e3ae, #ffda94);
+
+    .splash-decoration span {
+      font-size: 1.5rem;
+    }
+
+    .splash-decoration::before,
+    .splash-decoration::after {
+      content: '';
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+
+    .splash-decoration::after {
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .open-btn {
+      position: relative;
+      padding: 1.2rem 3rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--rich-brown);
+      background: linear-gradient(135deg, #FFF8E1, #FFE082);
+      border: 2px solid var(--gold);
+      border-radius: 50px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 20px rgba(212, 168, 67, 0.3);
+      animation: glow 2s ease-in-out infinite;
+    }
+
+    .open-btn::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(45deg, var(--marigold), var(--turmeric), var(--gold), var(--saffron));
+      border-radius: 50px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .open-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 30px rgba(212, 168, 67, 0.5);
+    }
+
+    .open-btn:hover::before {
+      opacity: 1;
+    }
+
+    .open-btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    #main-content {
+      opacity: 0;
+      transition: opacity 1s ease 0.5s;
+    }
+
+    #main-content.visible {
+      opacity: 1;
+    }
+
+    /* ===== FLOATING PETALS (MAIN) ===== */
+    .petals-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+      overflow: hidden;
+    }
+
+    .petal {
+      position: absolute;
+      width: 12px;
+      height: 16px;
+      background: radial-gradient(ellipse, var(--marigold) 0%, var(--turmeric) 100%);
+      border-radius: 50% 50% 50% 0;
+      opacity: 0.6;
+      animation: floatDown linear infinite;
+    }
+
+    @keyframes floatDown {
+      0% {
+        transform: translateY(-10vh) rotate(0deg) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.7;
+      }
+      90% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(110vh) rotate(720deg) translateX(100px);
+        opacity: 0;
+      }
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--soft-yellow) 0%, var(--cream) 50%, var(--warm-white) 100%);
+      padding: 2rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A843' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    .hero-rangoli {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      opacity: 0.08;
+      animation: rotateSlow 60s linear infinite;
+    }
+
+    .hero-rangoli.left {
+      left: -150px;
+      top: 10%;
+    }
+
+    .hero-rangoli.right {
+      right: -150px;
+      bottom: 10%;
+    }
+
+    @keyframes rotateSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-flower-top {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1s ease 0.3s both;
+    }
+
+    .hero-label {
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: var(--deep-yellow);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      animation: fadeInDown 1s ease 0.5s both;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 10vw, 7rem);
+      font-weight: 900;
+      color: var(--rich-brown);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--rich-brown) 0%, var(--gold) 50%, var(--deep-yellow) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 1s ease 0.7s both;
+      text-shadow: none;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--deep-yellow);
+      margin-bottom: 1rem;
+      animation: fadeInUp 1s ease 0.9s both;
+    }
+
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+      animation: fadeInUp 1s ease 1.1s both;
+    }
+
+    .hero-divider span {
+      color: var(--marigold);
+    }
+
+    .hero-divider::before,
+    .hero-divider::after {
+      content: '';
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+
+    .hero-divider::after {
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .hero-marathi {
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--deep-yellow);
+      max-width: 600px;
+      line-height: 1.8;
+      animation: fadeInUp 1s ease 1.3s both;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    .scroll-indicator svg {
+      width: 30px;
+      height: 30px;
+      fill: var(--gold);
+      opacity: 0.6;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+
+    /* ===== PHOTO SECTION ===== */
+    .photo-section {
+      background: linear-gradient(180deg, var(--cream) 0%, var(--soft-yellow) 50%, var(--cream) 100%);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .photo-frame-wrapper {
+      position: relative;
+      display: inline-block;
+      max-width: 350px;
+      width: 100%;
+    }
+
+    .photo-frame-outer {
+      position: relative;
+      padding: 15px;
+      background: linear-gradient(135deg, #D4A843, #E8B930, #C49B2A, #F4A460, #D4A843);
+      background-size: 300% 300%;
+      animation: gradientShift 6s ease infinite;
       border-radius: 50%;
-      padding: 5px;
-      box-shadow: 0 10px 18px rgba(0,0,0,0.1), inset 0 0 0 2px #fff1cc;
-      transition: 0.2s;
+      box-shadow:
+        0 0 0 4px rgba(212, 168, 67, 0.3),
+        0 0 0 8px rgba(212, 168, 67, 0.1),
+        0 10px 40px rgba(212, 168, 67, 0.3),
+        0 0 60px rgba(255, 153, 51, 0.15);
     }
-    .groom-avatar {
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .photo-frame-inner {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      background: var(--soft-yellow);
+      border: 3px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .photo-frame-inner img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 50%;
-      background: #ffe2ae;
-      border: 2px solid #f7c56e;
-    }
-    .photo-note {
-      font-size: 0.7rem;
-      text-align: center;
-      color: #bd7a2a;
-      margin-top: 6px;
-      font-weight: 400;
+      display: block;
     }
 
-    .details-text {
-      text-align: center;
-      font-size: 0.98rem;
-      color: #4e311a;
-      margin: 12px 0;
-      line-height: 1.5;
-    }
-    .event-badge {
-      background: #fff0db;
-      padding: 6px 20px;
-      border-radius: 40px;
-      font-weight: 600;
-      color: #c5711f;
-      display: inline-block;
-      margin: 6px auto;
-      font-size: 1rem;
-    }
-    .datetime-block {
-      background: #fdf3e2;
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      gap: 30px;
-      padding: 12px 0;
-      border-radius: 60px;
-      margin: 20px 0 15px;
-      font-weight: 500;
-    }
-    .datetime-block div {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #b1550d;
-    }
-    .datetime-block i {
-      color: #eca41c;
-      font-size: 1.3rem;
-    }
-    .venue {
-      background: #feefd4;
-      padding: 10px 18px;
-      border-radius: 40px;
-      font-weight: 500;
-      color: #8b4819;
-      border-left: 5px solid #f5bc5c;
-      margin: 16px 0;
-    }
-    .marathi-touch {
-      background: #f9e8cb;
-      border-radius: 40px;
-      padding: 5px 12px;
-      display: inline-block;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: #b76119;
-      margin: 8px 0;
-    }
-    .splash-action {
-      background: linear-gradient(105deg, #f5aa3a, #fd8e1e);
-      border: none;
-      padding: 10px 28px;
-      color: white;
-      font-weight: 600;
-      font-size: 1rem;
-      border-radius: 60px;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-      box-shadow: 0 8px 18px rgba(230, 110, 0, 0.4);
-      transition: 0.2s;
-      margin: 12px 0 8px;
-    }
-    .splash-action:hover {
-      background: linear-gradient(105deg, #ffb44a, #ff7c1c);
-      transform: scale(1.02);
-    }
-    .rsvp-line {
-      background: #f7e4c1;
-      padding: 8px 14px;
-      border-radius: 60px;
-      font-size: 0.85rem;
-      display: inline-block;
-      margin: 15px auto 8px;
-      font-weight: 500;
-    }
-    .footer-message {
-      margin-top: 18px;
-      font-size: 0.75rem;
-      text-align: center;
-      border-top: 1px solid #ffdd99;
-      padding-top: 15px;
-      color: #b87a3a;
+      background: linear-gradient(135deg, #FFF8E7, #FFE082);
+      color: var(--deep-yellow);
     }
 
-    /* splash particles (turmeric drops) */
-    .turmeric-splash {
-      position: absolute;
-      background: radial-gradient(circle, #ffcd6b, #ffa82b);
-      border-radius: 55% 45% 70% 30%;
-      filter: blur(2px);
-      pointer-events: none;
-      z-index: 150;
-      animation: splashPop 0.85s ease-out forwards;
+    .photo-placeholder svg {
+      width: 60px;
+      height: 60px;
+      fill: var(--gold);
+      opacity: 0.5;
+      margin-bottom: 0.5rem;
     }
-    @keyframes splashPop {
-      0% { transform: scale(0.2) translate(0, 0); opacity: 0.9; }
-      100% { transform: scale(1.8) translate(var(--dx, 40px), var(--dy, -50px)); opacity: 0; }
+
+    .photo-placeholder span {
+      font-size: 0.85rem;
+      opacity: 0.6;
     }
-    .close-card {
+
+    .photo-flower-decoration {
       position: absolute;
-      top: 16px;
-      right: 26px;
-      background: #ffecbb;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       font-size: 1.8rem;
-      font-weight: 300;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .photo-flower-decoration:nth-child(1) { top: -10px; left: 50%; transform: translateX(-50%); }
+    .photo-flower-decoration:nth-child(2) { bottom: -10px; left: 50%; transform: translateX(-50%); }
+    .photo-flower-decoration:nth-child(3) { left: -10px; top: 50%; transform: translateY(-50%); }
+    .photo-flower-decoration:nth-child(4) { right: -10px; top: 50%; transform: translateY(-50%); }
+
+    .photo-glow {
+      position: absolute;
+      inset: -30px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232, 185, 48, 0.2) 0%, transparent 70%);
+      animation: pulseGlow 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    .photo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--rich-brown);
+      margin-top: 2rem;
+    }
+
+    .photo-subtitle {
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--deep-yellow);
+      margin-top: 0.5rem;
+    }
+
+    .photo-ring-decoration {
+      position: absolute;
+      inset: -50px;
+      border: 1px dashed rgba(212, 168, 67, 0.2);
+      border-radius: 50%;
+      animation: rotateSlow 40s linear infinite;
+    }
+
+    .photo-ring-decoration::before {
+      content: '✿';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--marigold);
+      font-size: 1.2rem;
+    }
+
+    /* ===== SECTION STYLES ===== */
+    section {
+      padding: 5rem 2rem;
+      position: relative;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--deep-yellow);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      text-align: center;
+      color: var(--rich-brown);
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1rem auto 0;
+    }
+
+    /* ===== EVENT DETAILS ===== */
+    .event-section {
+      background: linear-gradient(180deg, var(--warm-white) 0%, var(--soft-yellow) 100%);
+    }
+
+    .event-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .event-card {
+      background: linear-gradient(145deg, #FFFDF5, #FFF8E7);
+      border: 1px solid rgba(212, 168, 67, 0.2);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 4px 20px rgba(212, 168, 67, 0.1);
+    }
+
+    .event-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--marigold), var(--turmeric), var(--gold));
+    }
+
+    .event-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255, 153, 51, 0.1), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(212, 168, 67, 0.25);
+      border-color: var(--gold);
+    }
+
+    .event-card:hover::after {
+      opacity: 1;
+    }
+
+    .event-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .event-label {
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      font-size: 0.9rem;
+      color: var(--deep-yellow);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .event-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--rich-brown);
+      margin-bottom: 0.3rem;
+    }
+
+    .event-detail {
+      font-size: 1rem;
+      color: var(--saffron);
+      font-style: italic;
+    }
+
+    /* ===== MARATHI QUOTES ===== */
+    .quote-section {
+      background: linear-gradient(135deg, #FFF8E1 0%, #FFE082 50%, #FFD54F 100%);
+      padding: 6rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20.5L22 22l-2-1.5z' fill='%23D4A843' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+
+    .quote-wrapper {
+      position: relative;
+      z-index: 2;
+    }
+
+    .marathi-quote {
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--rich-brown);
+      line-height: 2;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .marathi-quote::before {
+      content: '"';
+      font-family: 'Playfair Display', serif;
+      font-size: 6rem;
+      color: var(--gold);
+      opacity: 0.3;
+      position: absolute;
+      top: -1.5rem;
+      left: -1rem;
+      line-height: 1;
+    }
+
+    .marathi-quote::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1.5rem auto 0;
+      opacity: 0.5;
+    }
+
+    .quote-decoration {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .quote-decoration .line {
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .quote-decoration .flower {
+      font-size: 1.5rem;
+    }
+
+    /* ===== INVITATION SECTION ===== */
+    .invitation-section {
+      background: linear-gradient(180deg, var(--soft-yellow) 0%, var(--cream) 100%);
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+
+    .invitation-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--rich-brown);
+      max-width: 700px;
+      margin: 0 auto 1rem;
+      line-height: 1.6;
+    }
+
+    .invitation-family {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--gold), var(--deep-yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 2rem;
+    }
+
+    .invitation-border {
+      display: inline-block;
+      padding: 3rem 4rem;
+      border: 2px solid var(--gold);
+      border-radius: 20px;
+      position: relative;
+      background: linear-gradient(145deg, rgba(255,248,231,0.8), rgba(255,253,245,0.9));
+    }
+
+    .invitation-border::before,
+    .invitation-border::after {
+      content: '✿';
+      position: absolute;
+      font-size: 2rem;
+      color: var(--marigold);
+    }
+
+    .invitation-border::before {
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .invitation-border::after {
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .corner-decoration {
+      position: absolute;
+      font-size: 1.5rem;
+      color: var(--gold);
+    }
+
+    .corner-decoration.tl { top: 10px; left: 15px; }
+    .corner-decoration.tr { top: 10px; right: 15px; transform: scaleX(-1); }
+    .corner-decoration.bl { bottom: 10px; left: 15px; transform: scaleY(-1); }
+    .corner-decoration.br { bottom: 10px; right: 15px; transform: scale(-1); }
+
+    /* ===== RSVP SECTION ===== */
+    .rsvp-section {
+      background: linear-gradient(135deg, var(--soft-yellow) 0%, var(--warm-white) 100%);
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    .rsvp-btn {
+      display: inline-block;
+      padding: 1.2rem 3.5rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--rich-brown);
+      background: linear-gradient(135deg, var(--cream), var(--soft-yellow));
+      border: 2px solid var(--gold);
+      border-radius: 50px;
       cursor: pointer;
-      color: #b45f21;
-      border: 1px solid #f7bf66;
-      transition: all 0.2s;
-      z-index: 1100;
+      transition: all 0.4s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(212, 168, 67, 0.2);
     }
-    .close-card:hover {
-      background: #ffda9e;
-      transform: scale(1.05);
+
+    .rsvp-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(212, 168, 67, 0.4);
+      background: linear-gradient(135deg, var(--gold), var(--turmeric));
+      color: white;
     }
-    @media (max-width: 550px) {
-      .groom-name { font-size: 1.8rem; }
-      .title-main { font-size: 1.6rem; }
-      .photo-circle { width: 105px; height: 105px; }
-      .glow-btn { font-size: 1.2rem; padding: 0.7rem 1.4rem;}
-      .card-inner { padding: 1rem; }
-      .datetime-block { gap: 15px; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: linear-gradient(180deg, var(--warm-white) 0%, #F5E6C8 100%);
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-floral {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      opacity: 0.1;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23D4A843' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+      background-size: cover;
+    }
+
+    .footer-love {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--rich-brown);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-family {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--gold), var(--deep-yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .footer-flowers {
+      font-size: 1.5rem;
+      letter-spacing: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-copyright {
+      font-size: 0.85rem;
+      color: var(--saffron);
+      opacity: 0.7;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 4px 20px rgba(212, 168, 67, 0.3); }
+      50% { box-shadow: 0 4px 30px rgba(212, 168, 67, 0.6), 0 0 60px rgba(255, 153, 51, 0.2); }
+    }
+
+    /* Scroll animations */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .animate-on-scroll.slide-left {
+      transform: translateX(-50px);
+    }
+
+    .animate-on-scroll.slide-left.visible {
+      transform: translateX(0);
+    }
+
+    .animate-on-scroll.slide-right {
+      transform: translateX(50px);
+    }
+
+    .animate-on-scroll.slide-right.visible {
+      transform: translateX(0);
+    }
+
+    .animate-on-scroll.scale-in {
+      transform: scale(0.8);
+    }
+
+    .animate-on-scroll.scale-in.visible {
+      transform: scale(1);
+    }
+
+    /* ===== MUSIC TOGGLE ===== */
+    .music-toggle {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--turmeric));
+      border: none;
+      cursor: pointer;
+      z-index: 998;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(212, 168, 67, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .music-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(212, 168, 67, 0.6);
+    }
+
+    .music-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 20px;
+    }
+
+    .music-bars span {
+      display: block;
+      width: 3px;
+      background: var(--rich-brown);
+      border-radius: 2px;
+      animation: musicBar 0.8s ease-in-out infinite;
+    }
+
+    .music-bars span:nth-child(1) { height: 8px; animation-delay: 0s; }
+    .music-bars span:nth-child(2) { height: 14px; animation-delay: 0.2s; }
+    .music-bars span:nth-child(3) { height: 10px; animation-delay: 0.4s; }
+    .music-bars span:nth-child(4) { height: 16px; animation-delay: 0.1s; }
+
+    .music-bars.paused span {
+      animation: none;
+      height: 3px !important;
+    }
+
+    @keyframes musicBar {
+      0%, 100% { height: 4px; }
+      50% { height: 18px; }
+    }
+
+    /* ===== HALDI BOWL SVG ===== */
+    .haldi-bowl {
+      display: inline-block;
+      margin: 1rem 0;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .event-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .invitation-border {
+        padding: 2rem 1.5rem;
+      }
+
+      section {
+        padding: 3rem 1.5rem;
+      }
+
+      .splash-title {
+        font-size: 1.8rem;
+      }
+
+      .hero-flower-top {
+        font-size: 1.8rem;
+      }
+
+      .marathi-quote {
+        padding: 1.5rem 1rem;
+      }
+
+      .marathi-quote::before {
+        font-size: 4rem;
+        top: -1rem;
+        left: 0;
+      }
+
+      .photo-frame-outer {
+        max-width: 280px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .open-btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      }
+
+      .event-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .photo-frame-outer {
+        max-width: 240px;
+      }
+    }
+
+    /* ===== DECORATIVE BORDER PATTERNS ===== */
+    .floral-border-top,
+    .floral-border-bottom {
+      width: 100%;
+      height: 30px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--marigold) 0px,
+        var(--marigold) 2px,
+        transparent 2px,
+        transparent 15px
+      );
+      opacity: 0.3;
+      position: relative;
+    }
+
+    .floral-border-top::before,
+    .floral-border-bottom::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--turmeric) 0px,
+        var(--turmeric) 1px,
+        transparent 1px,
+        transparent 30px
+      );
+    }
+
+    /* ===== GLOWING TEXT ===== */
+    .glow-text {
+      animation: textGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes textGlow {
+      0%, 100% {
+        text-shadow: 0 0 10px rgba(212, 168, 67, 0.3);
+      }
+      50% {
+        text-shadow: 0 0 20px rgba(212, 168, 67, 0.5), 0 0 40px rgba(255, 153, 51, 0.2);
+      }
+    }
+
+    /* ===== RANGOLI PATTERN ===== */
+    .rangoli-pattern {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .rangoli-pattern svg {
+      width: 100%;
+      height: 100%;
     }
   </style>
 </head>
 <body>
 
-<div class="haldi-dust" id="turmericDust"></div>
-
-<div class="open-wrapper" id="openBtnContainer">
-  <button class="glow-btn" id="openInviteBtn">
-    <i class="fas fa-envelope-open-text"></i> Open Golden Invitation <i class="fas fa-feather-alt"></i>
-  </button>
-</div>
-
-<!-- invitation overlay -->
-<div class="invite-overlay" id="inviteOverlay">
-  <div class="close-card" id="closeCardBtn">✕</div>
-  <div class="gold-card" id="goldenCard">
-    <div class="card-inner">
-      <div class="motif">
-        <i class="fas fa-leaf"></i> ~ हळदी ~ <i class="fas fa-leaf"></i>
+  <!-- SPLASH SCREEN -->
+  <div id="splash">
+    <canvas id="splash-canvas"></canvas>
+    <div class="splash-content">
+      <div class="splash-om">🙏</div>
+      <div class="splash-border"></div>
+      <h1 class="splash-title">Saurabh Gawde's<br>Haldi Ceremony</h1>
+      <p class="splash-subtitle">हळदीचा मंगल सोहळा</p>
+      <div class="splash-decoration">
+        <span>🌼</span>
       </div>
-      <div class="turmeric-icons">
-        <i class="fas fa-mortar-pestle"></i>
-        <i class="fas fa-crown"></i>
-        <i class="fas fa-hand-sparkles"></i>
-      </div>
-      <div class="title-main">💛 शुभ हळद उपीट 💛</div>
-      <div style="text-align:center;"><span class="subhead">✨ Turmeric Blessing Ceremony ✨</span></div>
-
-      <!-- groom name only: Saurabh Gawde with marathi script touch -->
-      <div class="groom-name">
-        सौरभ गावडे <br><span>Saurabh Gawde</span>
-      </div>
-
-      <!-- Groom photo area: working avatar via ui-avatars + graceful fallback + editable later -->
-      <div class="photo-area">
-        <div class="photo-circle" id="groomPhotoFrame">
-          <img id="groomAvatarImg" class="groom-avatar" 
-               src="https://ui-avatars.com/api/?background=F5A623&color=fff&name=Saurabh+G&size=120&fontsize=52&rounded=true&bold=true&length=2" 
-               alt="Groom Photo" 
-               onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?background=D48A2A&color=fff&name=Saurabh&size=120&fontsize=48&rounded=true';">
-        </div>
-      </div>
-      <div class="photo-note">
-        <i class="fas fa-camera"></i> शुभ फोटो | <span style="font-size:0.7rem;">(replace image URL if needed)</span>
-      </div>
-
-      <div class="details-text">
-        <div class="event-badge"><i class="fas fa-hand-sparkles"></i> Varacha Haldi Upit | Groom's Sacred Turmeric Ritual</div>
-        <p style="margin-top: 12px;">With joyful geet, traditional haldi paste and heartfelt blessings,<br> 
-        <strong>Gawde Family</strong> invites you to celebrate Saurabh's golden journey.</p>
-        <p class="marathi-touch"><i class="fas fa-smile"></i> “हळदीचा सोनेरी रंग, सौरभच्या आयुष्यात रंगत भरेल”</p>
-      </div>
-
-      <!-- Date & time -->
-      <div class="datetime-block">
-        <div><i class="fas fa-calendar-alt"></i> Saturday, 10 May 2026</div>
-        <div><i class="fas fa-clock"></i> Morning 10:00 AM – 1:00 PM</div>
-      </div>
-
-      <div class="venue">
-        <i class="fas fa-map-marker-alt"></i> Shri Sanskriti Lawns, Tilak Road, Pune  <i class="fas fa-utensils"></i> traditional Maharashtrian feast
-      </div>
-
-      <!-- splash button feature -->
-      <div style="text-align: center;">
-        <button class="splash-action" id="haldiSplashBtn">
-          <i class="fas fa-tint"></i> हळदीचा स्प्लॅश | Turmeric Splash <i class="fas fa-feather-alt"></i>
-        </button>
-      </div>
-
-      <div class="rsvp-line">
-        <i class="fas fa-phone-alt"></i> RSVP: Saurabh - 8655309805 &nbsp;|&nbsp; Dress Code: Yellow / Saffron / Golden
-      </div>
-
-      <div class="footer-message">
-        <i class="fas fa-gopuram"></i> आपल्या उपस्थितीने हळद सोहळा साजरा करा | <br>
-        With turmeric, love & festive energy — Gawde Family
-      </div>
+      <button class="open-btn" id="openBtn" aria-label="Open Invitation">
+        ✨ Open Invitation ✨
+      </button>
     </div>
   </div>
-</div>
 
-<script>
-  (function() {
-    // 1. Create ambient floating golden dust (extra yellow atmosphere)
-    const dustContainer = document.getElementById('turmericDust');
-    for (let i = 0; i < 45; i++) {
-      let particle = document.createElement('span');
-      let size = 6 + Math.random() * 22;
-      particle.style.width = size + 'px';
-      particle.style.height = size + 'px';
-      particle.style.left = Math.random() * 100 + '%';
-      particle.style.top = Math.random() * 100 + '%';
-      particle.style.animationDelay = Math.random() * 14 + 's';
-      particle.style.animationDuration = 12 + Math.random() * 18 + 's';
-      particle.style.background = `radial-gradient(circle, rgba(255, 200, 80, 0.7), rgba(255, 130, 30, 0.4))`;
-      particle.style.filter = 'blur(5px)';
-      dustContainer.appendChild(particle);
+  <!-- FLOATING PETALS -->
+  <div class="petals-container" id="petalsContainer"></div>
+
+  <!-- MAIN CONTENT -->
+  <div id="main-content">
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <svg class="hero-rangoli left" viewBox="0 0 500 500">
+        <circle cx="250" cy="250" r="200" fill="none" stroke="#D4A843" stroke-width="1"/>
+        <circle cx="250" cy="250" r="150" fill="none" stroke="#D4A843" stroke-width="1"/>
+        <circle cx="250" cy="250" r="100" fill="none" stroke="#D4A843" stroke-width="1"/>
+        <path d="M250 50 L280 200 L250 250 L220 200 Z" fill="#D4A843" opacity="0.3"/>
+        <path d="M250 450 L280 300 L250 250 L220 300 Z" fill="#D4A843" opacity="0.3"/>
+        <path d="M50 250 L200 220 L250 250 L200 280 Z" fill="#D4A843" opacity="0.3"/>
+        <path d="M450 250 L300 220 L250 250 L300 280 Z" fill="#D4A843" opacity="0.3"/>
+      </svg>
+      <svg class="hero-rangoli right" viewBox="0 0 500 500">
+        <circle cx="250" cy="250" r="200" fill="none" stroke="#D4A843" stroke-width="1"/>
+        <circle cx="250" cy="250" r="150" fill="none" stroke="#D4A843" stroke-width="1"/>
+        <circle cx="250" cy="250" r="100" fill="none" stroke="#D4A843" stroke-width="1"/>
+        <path d="M250 50 L280 200 L250 250 L220 200 Z" fill="#D4A843" opacity="0.3"/>
+        <path d="M250 450 L280 300 L250 250 L220 300 Z" fill="#D4A843" opacity="0.3"/>
+        <path d="M50 250 L200 220 L250 250 L200 280 Z" fill="#D4A843" opacity="0.3"/>
+        <path d="M450 250 L300 220 L250 250 L300 280 Z" fill="#D4A843" opacity="0.3"/>
+      </svg>
+
+      <div class="hero-content">
+        <div class="hero-flower-top">🌸 🌼 🌸</div>
+        <p class="hero-label">You are invited to the</p>
+        <h1 class="hero-title glow-text">Haldi</h1>
+        <h2 class="hero-name">Celebrating Saurabh Gawde</h2>
+        <div class="hero-divider">
+          <span>🌼</span>
+        </div>
+        <p class="hero-marathi">
+          हळदीच्या सोहळ्यात सहभागी व्हा आणि<br>
+          या शुभ प्रसंगाचा आनंद घ्या
+        </p>
+      </div>
+
+      <div class="scroll-indicator">
+        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+      </div>
+    </section>
+
+    <!-- PHOTO SECTION -->
+    <section class="photo-section">
+      <div class="section-inner">
+        <p class="section-label animate-on-scroll">शुभ मुहूर्त</p>
+        <h2 class="section-title animate-on-scroll">The Groom</h2>
+
+        <div class="photo-frame-wrapper animate-on-scroll scale-in">
+          <div class="photo-glow"></div>
+          <div class="photo-ring-decoration"></div>
+          <div class="photo-frame-outer">
+            <span class="photo-flower-decoration">🌼</span>
+            <span class="photo-flower-decoration">🌼</span>
+            <span class="photo-flower-decoration">🌸</span>
+            <span class="photo-flower-decoration">🌸</span>
+            <div class="photo-frame-inner">
+
+              <!--
+                =============================================
+                HOW TO ADD SAURABH'S PHOTO:
+                =============================================
+                1. Place your photo file in the same folder as index.html
+                2. Rename it to: saurabh.jpg (or .png)
+                3. Uncomment the <img> line below and change the src:
+
+                <img src="saurabh.jpg" alt="Saurabh Gawde">
+
+                4. Delete the <div class="photo-placeholder"> block below
+
+                Alternative: Use any image URL:
+                <img src="https://example.com/photo.jpg" alt="Saurabh Gawde">
+                =============================================
+              -->
+
+            <img src="/VIN00710.jpg" alt="Saurabh Gawde">
+
+            </div>
+          </div>
+        </div>
+
+        <h3 class="photo-name animate-on-scroll">Saurabh Gawde</h3>
+        <p class="photo-subtitle animate-on-scroll">हळदीच्या रंगात न्हालेला</p>
+      </div>
+    </section>
+
+    <!-- EVENT DETAILS -->
+    <section class="event-section">
+      <div class="section-inner">
+        <p class="section-label animate-on-scroll">शुभ वेळ</p>
+        <h2 class="section-title animate-on-scroll">Event Details</h2>
+
+        <div class="event-cards">
+          <div class="event-card animate-on-scroll" style="transition-delay: 0.1s;">
+            <span class="event-icon">📅</span>
+            <p class="event-label">Date</p>
+            <p class="event-value">08 May 2026</p>
+            <p class="event-detail">Please save the date</p>
+          </div>
+
+          <div class="event-card animate-on-scroll" style="transition-delay: 0.3s;">
+            <span class="event-icon">📍</span>
+            <p class="event-label">Venue</p>
+            <p class="event-value">Ghatkopar</p>
+            <p class="event-detail">B-6/14, Rajhans CHS, Ghakopar Bus Depot, Ghatkopar East - 400075</p>
+          </div>
+
+          <div class="event-card animate-on-scroll" style="transition-delay: 0.5s;">
+            <span class="event-icon">🕒</span>
+            <p class="event-label">Time</p>
+            <p class="event-value">7:00 PM</p>
+            <p class="event-detail">Muhurta as per tradition</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARATHI QUOTE 1 -->
+    <section class="quote-section">
+      <div class="quote-wrapper">
+        <div class="quote-decoration animate-on-scroll">
+          <span class="line"></span>
+          <span class="flower">🌼</span>
+          <span class="line"></span>
+        </div>
+        <blockquote class="marathi-quote animate-on-scroll">
+          हळदीच्या रंगात न्हाऊ दे आजचा दिवस,<br>
+          आनंदाने भरून जाऊ दे प्रत्येक क्षण
+        </blockquote>
+        <div class="quote-decoration animate-on-scroll">
+          <span class="line"></span>
+          <span class="flower">🌸</span>
+          <span class="line"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- INVITATION -->
+    <section class="invitation-section">
+      <div class="section-inner">
+        <div class="invitation-border animate-on-scroll scale-in">
+          <span class="corner-decoration tl">❋</span>
+          <span class="corner-decoration tr">❋</span>
+          <span class="corner-decoration bl">❋</span>
+          <span class="corner-decoration br">❋</span>
+
+          <p class="section-label">आमंत्रण</p>
+          <p class="invitation-text">
+            You are cordially invited by the
+          </p>
+          <p class="invitation-family glow-text">Gawde Family</p>
+
+          <div class="haldi-bowl">
+            <svg width="80" height="60" viewBox="0 0 80 60">
+              <ellipse cx="40" cy="45" rx="35" ry="12" fill="#D4A843" opacity="0.3"/>
+              <path d="M10 40 Q10 55 40 55 Q70 55 70 40" fill="none" stroke="#D4A843" stroke-width="2"/>
+              <path d="M10 40 Q10 25 40 20 Q70 25 70 40" fill="#E8B930" opacity="0.8"/>
+              <ellipse cx="40" cy="32" rx="25" ry="8" fill="#F4A460" opacity="0.5"/>
+              <circle cx="30" cy="30" r="3" fill="#FF9933" opacity="0.6"/>
+              <circle cx="45" cy="28" r="2" fill="#FF9933" opacity="0.6"/>
+              <circle cx="50" cy="34" r="2.5" fill="#FF9933" opacity="0.6"/>
+            </svg>
+          </div>
+
+          <p class="invitation-text" style="font-size: 1.1rem; margin-top: 1rem;">
+            Join us as we celebrate this auspicious occasion<br>
+            with love, joy, and blessings
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARATHI QUOTE 2 -->
+    <section class="quote-section" style="background: linear-gradient(135deg, var(--cream) 0%, var(--soft-yellow) 50%, var(--warm-white) 100%);">
+      <div class="quote-wrapper">
+        <blockquote class="marathi-quote animate-on-scroll">
+          हळद लागली, सुगंध दरवळला,<br>
+          आनंदाचा सोहळा खुलला
+        </blockquote>
+        <div class="quote-decoration animate-on-scroll">
+          <span class="line"></span>
+          <span class="flower">🏵️</span>
+          <span class="line"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARATHI QUOTE 3 -->
+    <section class="quote-section" style="background: linear-gradient(135deg, #FFF8E1 0%, #FFE082 50%, #FFD54F 100%);">
+      <div class="quote-wrapper">
+        <div class="quote-decoration animate-on-scroll">
+          <span class="line"></span>
+          <span class="flower">🌺</span>
+          <span class="line"></span>
+        </div>
+        <blockquote class="marathi-quote animate-on-scroll">
+          सोन्यासारखा उजळो तुमचा संसार,<br>
+          हळदीच्या शुभेच्छा अपार
+        </blockquote>
+        <div class="quote-decoration animate-on-scroll">
+          <span class="line"></span>
+          <span class="flower">🌼</span>
+          <span class="line"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARATHI QUOTE 4 -->
+    <section class="quote-section" style="background: linear-gradient(135deg, var(--cream) 0%, var(--soft-yellow) 100%);">
+      <div class="quote-wrapper">
+        <blockquote class="marathi-quote animate-on-scroll">
+          हळदीचा सोहळा, आनंदाची चाहूल
+        </blockquote>
+        <div class="quote-decoration animate-on-scroll">
+          <span class="line"></span>
+          <span class="flower">✨</span>
+          <span class="line"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="rsvp-section">
+      <div class="section-inner">
+        <p class="section-label animate-on-scroll">कृपया प्रतिसाद द्या</p>
+        <h2 class="section-title animate-on-scroll">RSVP</h2>
+        <p class="animate-on-scroll" style="margin-bottom: 2rem; color: var(--saffron); font-style: italic;">
+          Kindly confirm your presence
+        </p>
+        <a class="rsvp-btn animate-on-scroll" href="https://wa.me/919999900000?text=Namaskar!%20I%20would%20love%20to%20attend%20Saurabh's%20Haldi%20Ceremony.%20🙏%0A%0AName%3A%20%0ANumber%20of%20Guests%3A%20" target="_blank" rel="noopener noreferrer">
+          Confirm via WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-floral"></div>
+      <div style="position: relative; z-index: 2;">
+        <div class="footer-flowers animate-on-scroll">🌸 🌼 🌸 🌼 🌸</div>
+        <p class="footer-love animate-on-scroll">With love,</p>
+        <p class="footer-family animate-on-scroll glow-text">Gawde Family</p>
+        <div class="hero-divider" style="animation: none;">
+          <span>🌼</span>
+        </div>
+        <p class="footer-copyright animate-on-scroll">
+          Made with  for the Haldi Ceremony
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- AUDIO ELEMENT - Add your music file here -->
+  <!--
+    HOW TO ADD BACKGROUND MUSIC:
+    1. Get an MP3 file (shehnai, dholki, or any wedding music)
+    2. Place it in the same folder as index.html
+    3. Rename it to: music.mp3
+    4. Uncomment the audio tag below by removing the HTML comments
+  -->
+  <!--
+  <audio id="bgMusic" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+  -->
+
+  <!-- MUSIC TOGGLE -->
+  <button class="music-toggle" id="musicToggle" aria-label="Toggle Music">
+    <span class="music-bars paused" id="musicBars">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </button>
+
+  <script>
+    // ===== SPLASH SCREEN PETALS =====
+    const splashCanvas = document.getElementById('splash-canvas');
+    const ctx = splashCanvas.getContext('2d');
+    let splashPetals = [];
+
+    function resizeCanvas() {
+      splashCanvas.width = window.innerWidth;
+      splashCanvas.height = window.innerHeight;
     }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
-    // DOM elements
-    const overlay = document.getElementById('inviteOverlay');
-    const openBtn = document.getElementById('openInviteBtn');
-    const closeBtn = document.getElementById('closeCardBtn');
-    const cardEle = document.getElementById('goldenCard');
-    const splashTurmericBtn = document.getElementById('haldiSplashBtn');
-
-    // Helper: create splash (yellow golden droplets) on specific card
-    function createGoldenSplash(containerElement, count = 34) {
-      if (!containerElement) return;
-      const rect = containerElement.getBoundingClientRect();
-      for (let i = 0; i < count; i++) {
-        const drop = document.createElement('div');
-        drop.classList.add('turmeric-splash');
-        const radius = 6 + Math.random() * 20;
-        drop.style.width = radius + 'px';
-        drop.style.height = radius + 'px';
-        // random position inside card area
-        const posX = Math.random() * (rect.width - 70) + 25;
-        const posY = Math.random() * (rect.height - 70) + 35;
-        drop.style.left = posX + 'px';
-        drop.style.top = posY + 'px';
-        drop.style.position = 'absolute';
-        const angle = Math.random() * Math.PI * 2;
-        const distance = 45 + Math.random() * 110;
-        const dx = Math.cos(angle) * distance;
-        const dy = Math.sin(angle) * distance - 35;
-        drop.style.setProperty('--dx', dx + 'px');
-        drop.style.setProperty('--dy', dy + 'px');
-        drop.style.background = `radial-gradient(circle, #ffda7a, #f5a623)`;
-        drop.style.boxShadow = '0 0 10px #ffbc4a';
-        containerElement.appendChild(drop);
-        drop.addEventListener('animationend', () => drop.remove());
+    class Petal {
+      constructor() {
+        this.reset();
       }
-      // floating message
-      const msgBox = document.createElement('div');
-      msgBox.innerText = '✨ हळद लागो! ✨ Turmeric blessing ✨';
-      msgBox.style.position = 'absolute';
-      msgBox.style.left = '50%';
-      msgBox.style.top = '48%';
-      msgBox.style.transform = 'translate(-50%, -50%)';
-      msgBox.style.background = '#fff2ca';
-      msgBox.style.padding = '5px 22px';
-      msgBox.style.borderRadius = '50px';
-      msgBox.style.fontWeight = 'bold';
-      msgBox.style.color = '#d16f1a';
-      msgBox.style.fontSize = '1rem';
-      msgBox.style.zIndex = '210';
-      msgBox.style.whiteSpace = 'nowrap';
-      msgBox.style.fontFamily = "'Inter', sans-serif";
-      msgBox.style.pointerEvents = 'none';
-      msgBox.style.border = '1px solid #f5bc60';
-      containerElement.appendChild(msgBox);
-      setTimeout(() => msgBox.remove(), 1200);
-    }
 
-    // welcome animation when card opens
-    function welcomeSplashOnCard() {
-      if (!cardEle) return;
-      for (let i = 0; i < 18; i++) {
-        const drop = document.createElement('div');
-        drop.classList.add('turmeric-splash');
-        let sz = 5 + Math.random() * 16;
-        drop.style.width = sz + 'px';
-        drop.style.height = sz + 'px';
-        const bounding = cardEle.getBoundingClientRect();
-        const xOff = 20 + Math.random() * (cardEle.clientWidth - 40);
-        const yOff = 25 + Math.random() * (cardEle.clientHeight - 50);
-        drop.style.left = xOff + 'px';
-        drop.style.top = yOff + 'px';
-        drop.style.position = 'absolute';
-        const ang = Math.random() * Math.PI * 2;
-        const dist = 30 + Math.random() * 70;
-        drop.style.setProperty('--dx', Math.cos(ang) * dist + 'px');
-        drop.style.setProperty('--dy', Math.sin(ang) * dist - 25 + 'px');
-        drop.style.background = 'radial-gradient(circle, #ffce65, #ff932e)';
-        cardEle.appendChild(drop);
-        drop.addEventListener('animationend', () => drop.remove());
+      reset() {
+        this.x = Math.random() * splashCanvas.width;
+        this.y = Math.random() * splashCanvas.height - splashCanvas.height;
+        this.size = Math.random() * 15 + 8;
+        this.speedY = Math.random() * 1.5 + 0.5;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.03;
+        this.opacity = Math.random() * 0.5 + 0.3;
+        this.color = ['#FF9933', '#E8B930', '#F4A460', '#FFB74D', '#FFD54F'][Math.floor(Math.random() * 5)];
       }
-    }
 
-    // open overlay
-    function openInvite() {
-      overlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      // small splash on open from button too
-      if (cardEle) {
-        setTimeout(() => {
-          welcomeSplashOnCard();
-        }, 100);
-      }
-    }
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX + Math.sin(this.y * 0.01) * 0.5;
+        this.rotation += this.rotationSpeed;
 
-    function closeInvite() {
-      overlay.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    openBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openInvite();
-      // also tiny splash around open button area
-      const btnRect = openBtn.getBoundingClientRect();
-      for (let i = 0; i < 12; i++) {
-        let mini = document.createElement('div');
-        mini.classList.add('turmeric-splash');
-        mini.style.width = (4 + Math.random() * 12) + 'px';
-        mini.style.height = mini.style.width;
-        mini.style.left = (btnRect.left + Math.random() * btnRect.width) + 'px';
-        mini.style.top = (btnRect.top + Math.random() * btnRect.height) + 'px';
-        mini.style.position = 'fixed';
-        const angRad = Math.random() * Math.PI * 2;
-        const distFly = 25 + Math.random() * 55;
-        mini.style.setProperty('--dx', Math.cos(angRad) * distFly + 'px');
-        mini.style.setProperty('--dy', Math.sin(angRad) * distFly - 25 + 'px');
-        document.body.appendChild(mini);
-        mini.addEventListener('animationend', () => mini.remove());
-      }
-    });
-
-    closeBtn.addEventListener('click', closeInvite);
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) closeInvite();
-    });
-
-    // splash button inside card - now creates golden turmeric splash
-    if (splashTurmericBtn) {
-      splashTurmericBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (cardEle) {
-          createGoldenSplash(cardEle, 40);
+        if (this.y > splashCanvas.height + 20) {
+          this.reset();
+          this.y = -20;
         }
-        // also additional spicy floating message
-        const temp = document.createElement('div');
-        temp.innerText = '🌸 हळदीचा हुरडा 🌸';
-        temp.style.position = 'fixed';
-        temp.style.bottom = '15%';
-        temp.style.left = '50%';
-        temp.style.transform = 'translateX(-50%)';
-        temp.style.background = '#feebbb';
-        temp.style.padding = '6px 16px';
-        temp.style.borderRadius = '50px';
-        temp.style.fontWeight = 'bold';
-        temp.style.color = '#c2691a';
-        temp.style.zIndex = '2000';
-        temp.style.fontSize = '0.9rem';
-        temp.style.pointerEvents = 'none';
-        temp.style.fontFamily = "'Inter'";
-        document.body.appendChild(temp);
-        setTimeout(() => temp.remove(), 950);
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, this.size * 0.5, this.size, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    for (let i = 0; i < 40; i++) {
+      splashPetals.push(new Petal());
+    }
+
+    let splashAnimating = true;
+    function animateSplash() {
+      if (!splashAnimating) return;
+      ctx.clearRect(0, 0, splashCanvas.width, splashCanvas.height);
+      splashPetals.forEach(p => {
+        p.update();
+        p.draw();
       });
+      requestAnimationFrame(animateSplash);
+    }
+    animateSplash();
+
+    // ===== OPEN INVITATION =====
+    const openBtn = document.getElementById('openBtn');
+    const splash = document.getElementById('splash');
+    const mainContent = document.getElementById('main-content');
+
+    openBtn.addEventListener('click', () => {
+      splash.classList.add('hidden');
+      mainContent.classList.add('visible');
+      splashAnimating = false;
+      document.body.style.overflow = 'auto';
+
+      setTimeout(() => {
+        splash.style.display = 'none';
+      }, 1000);
+    });
+
+    document.body.style.overflow = 'hidden';
+
+    // ===== FLOATING PETALS (MAIN) =====
+    const petalsContainer = document.getElementById('petalsContainer');
+
+    function createPetal() {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.style.left = Math.random() * 100 + '%';
+      petal.style.animationDuration = (Math.random() * 8 + 8) + 's';
+      petal.style.animationDelay = Math.random() * 2 + 's';
+      petal.style.width = (Math.random() * 10 + 8) + 'px';
+      petal.style.height = (Math.random() * 12 + 10) + 'px';
+      petal.style.opacity = Math.random() * 0.4 + 0.2;
+      petalsContainer.appendChild(petal);
+
+      setTimeout(() => {
+        petal.remove();
+      }, 18000);
     }
 
-    // groom image fallback additional safety: if avatar fails again use fa fallback but avatar API is reliable
-    const groomImg = document.getElementById('groomAvatarImg');
-    if (groomImg) {
-      groomImg.onerror = function() {
-        this.src = 'https://ui-avatars.com/api/?background=E67E22&color=fff&name=SG&size=120&fontsize=48&rounded=true';
-      };
+    setInterval(createPetal, 800);
+
+    for (let i = 0; i < 15; i++) {
+      setTimeout(createPetal, i * 200);
     }
 
-    // Extra: make the entire card background more yellow by tweaking shadow intensity (done in css)
-    // Also change any leftover hindi/marathi phrases? We reduced easily: removed heavy hindi lines.
-    // Changing event wording: mostly English, some marathi phrases sprinkled: "हळद लागो", "शुभ हळद उपीट", "हळदीचा स्प्लॅश", "Varacha Haldi Upit"
-    // According to requirement: less hindi/marathi but keep only here & there marathi words - Done.
+    // ===== SCROLL ANIMATIONS =====
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-    // also add small touch to photo note: replace image URL guideline
-    const photoNoteDiv = document.querySelector('.photo-note');
-    if (photoNoteDiv) {
-      photoNoteDiv.innerHTML = '<i class="fas fa-camera"></i> शुभ फोटो | <span style="font-size:0.7rem; cursor:pointer;" onclick="alert(\'Tip: Replace the image src in <img> tag with your own groom photo URL. Current placeholder shows initials.\')"><i class="fas fa-edit"></i> update photo</span>';
-    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
 
-    // enhance golden/yellow scheme via dynamic gradient on card hover? already good
-    // Ensure groom name pop and more golden in background
-    // Add event for escape key closing
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && overlay.classList.contains('active')) {
-        closeInvite();
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+
+    // ===== MUSIC TOGGLE =====
+    const musicToggle = document.getElementById('musicToggle');
+    const musicBars = document.getElementById('musicBars');
+    let isPlaying = false;
+    let audioContext;
+    let oscillator;
+    let gainNode;
+
+    musicToggle.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      musicBars.classList.toggle('paused', !isPlaying);
+
+      const bgMusic = document.getElementById('bgMusic');
+
+      if (isPlaying) {
+        if (bgMusic && bgMusic.querySelector('source')) {
+          bgMusic.volume = 0.4;
+          bgMusic.play().catch(() => {
+            useFallbackAudio();
+          });
+        } else {
+          useFallbackAudio();
+        }
+      } else {
+        if (bgMusic) {
+          bgMusic.pause();
+        }
+        if (oscillator) {
+          oscillator.stop();
+          oscillator = null;
+        }
       }
     });
-  })();
-</script>
+
+    function useFallbackAudio() {
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      oscillator = audioContext.createOscillator();
+      gainNode = audioContext.createGain();
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(261.63, audioContext.currentTime);
+      gainNode.gain.setValueAtTime(0.05, audioContext.currentTime);
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      oscillator.start();
+    }
+
+    // ===== PARALLAX EFFECT ON HERO =====
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.hero-content');
+      if (hero && scrolled < window.innerHeight) {
+        hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+        hero.style.opacity = 1 - (scrolled / window.innerHeight);
+      }
+    });
+
+    // ===== SMOOTH REVEAL FOR EVENT CARDS =====
+    const cards = document.querySelectorAll('.event-card');
+    cards.forEach((card, index) => {
+      card.style.transitionDelay = `${index * 0.2}s`;
+    });
+  </script>
 </body>
 </html>
