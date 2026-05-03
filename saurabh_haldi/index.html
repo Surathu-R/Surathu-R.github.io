@@ -364,30 +364,42 @@
     /* ===== PHOTO SECTION ===== */
     .photo-section {
       background: linear-gradient(180deg, var(--cream) 0%, var(--soft-yellow) 50%, var(--cream) 100%);
-      padding: 5rem 2rem;
+      padding: 5rem 1rem;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
     .photo-section .section-inner {
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .photo-wrapper-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin: 0 auto;
     }
 
     .photo-frame-wrapper {
       position: relative;
-      display: block;
-      width: 320px;
-      max-width: 85vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 300px;
       margin: 0 auto;
     }
 
     .photo-frame-outer {
       position: relative;
+      width: 100%;
       padding: 15px;
       background: linear-gradient(135deg, #D4A843, #E8B930, #C49B2A, #F4A460, #D4A843);
       background-size: 300% 300%;
@@ -1014,8 +1026,15 @@
         left: 0;
       }
 
-      .photo-frame-outer {
-        max-width: 280px;
+      .photo-wrapper-center {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+      }
+
+      .photo-frame-wrapper {
+        width: 280px !important;
       }
     }
 
@@ -1033,8 +1052,15 @@
         padding: 2rem 1.5rem;
       }
 
-      .photo-frame-outer {
-        max-width: 240px;
+      .photo-wrapper-center {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+      }
+
+      .photo-frame-wrapper {
+        width: 250px !important;
       }
     }
 
@@ -1167,16 +1193,18 @@
         <p class="section-label animate-on-scroll">शुभ मुहूर्त</p>
         <h2 class="section-title animate-on-scroll">The Groom</h2>
 
-        <div class="photo-frame-wrapper animate-on-scroll scale-in">
-          <div class="photo-glow"></div>
-          <div class="photo-ring-decoration"></div>
-          <div class="photo-frame-outer">
-            <span class="photo-flower-decoration">🌼</span>
-            <span class="photo-flower-decoration">🌼</span>
-            <span class="photo-flower-decoration">🌸</span>
-            <span class="photo-flower-decoration">🌸</span>
-            <div class="photo-frame-inner">
-              <img id="groomPhoto" alt="Saurabh Gawde" src="./VIN00710.jpeg">
+        <div class="photo-wrapper-center animate-on-scroll scale-in">
+          <div class="photo-frame-wrapper">
+            <div class="photo-glow"></div>
+            <div class="photo-ring-decoration"></div>
+            <div class="photo-frame-outer">
+              <span class="photo-flower-decoration">🌼</span>
+              <span class="photo-flower-decoration">🌼</span>
+              <span class="photo-flower-decoration">🌸</span>
+              <span class="photo-flower-decoration">🌸</span>
+              <div class="photo-frame-inner">
+                <img id="groomPhoto" alt="Saurabh Gawde" src="./VIN00710.jpeg">
+              </div>
             </div>
           </div>
         </div>
@@ -1196,7 +1224,7 @@
           <div class="event-card animate-on-scroll" style="transition-delay: 0.1s;">
             <span class="event-icon">📅</span>
             <p class="event-label">Date</p>
-            <p class="event-value">8<sup>th</sup> May 2026</p>
+            <p class="event-value">08 May 2026</p>
             <p class="event-detail">Please save the date</p>
           </div>
 
@@ -1354,7 +1382,7 @@
 
   <!-- BACKGROUND MUSIC -->
   <audio id="bgMusic" loop preload="auto" crossorigin="anonymous">
-    <source src="https://raw.githubusercontent.com/shaikmustafa77/musta-salma-wedding/main/Wedding%20card%20video%20-%20invitation%20card%20video%20-%20pelli%20subhalekha%20video%20invitation%20%23weddinginvites.mp3" type="audio/mpeg">
+    <source src="" type="audio/mpeg">
   </audio>
 
   <!-- MUSIC TOGGLE -->
@@ -1437,6 +1465,12 @@
     }
     animateSplash();
 
+    // ===== MUSIC TOGGLE =====
+    const musicToggle = document.getElementById('musicToggle');
+    const musicBars = document.getElementById('musicBars');
+    const bgMusic = document.getElementById('bgMusic');
+    let isPlaying = false;
+
     // ===== OPEN INVITATION =====
     const openBtn = document.getElementById('openBtn');
     const splash = document.getElementById('splash');
@@ -1447,6 +1481,12 @@
       mainContent.classList.add('visible');
       splashAnimating = false;
       document.body.style.overflow = 'auto';
+
+      bgMusic.volume = 0.4;
+      bgMusic.play().then(() => {
+        musicBars.classList.remove('paused');
+        isPlaying = true;
+      }).catch(() => {});
 
       setTimeout(() => {
         splash.style.display = 'none';
@@ -1499,11 +1539,6 @@
     });
 
     // ===== MUSIC TOGGLE =====
-    const musicToggle = document.getElementById('musicToggle');
-    const musicBars = document.getElementById('musicBars');
-    const bgMusic = document.getElementById('bgMusic');
-    let isPlaying = false;
-
     musicToggle.addEventListener('click', () => {
       isPlaying = !isPlaying;
       musicBars.classList.toggle('paused', !isPlaying);
