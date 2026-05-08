@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anthropic Skilljar Learning Roadmap</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 30px;
+    background: #0f172a;
+    color: #e2e8f0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1400px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #94a3b8;
+    margin-bottom: 30px;
+}
+
+.tbl-wrap {
+    overflow-x: auto;
+    background: #111827;
+    border-radius: 16px;
+    padding: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #1e293b;
+    color: #cbd5e1;
+    padding: 14px;
+    text-align: left;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 14px;
+    border-bottom: 1px solid #334155;
+    vertical-align: top;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+tr:hover td {
+    background: #1e293b;
+}
+
+.course-name {
+    font-weight: bold;
+    color: white;
+}
+
+.track {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.tr-found {
+    background: #14532d;
+    color: #dcfce7;
+}
+
+.tr-prod {
+    background: #1e3a8a;
+    color: #dbeafe;
+}
+
+.tr-dev {
+    background: #4c1d95;
+    color: #ede9fe;
+}
+
+.tr-plat {
+    background: #78350f;
+    color: #fef3c7;
+}
+
+.res-link {
+    display: block;
+    margin: 6px 0;
+    color: #60a5fa;
+    text-decoration: none;
+}
+
+.res-link:hover {
+    text-decoration: underline;
+    color: #93c5fd;
+}
+
+.skill-label {
+    font-weight: bold;
+    margin-top: 10px;
+    color: white;
+}
+
+.none-badge {
+    color: #cbd5e1;
+    font-style: italic;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #334155;
+    margin: 10px 0;
+}
+
+.footer {
+    margin-top: 25px;
+    text-align: center;
+    color: #64748b;
+    font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Anthropic Skilljar Learning Roadmap</h1>
+
+<div class="subtitle">
+Complete course prerequisites, skill requirements, and clickable learning resources.
+</div>
+
+<div class="tbl-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>#</th>
+<th>Course</th>
+<th>Prerequisites & Skills</th>
+<th>Learning Resources</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>1</td>
+<td>
+<div class="course-name">AI Capabilities and Limitations</div>
+<span class="track tr-found">Foundations</span>
+</td>
+<td>
+<span class="none-badge">
+No prior AI or technical background required.
+</span>
+</td>
+<td>
+<span class="none-badge">
+No prep needed — just start learning.
+</span>
+</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>
+<div class="course-name">Claude Code 101</div>
+<span class="track tr-prod">Productivity</span>
+</td>
+<td>
+
+<div class="skill-label">CLI / Terminal Basics</div>
+
+Understand:
+<ul>
+<li>cd</li>
+<li>ls / dir</li>
+<li>file paths</li>
+<li>running commands</li>
+<li>tab completion</li>
+</ul>
+
+<div class="skill-label">Claude Account</div>
+Need Claude Pro / Max / Enterprise or API access.
+
+</td>
+
+<td>
+
+<a class="res-link" href="https://www.freecodecamp.org/news/command-line-for-beginners/" target="_blank">
+freeCodeCamp — Command Line for Beginners
+</a>
+
+<a class="res-link" href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Environment_setup/Command_line" target="_blank">
+MDN — Command Line Crash Course
+</a>
+
+<a class="res-link" href="https://ubuntu.com/tutorials/command-line-for-beginners" target="_blank">
+Ubuntu — Linux Command Line for Beginners
+</a>
+
+</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>
+<div class="course-name">Building with the Claude API</div>
+<span class="track tr-dev">Developer</span>
+</td>
+
+<td>
+
+<div class="skill-label">Python</div>
+
+Need knowledge of:
+<ul>
+<li>Variables</li>
+<li>Functions</li>
+<li>Loops</li>
+<li>Lists & Dictionaries</li>
+<li>File handling</li>
+<li>pip & venv</li>
+</ul>
+
+<hr>
+
+<div class="skill-label">JSON</div>
+
+Understand:
+<ul>
+<li>Objects</li>
+<li>Arrays</li>
+<li>Key-value pairs</li>
+<li>json.loads()</li>
+<li>json.dumps()</li>
+</ul>
+
+</td>
+
+<td>
+
+<a class="res-link" href="https://www.python.org/about/gettingstarted/" target="_blank">
+Python.org — Beginner Guide
+</a>
+
+<a class="res-link" href="https://realpython.com/" target="_blank">
+Real Python Tutorials
+</a>
+
+<a class="res-link" href="https://developers.google.com/edu/python" target="_blank">
+Google Python Class
+</a>
+
+<hr>
+
+<a class="res-link" href="https://www.json.org/json-en.html" target="_blank">
+JSON.org Introduction
+</a>
+
+<a class="res-link" href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON" target="_blank">
+MDN — Working with JSON
+</a>
+
+</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>
+<div class="course-name">Introduction to MCP</div>
+<span class="track tr-dev">Developer</span>
+</td>
+
+<td>
+
+<div class="skill-label">HTTP Basics</div>
+
+Understand:
+<ul>
+<li>GET vs POST</li>
+<li>Status codes</li>
+<li>REST APIs</li>
+<li>Request/Response cycle</li>
+</ul>
+
+<hr>
+
+<div class="skill-label">Python Type Hints & Decorators</div>
+
+Basic understanding of:
+<ul>
+<li>@decorators</li>
+<li>typing</li>
+<li>SDK usage</li>
+</ul>
+
+</td>
+
+<td>
+
+<a class="res-link" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview" target="_blank">
+MDN — HTTP Overview
+</a>
+
+<a class="res-link" href="https://realpython.com/primer-on-python-decorators/" target="_blank">
+Real Python — Decorators
+</a>
+
+<a class="res-link" href="https://docs.python.org/3/library/typing.html" target="_blank">
+Python Docs — typing
+</a>
+
+</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>
+<div class="course-name">MCP: Advanced Topics</div>
+<span class="track tr-dev">Developer</span>
+</td>
+
+<td>
+
+<div class="skill-label">Async Python</div>
+
+Need:
+<ul>
+<li>async def</li>
+<li>await</li>
+<li>asyncio</li>
+<li>event loops</li>
+</ul>
+
+<hr>
+
+<div class="skill-label">SSE</div>
+
+Understand:
+<ul>
+<li>Server Sent Events</li>
+<li>text/event-stream</li>
+<li>real-time streaming</li>
+</ul>
+
+</td>
+
+<td>
+
+<a class="res-link" href="https://realpython.com/async-io-python/" target="_blank">
+Real Python — Async IO
+</a>
+
+<a class="res-link" href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events" target="_blank">
+MDN — Server Sent Events
+</a>
+
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<div class="footer">
+Generated from uploaded Skilljar prerequisites document.
+</div>
+
+</div>
+
+</body>
+</html>
