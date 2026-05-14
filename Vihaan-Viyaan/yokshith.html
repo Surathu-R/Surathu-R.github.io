@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elder Son | Our First Miracle</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4a574;
+            --gold-light: #e8c9a0;
+            --bg-deep: #0a0a0f;
+            --bg-card: rgba(20, 20, 35, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #f0e6dc;
+            --text-secondary: #c4b8a8;
+            --radius-xl: 20px;
+            --radius-md: 10px;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0a0f;
+            color: #f0e6dc;
+            line-height: 1.6;
+            background-image: radial-gradient(ellipse at 30% 20%, rgba(180,200,232,0.06) 0%, transparent 55%),
+            radial-gradient(ellipse at 70% 60%, rgba(232,180,184,0.05) 0%, transparent 55%);
+            background-attachment: fixed;
+        }
+        .page-container { max-width:1200px; margin:0 auto; padding:20px; position:relative; z-index:1; }
+        .back-link {
+            display: inline-block; margin-bottom: 20px; color: #e8c9a0; text-decoration: none;
+            font-size: 0.95rem; letter-spacing: 0.03em; transition: color 0.3s;
+        }
+        .back-link:hover { color: #fff; }
+        .page-title {
+            font-family: 'Georgia', serif; font-size: 2.5rem; margin-bottom: 10px;
+            text-shadow: 0 0 40px rgba(212,167,116,0.4);
+        }
+        .subtitle { color: #8a7e6e; margin-bottom: 30px; }
+        .filter-buttons {
+            display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px;
+        }
+        .filter-btn {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+            color: #c4b8a8; padding: 8px 16px; border-radius: 20px; cursor: pointer;
+            transition: all 0.3s; font-size: 0.85rem;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: rgba(212,167,116,0.2); border-color: #d4a574; color: #fff;
+        }
+        .gallery {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+            gap: 16px; margin-bottom: 40px;
+        }
+        .gallery-item {
+            position: relative; border-radius: var(--radius-md); overflow: hidden;
+            cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;
+            aspect-ratio: 4/3; background: #1a1a2e;
+        }
+        .gallery-item img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: transform 0.5s;
+        }
+        .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.6); }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-item .caption {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: #fff; padding: 12px 10px; font-size: 0.8rem;
+            transform: translateY(100%); transition: transform 0.3s;
+        }
+        .gallery-item:hover .caption { transform: translateY(0); }
+        /* Lightbox */
+        .lightbox-overlay {
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.95); z-index:9999; display:flex; align-items:center;
+            justify-content:center; opacity:0; pointer-events:none; transition: opacity 0.35s;
+            cursor: pointer;
+        }
+        .lightbox-overlay.active { opacity:1; pointer-events:auto; }
+        .lightbox-overlay img {
+            max-width: 90vw; max-height: 85vh; border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8); transform: scale(0.9);
+            transition: transform 0.4s;
+        }
+        .lightbox-overlay.active img { transform: scale(1); }
+        .lightbox-close {
+            position: absolute; top: 20px; right: 30px; font-size: 2.5rem; color: #fff;
+            cursor: pointer; background: none; border: none;
+        }
+        .milestone-section {
+            margin: 50px 0; padding: 20px; background: rgba(20,20,35,0.6);
+            border-radius: var(--radius-xl); backdrop-filter: blur(12px);
+        }
+        @media (max-width: 600px) {
+            .gallery { grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); }
+            .page-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <a href="./index.html" class="back-link">&larr; Back to Family Album</a>
+        <h1 class="page-title" data-aos="fade-up">Elder Son</h1>
+        <p class="subtitle" data-aos="fade-up" data-aos-delay="100">Every moment of your journey, forever cherished.</p>
+
+        <!-- Filter Buttons -->
+        <div class="filter-buttons" data-aos="fade-up" data-aos-delay="200">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="birth">Birth & First Days</button>
+            <button class="filter-btn" data-filter="birthday">Birthdays</button>
+            <button class="filter-btn" data-filter="school">School</button>
+            <button class="filter-btn" data-filter="vacation">Vacations</button>
+            <button class="filter-btn" data-filter="festival">Festivals</button>
+        </div>
+
+        <!-- ============================================
+        PHOTO GALLERY
+        Add your images here using the data-category attribute.
+        Path example: "./assets/images/elder-son/birth/photo1.jpg"
+        ============================================ -->
+        <div class="gallery" id="gallery" data-aos="fade-up" data-aos-delay="300">
+            <!-- SAMPLE IMAGES (replace with real ones) -->
+            <div class="gallery-item" data-category="birth">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23344a5f' width='400' height='300'/><circle fill='%2388b8d8' cx='200' cy='140' r='80'/><text fill='white' x='200' y='270' font-size='18' text-anchor='middle'>First Breath</text></svg>" alt="Birth memory">
+                <div class="caption">Welcome to the world • 2021</div>
+            </div>
+            <div class="gallery-item" data-category="birth">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%234a5a4a' width='400' height='300'/><circle fill='%23a0d0a0' cx='200' cy='140' r='70'/><text fill='white' x='200' y='270' text-anchor='middle'>First Smile</text></svg>" alt="First smile">
+                <div class="caption">That magical first smile</div>
+            </div>
+            <div class="gallery-item" data-category="birthday">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%235a3a4a' width='400' height='300'/><circle fill='%23e8a0b0' cx='200' cy='140' r='60'/><text fill='white' x='200' y='270' text-anchor='middle'>1st Birthday</text></svg>" alt="1st birthday">
+                <div class="caption">Cake smash fun • Age 1</div>
+            </div>
+            <div class="gallery-item" data-category="school">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%233a4a5a' width='400' height='300'/><circle fill='%2390b8d0' cx='200' cy='140' r='65'/><text fill='white' x='200' y='270' text-anchor='middle'>First Day</text></svg>" alt="School">
+                <div class="caption">Off to big school!</div>
+            </div>
+            <div class="gallery-item" data-category="vacation">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%234a3a2a' width='400' height='300'/><circle fill='%23e8c880' cx='200' cy='140' r='70'/><text fill='white' x='200' y='270' text-anchor='middle'>Beach Trip</text></svg>" alt="Vacation">
+                <div class="caption">Sandy toes, happy heart</div>
+            </div>
+            <!-- Add more items following the same pattern -->
+        </div>
+
+        <!-- Birthday Milestone Section -->
+        <div class="milestone-section" data-aos="fade-up">
+            <h2 style="font-family:Georgia; margin-bottom:15px;">🎂 Birthday Milestones</h2>
+            <p style="color:#c4b8a8; margin-bottom:20px;">Update these with each passing year.</p>
+            <!--
+            ========================================
+            ADD BIRTHDAY PHOTOS & CAPTIONS HERE
+            Example: <img src="./assets/images/elder-son/birthday-2/photo1.jpg" />
+            ========================================
+            -->
+            <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                <div style="background:rgba(255,255,255,0.05); padding:10px; border-radius:12px; text-align:center;">
+                    <div style="width:80px; height:80px; background:#4a3a5a; border-radius:50%; margin:0 auto 8px; display:flex; align-items:center; justify-content:center; font-size:1.5rem;">1</div>
+                    <span>2021</span>
+                </div>
+                <!-- repeat for each year -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <img src="" alt="Memory preview" id="lightbox-img">
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration:800, once:true });
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        galleryItems.forEach(img => {
+            img.addEventListener('click', (e) => {
+                e.stopPropagation();
+                lightbox.classList.add('active');
+                lightboxImg.src = img.src;
+            });
+        });
+        lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+        document.querySelector('.lightbox-close').addEventListener('click', () => lightbox.classList.remove('active'));
+
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('.gallery-item');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                items.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
