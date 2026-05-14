@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Younger Son | Our Sweet Joy</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4a574;
+            --gold-light: #e8c9a0;
+            --bg-deep: #0a0a0f;
+            --bg-card: rgba(20, 20, 35, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #f0e6dc;
+            --text-secondary: #c4b8a8;
+            --radius-xl: 20px;
+            --radius-md: 10px;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0a0f;
+            color: #f0e6dc;
+            line-height: 1.6;
+            background-image: radial-gradient(ellipse at 70% 30%, rgba(232,180,184,0.06) 0%, transparent 55%),
+            radial-gradient(ellipse at 30% 70%, rgba(180,200,232,0.05) 0%, transparent 55%);
+            background-attachment: fixed;
+        }
+        .page-container { max-width:1200px; margin:0 auto; padding:20px; position:relative; z-index:1; }
+        .back-link {
+            display: inline-block; margin-bottom: 20px; color: #e8c9a0; text-decoration: none;
+            font-size: 0.95rem; letter-spacing: 0.03em; transition: color 0.3s;
+        }
+        .back-link:hover { color: #fff; }
+        .page-title {
+            font-family: 'Georgia', serif; font-size: 2.5rem; margin-bottom: 10px;
+            text-shadow: 0 0 40px rgba(212,167,116,0.4);
+        }
+        .subtitle { color: #8a7e6e; margin-bottom: 30px; }
+        .filter-buttons {
+            display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px;
+        }
+        .filter-btn {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+            color: #c4b8a8; padding: 8px 16px; border-radius: 20px; cursor: pointer;
+            transition: all 0.3s; font-size: 0.85rem;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: rgba(212,167,116,0.2); border-color: #d4a574; color: #fff;
+        }
+        .gallery {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+            gap: 16px; margin-bottom: 40px;
+        }
+        .gallery-item {
+            position: relative; border-radius: var(--radius-md); overflow: hidden;
+            cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;
+            aspect-ratio: 4/3; background: #1a1a2e;
+        }
+        .gallery-item img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: transform 0.5s;
+        }
+        .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.6); }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-item .caption {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: #fff; padding: 12px 10px; font-size: 0.8rem;
+            transform: translateY(100%); transition: transform 0.3s;
+        }
+        .gallery-item:hover .caption { transform: translateY(0); }
+        .lightbox-overlay {
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.95); z-index:9999; display:flex; align-items:center;
+            justify-content:center; opacity:0; pointer-events:none; transition: opacity 0.35s;
+            cursor: pointer;
+        }
+        .lightbox-overlay.active { opacity:1; pointer-events:auto; }
+        .lightbox-overlay img {
+            max-width: 90vw; max-height: 85vh; border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8); transform: scale(0.9);
+            transition: transform 0.4s;
+        }
+        .lightbox-overlay.active img { transform: scale(1); }
+        .lightbox-close {
+            position: absolute; top: 20px; right: 30px; font-size: 2.5rem; color: #fff;
+            cursor: pointer; background: none; border: none;
+        }
+        .milestone-section {
+            margin: 50px 0; padding: 20px; background: rgba(20,20,35,0.6);
+            border-radius: var(--radius-xl); backdrop-filter: blur(12px);
+        }
+        @media (max-width: 600px) {
+            .gallery { grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); }
+            .page-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <a href="./index.html" class="back-link">&larr; Back to Family Album</a>
+        <h1 class="page-title" data-aos="fade-up">Younger Son</h1>
+        <p class="subtitle" data-aos="fade-up" data-aos-delay="100">Little feet, big adventures, endless love.</p>
+
+        <div class="filter-buttons" data-aos="fade-up" data-aos-delay="200">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="birth">Birth & First Days</button>
+            <button class="filter-btn" data-filter="birthday">Birthdays</button>
+            <button class="filter-btn" data-filter="school">School</button>
+            <button class="filter-btn" data-filter="vacation">Vacations</button>
+            <button class="filter-btn" data-filter="festival">Festivals</button>
+        </div>
+
+        <!-- ============================================
+        PHOTO GALLERY – Younger Son
+        ============================================ -->
+        <div class="gallery" id="gallery" data-aos="fade-up" data-aos-delay="300">
+            <div class="gallery-item" data-category="birth">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%233f4a5a' width='400' height='300'/><circle fill='%2390c0d0' cx='200' cy='140' r='75'/><text fill='white' x='200' y='270' text-anchor='middle'>Hello World</text></svg>" alt="Newborn">
+                <div class="caption">Our precious arrival • 2022</div>
+            </div>
+            <div class="gallery-item" data-category="birthday">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%234a4050' width='400' height='300'/><circle fill='%23f0b8c0' cx='200' cy='140' r='60'/><text fill='white' x='200' y='270' text-anchor='middle'>1st Cake</text></svg>" alt="1st birthday">
+                <div class="caption">First birthday giggles</div>
+            </div>
+            <div class="gallery-item" data-category="school">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%233a5a4a' width='400' height='300'/><circle fill='%23a0d8b0' cx='200' cy='140' r='65'/><text fill='white' x='200' y='270' text-anchor='middle'>Preschool</text></svg>" alt="First school day">
+                <div class="caption">So proud of you!</div>
+            </div>
+            <!-- add more -->
+        </div>
+
+        <div class="milestone-section" data-aos="fade-up">
+            <h2 style="font-family:Georgia; margin-bottom:15px;">🎈 Growing Up Fast</h2>
+            <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                <div style="background:rgba(255,255,255,0.05); padding:10px; border-radius:12px; text-align:center;">
+                    <div style="width:80px; height:80px; background:#4a3a5a; border-radius:50%; margin:0 auto 8px; display:flex; align-items:center; justify-content:center; font-size:1.5rem;">1</div>
+                    <span>2022</span>
+                </div>
+                <!-- add more years -->
+            </div>
+        </div>
+    </div>
+
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <img src="" alt="Memory" id="lightbox-img">
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration:800, once:true });
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', (e) => {
+                e.stopPropagation();
+                lightbox.classList.add('active');
+                lightboxImg.src = img.src;
+            });
+        });
+        lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+        document.querySelector('.lightbox-close').addEventListener('click', () => lightbox.classList.remove('active'));
+
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('.gallery-item');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                items.forEach(item => {
+                    item.style.display = (filter === 'all' || item.dataset.category === filter) ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
