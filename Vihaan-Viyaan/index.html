@@ -1,729 +1,530 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Precious Sons | Family Memory Album</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Our Precious Sons | Family Memory Album</title>
 
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+   <!-- AOS Animation Library -->
+   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- ============================================
-    MAIN STYLESHEET
-    Path: ./assets/css/style.css
-    ============================================ -->
-    <style>
-        /* ============================================
-        CSS RESET & BASE STYLES
-        ============================================ */
-        :root {
-            --gold: #d4a574;
-            --gold-light: #e8c9a0;
-            --gold-dark: #b8860b;
-            --bg-deep: #0a0a0f;
-            --bg-card: rgba(20, 20, 35, 0.75);
-            --glass-border: rgba(255, 255, 255, 0.12);
-            --glass-bg: rgba(255, 255, 255, 0.04);
-            --text-primary: #f0e6dc;
-            --text-secondary: #c4b8a8;
-            --text-muted: #8a7e6e;
-            --accent-rose: #e8b4b8;
-            --accent-blue: #b4c8e8;
-            --accent-lavender: #c8b4e8;
-            --shadow-glow: 0 0 40px rgba(212, 167, 116, 0.25);
-            --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.5);
-            --radius-xl: 24px;
-            --radius-lg: 16px;
-            --radius-md: 10px;
-            --transition-smooth: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --font-display: 'Georgia', 'Times New Roman', serif;
-            --font-body: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-        }
+   <style>
+       :root {
+           --gold: #d4a574;
+           --gold-light: #e8c9a0;
+           --bg-deep: #0a0a0f;
+           --bg-card: rgba(20, 20, 35, 0.8);
+           --glass-border: rgba(255, 255, 255, 0.12);
+           --text-primary: #f0e6dc;
+           --text-secondary: #c4b8a8;
+           --text-muted: #8a7e6e;
+           --shadow-glow: 0 0 40px rgba(212, 167, 116, 0.3);
+           --radius-xl: 24px;
+       }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
 
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
+       html {
+           scroll-behavior: smooth;
+       }
 
-        body {
-            font-family: var(--font-body);
-            background: var(--bg-deep);
-            color: var(--text-primary);
-            line-height: 1.7;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            min-height: 100vh;
-            background-image:
-                radial-gradient(ellipse at 20% 20%, rgba(180, 200, 232, 0.06) 0%, transparent 55%),
-                radial-gradient(ellipse at 80% 60%, rgba(232, 180, 184, 0.05) 0%, transparent 55%),
-                radial-gradient(ellipse at 50% 90%, rgba(200, 180, 232, 0.04) 0%, transparent 55%),
-                radial-gradient(ellipse at 40% 10%, rgba(212, 167, 116, 0.04) 0%, transparent 50%);
-            background-attachment: fixed;
-        }
+       body {
+           font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+           background: #0a0a0f;
+           color: #f0e6dc;
+           line-height: 1.7;
+           min-height: 100vh;
+           overflow-x: hidden;
+           background-image:
+               radial-gradient(ellipse at 20% 15%, rgba(180, 200, 232, 0.07) 0%, transparent 55%),
+               radial-gradient(ellipse at 80% 55%, rgba(232, 180, 184, 0.06) 0%, transparent 55%),
+               radial-gradient(ellipse at 50% 85%, rgba(200, 180, 232, 0.05) 0%, transparent 55%),
+               radial-gradient(ellipse at 35% 8%, rgba(212, 167, 116, 0.05) 0%, transparent 50%);
+           background-attachment: fixed;
+       }
 
-        /* ============================================
-        FLOATING PARTICLES CONTAINER
-        ============================================ */
-        #particles-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            animation: floatUp linear infinite;
-            opacity: 0;
-        }
-        @keyframes floatUp {
-            0% {
-                transform: translateY(105vh) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(-10vh) scale(1.5);
-                opacity: 0;
-            }
-        }
+       /* ============================================
+       FLOATING PARTICLES
+       ============================================ */
+       #particles-container {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           pointer-events: none;
+           z-index: 0;
+           overflow: hidden;
+       }
+       .particle {
+           position: absolute;
+           pointer-events: none;
+           animation: floatUp linear infinite;
+           opacity: 0;
+           font-size: 16px;
+       }
+       @keyframes floatUp {
+           0% {
+               transform: translateY(105vh) scale(0) rotate(0deg);
+               opacity: 0;
+           }
+           8% {
+               opacity: 1;
+           }
+           85% {
+               opacity: 0.4;
+           }
+           100% {
+               transform: translateY(-12vh) scale(1.4) rotate(40deg);
+               opacity: 0;
+           }
+       }
 
-        /* ============================================
-        MUSIC TOGGLE BUTTON
-        ============================================ */
-        #music-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: 1.5px solid var(--glass-border);
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            color: var(--gold-light);
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition-smooth);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-        #music-toggle:hover {
-            border-color: var(--gold);
-            box-shadow: var(--shadow-glow);
-            transform: scale(1.08);
-        }
-        #music-toggle.playing {
-            background: rgba(212, 167, 116, 0.15);
-            border-color: var(--gold);
-            animation: musicPulse 2s ease-in-out infinite;
-        }
-        @keyframes musicPulse {
-            0%,
-            100% {
-                box-shadow: 0 0 15px rgba(212, 167, 116, 0.3);
-            }
-            50% {
-                box-shadow: 0 0 35px rgba(212, 167, 116, 0.6);
-            }
-        }
+       /* ============================================
+       MUSIC TOGGLE
+       ============================================ */
+       #music-toggle {
+           position: fixed;
+           top: 20px;
+           right: 20px;
+           z-index: 1000;
+           width: 44px;
+           height: 44px;
+           border-radius: 50%;
+           border: 1.5px solid rgba(255, 255, 255, 0.15);
+           background: rgba(20, 20, 35, 0.6);
+           backdrop-filter: blur(12px);
+           -webkit-backdrop-filter: blur(12px);
+           color: #e8c9a0;
+           cursor: pointer;
+           font-size: 1.2rem;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           transition: all 0.4s ease;
+           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+       }
+       #music-toggle:hover {
+           border-color: #d4a574;
+           box-shadow: 0 0 35px rgba(212, 167, 116, 0.4);
+           transform: scale(1.08);
+       }
+       #music-toggle.active {
+           background: rgba(212, 167, 116, 0.18);
+           border-color: #d4a574;
+           animation: musicPulse 2s ease-in-out infinite;
+       }
+       @keyframes musicPulse {
+           0%,
+           100% {
+               box-shadow: 0 0 20px rgba(212, 167, 116, 0.3);
+           }
+           50% {
+               box-shadow: 0 0 45px rgba(212, 167, 116, 0.65);
+           }
+       }
 
-        /* ============================================
-        HERO SECTION
-        ============================================ */
-        .hero-section {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 20px;
-            z-index: 1;
-            overflow: hidden;
-        }
-        .hero-bg-collage {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.18;
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            grid-template-rows: repeat(4, 1fr);
-            gap: 8px;
-            padding: 20px;
-        }
-        .hero-bg-collage .collage-cell {
-            border-radius: var(--radius-md);
-            background-size: cover;
-            background-position: center;
-            filter: brightness(0.7) sepia(0.3);
-            transition: all 0.8s ease;
-            animation: collageFloat 6s ease-in-out infinite;
-            min-height: 60px;
-        }
-        .collage-cell:nth-child(odd) {
-            animation-delay: -3s;
-        }
-        .collage-cell:nth-child(3n) {
-            animation-delay: -1.5s;
-        }
-        @keyframes collageFloat {
-            0%,
-            100% {
-                transform: translateY(0) scale(1);
-            }
-            25% {
-                transform: translateY(-8px) scale(1.03);
-            }
-            75% {
-                transform: translateY(5px) scale(0.97);
-            }
-        }
+       /* ============================================
+       HERO SECTION
+       ============================================ */
+       .hero-section {
+           position: relative;
+           min-height: 100vh;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           justify-content: center;
+           text-align: center;
+           padding: 40px 20px;
+           z-index: 1;
+       }
+       .hero-bg-collage {
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           z-index: -1;
+           opacity: 0.16;
+           display: grid;
+           grid-template-columns: repeat(6, 1fr);
+           grid-template-rows: repeat(4, 1fr);
+           gap: 6px;
+           padding: 15px;
+       }
+       .collage-cell {
+           border-radius: 8px;
+           background-size: cover;
+           background-position: center;
+           filter: brightness(0.6) sepia(0.25);
+           animation: collageFloat 7s ease-in-out infinite;
+           min-height: 50px;
+           background-color: #1a1a2e;
+       }
+       .collage-cell:nth-child(odd) {
+           animation-delay: -4s;
+       }
+       .collage-cell:nth-child(3n) {
+           animation-delay: -1.8s;
+       }
+       .collage-cell:nth-child(4n+1) {
+           animation-delay: -2.5s;
+       }
+       @keyframes collageFloat {
+           0%,
+           100% {
+               transform: translateY(0) scale(1);
+           }
+           30% {
+               transform: translateY(-10px) scale(1.04);
+           }
+           70% {
+               transform: translateY(6px) scale(0.96);
+           }
+       }
+       .hero-overlay {
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background: linear-gradient(180deg,
+                   rgba(10, 10, 15, 0.5) 0%,
+                   rgba(10, 10, 15, 0.78) 38%,
+                   rgba(10, 10, 15, 0.9) 68%,
+                   rgba(10, 10, 15, 0.98) 100%);
+           z-index: -1;
+       }
+       .hero-title {
+           font-family: 'Georgia', 'Times New Roman', serif;
+           font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+           font-weight: 400;
+           letter-spacing: 0.04em;
+           color: #f0e6dc;
+           margin-bottom: 12px;
+           text-shadow: 0 0 60px rgba(212, 167, 116, 0.45);
+           animation: fadeInUp 1.4s ease-out forwards;
+       }
+       .hero-title .highlight {
+           color: #e8c9a0;
+           font-style: italic;
+       }
+       .hero-subtitle {
+           font-size: clamp(1rem, 2vw, 1.3rem);
+           color: #c4b8a8;
+           letter-spacing: 0.08em;
+           margin-bottom: 36px;
+           text-transform: uppercase;
+           animation: fadeInUp 1.6s ease-out forwards;
+       }
+       .hero-divider {
+           width: 80px;
+           height: 2px;
+           background: linear-gradient(90deg, transparent, #d4a574, transparent);
+           margin: 0 auto 40px;
+           animation: fadeInUp 1.8s ease-out forwards;
+       }
+       @keyframes fadeInUp {
+           from {
+               opacity: 0;
+               transform: translateY(45px);
+           }
+           to {
+               opacity: 1;
+               transform: translateY(0);
+           }
+       }
+       .btn-enter {
+           display: inline-block;
+           padding: 16px 48px;
+           font-family: 'Georgia', serif;
+           font-size: 1.1rem;
+           letter-spacing: 0.06em;
+           color: #0a0a0f;
+           background: linear-gradient(135deg, #e8c9a0, #d4a574);
+           border: none;
+           border-radius: 50px;
+           cursor: pointer;
+           text-decoration: none;
+           transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+           animation: fadeInUp 2s ease-out forwards;
+           box-shadow: 0 8px 30px rgba(212, 167, 116, 0.4);
+           position: relative;
+           overflow: hidden;
+           z-index: 2;
+       }
+       .btn-enter:hover {
+           transform: translateY(-4px);
+           box-shadow: 0 16px 45px rgba(212, 167, 116, 0.55);
+           background: linear-gradient(135deg, #f5ddb8, #e8c9a0);
+       }
 
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg,
-                    rgba(10, 10, 15, 0.55) 0%,
-                    rgba(10, 10, 15, 0.8) 40%,
-                    rgba(10, 10, 15, 0.92) 70%,
-                    rgba(10, 10, 15, 0.98) 100%);
-            z-index: -1;
-        }
+       /* ============================================
+       CARDS SECTION
+       ============================================ */
+       .cards-section {
+           position: relative;
+           z-index: 1;
+           padding: 30px 20px 70px;
+           display: flex;
+           flex-wrap: wrap;
+           gap: 36px;
+           justify-content: center;
+           align-items: stretch;
+           max-width: 1050px;
+           margin: 0 auto;
+       }
+       .child-card {
+           flex: 1 1 300px;
+           max-width: 440px;
+           min-width: 270px;
+           background: rgba(20, 20, 35, 0.75);
+           backdrop-filter: blur(18px);
+           -webkit-backdrop-filter: blur(18px);
+           border: 1.5px solid rgba(255, 255, 255, 0.1);
+           border-radius: 24px;
+           padding: 34px 26px;
+           text-align: center;
+           cursor: pointer;
+           transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+           text-decoration: none;
+           color: inherit;
+           display: block;
+           box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+           position: relative;
+           overflow: hidden;
+       }
+       .child-card:hover {
+           transform: translateY(-10px);
+           border-color: rgba(212, 167, 116, 0.6);
+           box-shadow: 0 22px 60px rgba(0, 0, 0, 0.6), 0 0 55px rgba(212, 167, 116, 0.25);
+       }
+       .child-card .card-avatar {
+           width: 120px;
+           height: 120px;
+           border-radius: 50%;
+           margin: 0 auto 18px;
+           background-size: cover;
+           background-position: center;
+           border: 3px solid #d4a574;
+           box-shadow: 0 0 30px rgba(212, 167, 116, 0.35);
+           transition: all 0.45s ease;
+           position: relative;
+           z-index: 1;
+           background-color: #1a1a30;
+       }
+       .child-card:hover .card-avatar {
+           box-shadow: 0 0 50px rgba(212, 167, 116, 0.6);
+           border-color: #f0d8b0;
+           transform: scale(1.05);
+       }
+       .child-card .card-name {
+           font-family: 'Georgia', serif;
+           font-size: 1.65rem;
+           color: #f0e6dc;
+           margin-bottom: 4px;
+           position: relative;
+           z-index: 1;
+       }
+       .child-card .card-role {
+           font-size: 0.9rem;
+           color: #8a7e6e;
+           letter-spacing: 0.05em;
+           text-transform: uppercase;
+           position: relative;
+           z-index: 1;
+       }
+       .card-glow-border {
+           position: absolute;
+           inset: -2px;
+           border-radius: 24px;
+           padding: 2px;
+           background: linear-gradient(135deg, transparent 40%, rgba(212, 167, 116, 0.5) 50%, transparent 60%);
+           -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+           mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+           -webkit-mask-composite: xor;
+           mask-composite: exclude;
+           opacity: 0;
+           transition: opacity 0.5s;
+           pointer-events: none;
+       }
+       .child-card:hover .card-glow-border {
+           opacity: 1;
+           animation: borderGlow 2.5s linear infinite;
+       }
+       @keyframes borderGlow {
+           0%,
+           100% {
+               background-position: 0% 50%;
+           }
+           50% {
+               background-position: 200% 50%;
+           }
+       }
 
-        .hero-title {
-            font-family: var(--font-display);
-            font-size: clamp(2.2rem, 5.5vw, 4.5rem);
-            font-weight: 400;
-            letter-spacing: 0.04em;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-            animation: fadeInUp 1.4s ease-out;
-            text-shadow: 0 0 60px rgba(212, 167, 116, 0.4);
-        }
-        .hero-title .highlight {
-            color: var(--gold-light);
-            font-style: italic;
-        }
-        .hero-subtitle {
-            font-family: var(--font-body);
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            color: var(--text-secondary);
-            letter-spacing: 0.08em;
-            margin-bottom: 40px;
-            animation: fadeInUp 1.6s ease-out;
-            text-transform: uppercase;
-        }
-        .hero-divider {
-            width: 80px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 0 auto 40px;
-            animation: fadeInUp 1.8s ease-out;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+       /* ============================================
+       FOOTER
+       ============================================ */
+       .site-footer {
+           position: relative;
+           z-index: 1;
+           text-align: center;
+           padding: 50px 20px 35px;
+           border-top: 1px solid rgba(255, 255, 255, 0.05);
+       }
+       .footer-stars {
+           font-size: 1.4rem;
+           letter-spacing: 6px;
+           margin-bottom: 10px;
+           animation: twinkle 3s ease-in-out infinite;
+           color: #e8c9a0;
+       }
+       @keyframes twinkle {
+           0%,
+           100% {
+               opacity: 0.45;
+           }
+           50% {
+               opacity: 1;
+           }
+       }
+       .footer-quote {
+           font-family: 'Georgia', serif;
+           font-size: 1.15rem;
+           color: #c4b8a8;
+           font-style: italic;
+           margin-bottom: 12px;
+           line-height: 1.6;
+       }
+       .footer-signature {
+           font-family: 'Georgia', serif;
+           color: #e8c9a0;
+           font-size: 0.95rem;
+           letter-spacing: 0.04em;
+       }
 
-        /* Enter Button */
-        .btn-enter {
-            display: inline-block;
-            padding: 16px 48px;
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            letter-spacing: 0.06em;
-            color: var(--bg-deep);
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: var(--transition-smooth);
-            animation: fadeInUp 2s ease-out;
-            box-shadow: 0 8px 30px rgba(212, 167, 116, 0.35);
-            position: relative;
-            overflow: hidden;
-            z-index: 2;
-        }
-        .btn-enter:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 40px rgba(212, 167, 116, 0.5);
-            background: linear-gradient(135deg, #f0d8b0, var(--gold-light));
-        }
-        .btn-enter::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        .btn-enter:hover::after {
-            opacity: 1;
-            animation: shimmer 1s ease-out;
-        }
-        @keyframes shimmer {
-            from {
-                transform: scale(0);
-                opacity: 1;
-            }
-            to {
-                transform: scale(1.5);
-                opacity: 0;
-            }
-        }
-
-        /* ============================================
-        CHILDREN SELECTION CARDS
-        ============================================ */
-        .cards-section {
-            position: relative;
-            z-index: 1;
-            padding: 40px 20px 80px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            justify-content: center;
-            align-items: stretch;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .child-card {
-            flex: 1 1 320px;
-            max-width: 460px;
-            min-width: 280px;
-            background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1.5px solid var(--glass-border);
-            border-radius: var(--radius-xl);
-            padding: 36px 28px;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            box-shadow: var(--shadow-card);
-        }
-        .child-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), var(--shadow-glow);
-        }
-        .child-card::before {
-            content: '';
-            position: absolute;
-            top: -60%;
-            left: -60%;
-            width: 220%;
-            height: 220%;
-            background: radial-gradient(ellipse,
-                    rgba(255, 255, 255, 0.03) 0%,
-                    transparent 70%);
-            opacity: 0;
-            transition: opacity 0.6s;
-            pointer-events: none;
-        }
-        .child-card:hover::before {
-            opacity: 1;
-        }
-        .child-card .card-avatar {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            background-size: cover;
-            background-position: center;
-            border: 3px solid var(--gold-light);
-            box-shadow: 0 0 30px rgba(212, 167, 116, 0.3);
-            transition: var(--transition-smooth);
-            position: relative;
-            z-index: 1;
-        }
-        .child-card:hover .card-avatar {
-            box-shadow: 0 0 50px rgba(212, 167, 116, 0.55);
-            border-color: #f0d8b0;
-            transform: scale(1.04);
-        }
-        .child-card .card-name {
-            font-family: var(--font-display);
-            font-size: 1.7rem;
-            color: var(--text-primary);
-            margin-bottom: 6px;
-            position: relative;
-            z-index: 1;
-        }
-        .child-card .card-role {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            position: relative;
-            z-index: 1;
-        }
-        .child-card .card-glow-border {
-            position: absolute;
-            inset: -2px;
-            border-radius: var(--radius-xl);
-            padding: 2px;
-            background: linear-gradient(135deg,
-                    transparent 40%,
-                    rgba(212, 167, 116, 0.5) 50%,
-                    transparent 60%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.5s;
-            pointer-events: none;
-        }
-        .child-card:hover .card-glow-border {
-            opacity: 1;
-            animation: borderGlow 2s linear infinite;
-        }
-        @keyframes borderGlow {
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 200% 50%;
-            }
-        }
-
-        /* ============================================
-        SECTION REVEAL ANIMATIONS
-        ============================================ */
-        .reveal-section {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .reveal-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ============================================
-        FOOTER
-        ============================================ */
-        .site-footer {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 60px 20px 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        .footer-quote {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            font-style: italic;
-            margin-bottom: 16px;
-        }
-        .footer-stars {
-            font-size: 1.5rem;
-            letter-spacing: 6px;
-            margin-bottom: 12px;
-            animation: twinkle 3s ease-in-out infinite;
-        }
-        @keyframes twinkle {
-            0%,
-            100% {
-                opacity: 0.5;
-            }
-            50% {
-                opacity: 1;
-            }
-        }
-        .footer-signature {
-            font-family: var(--font-display);
-            color: var(--gold-light);
-            font-size: 1rem;
-            letter-spacing: 0.04em;
-        }
-
-        /* ============================================
-        RESPONSIVE
-        ============================================ */
-        @media (max-width: 768px) {
-            .hero-bg-collage {
-                grid-template-columns: repeat(3, 1fr);
-                grid-template-rows: repeat(6, 1fr);
-                gap: 4px;
-                padding: 10px;
-            }
-            .cards-section {
-                flex-direction: column;
-                align-items: center;
-                gap: 24px;
-                padding: 20px 16px 60px;
-            }
-            .child-card {
-                max-width: 100%;
-                padding: 28px 20px;
-            }
-            .child-card .card-avatar {
-                width: 100px;
-                height: 100px;
-            }
-            #music-toggle {
-                top: 12px;
-                right: 12px;
-                width: 38px;
-                height: 38px;
-                font-size: 1rem;
-            }
-        }
-
-        /* ============================================
-        LIGHTBOX STYLES (shared across pages)
-        ============================================ */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.35s ease;
-            cursor: pointer;
-        }
-        .lightbox-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .lightbox-overlay img {
-            max-width: 90vw;
-            max-height: 85vh;
-            border-radius: var(--radius-lg);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
-            transform: scale(0.85);
-            transition: transform 0.4s ease;
-            cursor: default;
-        }
-        .lightbox-overlay.active img {
-            transform: scale(1);
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 2.5rem;
-            color: #fff;
-            cursor: pointer;
-            z-index: 10000;
-            transition: transform 0.3s;
-            background: none;
-            border: none;
-            line-height: 1;
-        }
-        .lightbox-close:hover {
-            transform: scale(1.2);
-            color: var(--gold-light);
-        }
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2.5rem;
-            color: #fff;
-            cursor: pointer;
-            z-index: 10000;
-            background: rgba(255, 255, 255, 0.08);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-        .lightbox-nav:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: var(--gold-light);
-        }
-        .lightbox-prev {
-            left: 20px;
-        }
-        .lightbox-next {
-            right: 20px;
-        }
-        @media (max-width: 768px) {
-            .lightbox-nav {
-                width: 38px;
-                height: 38px;
-                font-size: 1.8rem;
-            }
-            .lightbox-prev {
-                left: 8px;
-            }
-            .lightbox-next {
-                right: 8px;
-            }
-            .lightbox-close {
-                top: 10px;
-                right: 14px;
-                font-size: 2rem;
-            }
-        }
-    </style>
+       /* ============================================
+       RESPONSIVE
+       ============================================ */
+       @media (max-width: 768px) {
+           .hero-bg-collage {
+               grid-template-columns: repeat(3, 1fr);
+               grid-template-rows: repeat(8, 1fr);
+               gap: 3px;
+               padding: 8px;
+           }
+           .cards-section {
+               flex-direction: column;
+               align-items: center;
+               gap: 22px;
+               padding: 20px 14px 50px;
+           }
+           .child-card {
+               max-width: 100%;
+               padding: 26px 18px;
+           }
+           .child-card .card-avatar {
+               width: 95px;
+               height: 95px;
+           }
+           #music-toggle {
+               top: 10px;
+               right: 10px;
+               width: 36px;
+               height: 36px;
+               font-size: 1rem;
+           }
+       }
+   </style>
 </head>
 <body>
 
-    <!-- ============================================
-    FLOATING PARTICLES CONTAINER
-    Particles are generated by JS in ./assets/js/main.js
-    ============================================ -->
-    <div id="particles-container" aria-hidden="true"></div>
+   <!-- PARTICLES -->
+   <div id="particles-container" aria-hidden="true"></div>
 
-    <!-- ============================================
-    MUSIC TOGGLE BUTTON
-    ============================================ -->
-    <button id="music-toggle" aria-label="Toggle background music" title="Toggle Music">
-        &#9835;
-    </button>
+   <!-- MUSIC TOGGLE -->
+   <button id="music-toggle" aria-label="Toggle background music" title="Toggle Music">&#9835;</button>
 
-    <!-- ============================================
-    HERO SECTION — Cinematic Landing
-    ============================================ -->
-    <section class="hero-section" id="hero">
-        <!--
-        ========================================
-        FLOATING COLLAGE BACKGROUND
-        ADD YOUR OWN IMAGES HERE:
-        Replace each background-image URL with your own photo paths.
-        Example: "./assets/images/family/hero-collage-1.jpg"
-        ========================================
-        -->
-        <div class="hero-bg-collage" aria-hidden="true">
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23b8a090%22 width=%22200%22 height=%22200%22/><circle fill=%22%23d4c4b0%22 cx=%22100%22 cy=%22100%22 r=%2260%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23a0b0c0%22 width=%22200%22 height=%22200%22/><circle fill=%22%23c0d0e0%22 cx=%2270%22 cy=%2280%22 r=%2250%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23c0a8b8%22 width=%22200%22 height=%22200%22/><circle fill=%22%23e0d0d8%22 cx=%22120%22 cy=%22110%22 r=%2255%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%2390a8b0%22 width=%22200%22 height=%22200%22/><circle fill=%22%23b8d0d8%22 cx=%2290%22 cy=%2290%22 r=%2265%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23b0a090%22 width=%22200%22 height=%22200%22/><circle fill=%22%23d8ccb8%22 cx=%22110%22 cy=%2270%22 r=%2245%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23a8b8c0%22 width=%22200%22 height=%22200%22/><circle fill=%22%23d0dce8%22 cx=%2280%22 cy=%22120%22 r=%2258%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23c0b0a8%22 width=%22200%22 height=%22200%22/><circle fill=%22%23e8dcd4%22 cx=%22130%22 cy=%2285%22 r=%2248%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%2388a0b0%22 width=%22200%22 height=%22200%22/><circle fill=%22%23b0c8d8%22 cx=%2295%22 cy=%22100%22 r=%2252%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23b8a898%22 width=%22200%22 height=%22200%22/><circle fill=%22%23dcd0c0%22 cx=%22105%22 cy=%2295%22 r=%2262%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%2398a8b8%22 width=%22200%22 height=%22200%22/><circle fill=%22%23c8d8e8%22 cx=%2275%22 cy=%22105%22 r=%2256%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23b0a8a0%22 width=%22200%22 height=%22200%22/><circle fill=%22%23d8d0c8%22 cx=%22115%22 cy=%2275%22 r=%2242%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23a0b8c8%22 width=%22200%22 height=%22200%22/><circle fill=%22%23c8dce8%22 cx=%2285%22 cy=%22115%22 r=%2254%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23c8b8b0%22 width=%22200%22 height=%22200%22/><circle fill=%22%23e8dcd4%22 cx=%22100%22 cy=%2280%22 r=%2250%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%2380a0b8%22 width=%22200%22 height=%22200%22/><circle fill=%22%23a8c8e0%22 cx=%2265%22 cy=%2295%22 r=%2260%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23b8b0a8%22 width=%22200%22 height=%22200%22/><circle fill=%22%23e0d8d0%22 cx=%22125%22 cy=%22100%22 r=%2246%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%2390b0c0%22 width=%22200%22 height=%22200%22/><circle fill=%22%23bcd8e8%22 cx=%22100%22 cy=%2265%22 r=%2258%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23c0a898%22 width=%22200%22 height=%22200%22/><circle fill=%22%23e8d4c4%22 cx=%2278%22 cy=%22108%22 r=%2253%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23a8c0d0%22 width=%22200%22 height=%22200%22/><circle fill=%22%23d0e4f0%22 cx=%22118%22 cy=%2288%22 r=%2249%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23b8a8b0%22 width=%22200%22 height=%22200%22/><circle fill=%22%23e0d4dc%22 cx=%2292%22 cy=%2272%22 r=%2257%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%2388b0c8%22 width=%22200%22 height=%22200%22/><circle fill=%22%23b0d4e8%22 cx=%22108%22 cy=%22112%22 r=%2244%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23c0b8b0%22 width=%22200%22 height=%22200%22/><circle fill=%22%23e8e0d8%22 cx=%2288%22 cy=%2298%22 r=%2261%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%2398c0d0%22 width=%22200%22 height=%22200%22/><circle fill=%22%23c0e0ec%22 cx=%2272%22 cy=%2278%22 r=%2251%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23b0a0a8%22 width=%22200%22 height=%22200%22/><circle fill=%22%23d8ccd4%22 cx=%121%22 cy=%106%22 r=%2247%22/></svg>');"></div>
-            <div class="collage-cell" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23a8b8b0%22 width=%22200%22 height=%22200%22/><circle fill=%22%23d0dcd4%22 cx=%998%22 cy=%882%22 r=%2259%22/></svg>');"></div>
-        </div>
-        <div class="hero-overlay" aria-hidden="true"></div>
+   <!-- ============================================
+   HERO SECTION
+   ============================================ -->
+   <section class="hero-section" id="hero">
+       <div class="hero-bg-collage" aria-hidden="true">
+           <!--
+           ========================================
+           COLLAGE BACKGROUND CELLS
+           Replace each background-image with your own:
+           "./assets/images/family/collage-1.jpg"
+           ========================================
+           -->
+           <div class="collage-cell" style="background:linear-gradient(135deg,#3a2f28,#5a4030);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#2a3a48,#3a5068);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#4a3040,#5a4050);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#2a4038,#3a5848);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#383028,#504030);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#283848,#385068);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#402838,#503848);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#283830,#385040);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#342a22,#4a3a2a);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#223040,#324860);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#382230,#483240);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#223428,#324838);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#302420,#403020);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#1e2a38,#2e4058);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#301e28,#402e38);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#1e3028,#2e4238);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#2c2018,#3c2c20);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#1a2634,#2a3c50);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#2c1a24,#3c2a34);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#1a2c24,#2a3e34);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#281c14,#382818);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#162230,#263848);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#281620,#362430);"></div>
+           <div class="collage-cell" style="background:linear-gradient(135deg,#162820,#263a30);"></div>
+       </div>
+       <div class="hero-overlay" aria-hidden="true"></div>
 
-        <!-- Hero Content -->
-        <h1 class="hero-title" data-aos="fade-up" data-aos-duration="1400">
-            Our <span class="highlight">Precious</span> Sons
-        </h1>
-        <p class="hero-subtitle" data-aos="fade-up" data-aos-duration="1600" data-aos-delay="200">
-            A Lifetime of Memories &bull; A Story of Love
-        </p>
-        <div class="hero-divider" data-aos="fade-up" data-aos-duration="1800" data-aos-delay="400"></div>
-        <a href="#cards-section" class="btn-enter" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="600">
-            &#10022; Enter Album &#10022;
-        </a>
-    </section>
+       <h1 class="hero-title">Our <span class="highlight">Precious</span> Sons</h1>
+       <p class="hero-subtitle">A Lifetime of Memories &bull; A Story of Love</p>
+       <div class="hero-divider"></div>
+       <a href="#cards-section" class="btn-enter">&#10022; Enter Album &#10022;</a>
+   </section>
 
-    <!-- ============================================
-    CHILDREN SELECTION CARDS
-    ============================================ -->
-    <section class="cards-section" id="cards-section">
-        <!--
-        ========================================
-        ELDER SON CARD
-        ========================================
-        UPDATE PROFILE IMAGE:
-        Replace the background-image URL below with:
-        "./assets/images/elder-son/profile.jpg"
-        ========================================
-        -->
-        <a href="./elder-son.html" class="child-card" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
-            <div class="card-glow-border" aria-hidden="true"></div>
-            <div class="card-avatar"
-            style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%234a6fa5%22 width=%22200%22 height=%22200%22/><circle fill=%22%2388b8e8%22 cx=%22100%22 cy=%2275%22 r=%2250%22/><ellipse fill=%22%23d4a574%22 cx=%22100%22 cy=%22170%22 rx=%2270%22 ry=%2230%22/></svg>');"
-        aria-label="Elder Son Profile Photo">
-    </div>
-    <h2 class="card-name">Elder Son</h2>
-    <p class="card-role">Our First Miracle &bull; The Trailblazer</p>
+   <!-- ============================================
+   CHILDREN CARDS
+   ============================================ -->
+   <section class="cards-section" id="cards-section">
+       <!--
+       ========================================
+       ELDER SON CARD
+       UPDATE IMAGE: ./assets/images/elder-son/profile.jpg
+       ========================================
+       -->
+       <a href="./elder-son.html" class="child-card" data-aos="fade-up" data-aos-duration="1100">
+           <div class="card-glow-border" aria-hidden="true"></div>
+           <div class="card-avatar"
+           style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%233a5a8a%22 width=%22200%22 height=%22200%22/><circle fill=%22%2378b0e0%22 cx=%22100%22 cy=%2270%22 r=%2255%22/><ellipse fill=%22%23d4a574%22 cx=%22100%22 cy=%22168%22 rx=%2275%22 ry=%2232%22/></svg>');"
+       aria-label="Elder Son Profile">
+   </div>
+   <h2 class="card-name">Elder Son</h2>
+   <p class="card-role">Our First Miracle &bull; The Trailblazer</p>
 </a>
 
 <!--
 ========================================
 YOUNGER SON CARD
-========================================
-UPDATE PROFILE IMAGE:
-Replace the background-image URL below with:
-"./assets/images/younger-son/profile.jpg"
+UPDATE IMAGE: ./assets/images/younger-son/profile.jpg
 ========================================
 -->
-<a href="./younger-son.html" class="child-card" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">
-    <div class="card-glow-border" aria-hidden="true"></div>
-    <div class="card-avatar"
-    style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23a56b4a%22 width=%22200%22 height=%22200%22/><circle fill=%22%23e8b888%22 cx=%22100%22 cy=%2275%22 r=%2250%22/><ellipse fill=%22%23b8d4e8%22 cx=%22100%22 cy=%22170%22 rx=%2270%22 ry=%2230%22/></svg>');"
-    aria-label="Younger Son Profile Photo">
+<a href="./younger-son.html" class="child-card" data-aos="fade-up" data-aos-duration="1100" data-aos-delay="200">
+   <div class="card-glow-border" aria-hidden="true"></div>
+   <div class="card-avatar"
+   style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%238a5a3a%22 width=%22200%22 height=%22200%22/><circle fill=%22%23e8b878%22 cx=%22100%22 cy=%2270%22 r=%2255%22/><ellipse fill=%22%2390c8e0%22 cx=%22100%22 cy=%22168%22 rx=%2275%22 ry=%2232%22/></svg>');"
+   aria-label="Younger Son Profile">
 </div>
 <h2 class="card-name">Younger Son</h2>
 <p class="card-role">Our Sweet Joy &bull; The Little Explorer</p>
@@ -733,177 +534,126 @@ Replace the background-image URL below with:
 <!-- ============================================
 FOOTER
 ============================================ -->
-<footer class="site-footer reveal-section" id="site-footer">
-    <div class="footer-stars">&#10022; &#10022; &#10022; &#10022; &#10022;</div>
-    <p class="footer-quote">
-        &ldquo;Sons are the anchors of a mother&rsquo;s heart,<br>the wings of a father&rsquo;s dreams.&rdquo;
-    </p>
-    <p class="footer-signature">Made with &#10084;&#65039; for our beloved sons &mdash; Forever &amp; Always</p>
+<footer class="site-footer" id="site-footer">
+   <div class="footer-stars">&#10022; &#10022; &#10022; &#10022; &#10022;</div>
+   <p class="footer-quote">&ldquo;Sons are the anchors of a mother's heart,<br>the wings of a father's dreams.&rdquo;</p>
+   <p class="footer-signature">Made with &#10084;&#65039; for our beloved sons &mdash; Forever &amp; Always</p>
 </footer>
 
-<!-- ============================================
-SCRIPTS
-============================================ -->
-<!-- AOS Library -->
+<!-- AOS JS -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
 </script>
 
-<!--
-========================================
-MAIN JAVASCRIPT
-Path: ./assets/js/main.js
-========================================
--->
 <script>
-    // ============================================
-    // AOS INITIALIZATION
-    // ============================================
-    AOS.init({
-        duration: 900,
-        easing: 'ease-out-cubic',
-        once: false,
-        mirror: false,
-        offset: 60,
-    });
+   // ============================================
+   // INIT AOS
+   // ============================================
+   AOS.init({
+       duration: 900,
+       easing: 'ease-out-cubic',
+       once: true,
+       offset: 50,
+   });
 
-    // ============================================
-    // FLOATING PARTICLES SYSTEM
-    // Generates hearts, stars, and sparkles
-    // ============================================
-    (function() {
-        const container = document.getElementById('particles-container');
-        const particleSymbols = ['&#9829;', '&#10022;', '&#9679;', '&#9830;', '&#10047;', '&#9825;',
-            '&#10024;'
-        ];
-        const colors = [
-            'rgba(212,167,116,0.7)',
-            'rgba(232,180,184,0.6)',
-            'rgba(180,200,232,0.6)',
-            'rgba(200,180,232,0.5)',
-            'rgba(255,255,255,0.5)',
-            'rgba(212,167,116,0.4)',
-        ];
+   // ============================================
+   // FLOATING PARTICLES
+   // ============================================
+   (function() {
+       const container = document.getElementById('particles-container');
+       const symbols = ['&#9829;', '&#10022;', '&#9679;', '&#9830;', '&#10047;', '&#9825;', '&#10024;'];
+       const colors = [
+           'rgba(212,167,116,0.7)',
+           'rgba(232,180,184,0.6)',
+           'rgba(180,200,232,0.6)',
+           'rgba(200,180,232,0.5)',
+           'rgba(255,255,255,0.5)',
+           'rgba(212,167,116,0.45)',
+       ];
 
-        function createParticle() {
-            const particle = document.createElement('span');
-            particle.classList.add('particle');
-            particle.innerHTML = particleSymbols[Math.floor(Math.random() * particleSymbols.length)];
-            particle.style.left = Math.random() * 95 + '%';
-            particle.style.fontSize = (Math.random() * 18 + 8) + 'px';
-            particle.style.color = colors[Math.floor(Math.random() * colors.length)];
-            particle.style.animationDuration = (Math.random() * 14 + 8) + 's';
-            particle.style.animationDelay = Math.random() * 5 + 's';
-            container.appendChild(particle);
+       function spawnParticle() {
+           const p = document.createElement('span');
+           p.className = 'particle';
+           p.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+           p.style.left = Math.random() * 94 + '%';
+           p.style.fontSize = (Math.random() * 20 + 7) + 'px';
+           p.style.color = colors[Math.floor(Math.random() * colors.length)];
+           p.style.animationDuration = (Math.random() * 15 + 9) + 's';
+           p.style.animationDelay = Math.random() * 6 + 's';
+           container.appendChild(p);
+           const lifetime = parseFloat(p.style.animationDuration) + parseFloat(p.style.animationDelay);
+           setTimeout(() => { if (p.parentNode) p.remove(); }, lifetime * 1000 + 600);
+       }
+       for (let i = 0; i < 30; i++) setTimeout(spawnParticle, i * 350);
+       setInterval(() => { if (container.children.length < 45) spawnParticle(); }, 2200);
+   })();
 
-            // Remove particle after animation completes
-            const duration = parseFloat(particle.style.animationDuration) + parseFloat(particle.style
-                .animationDelay);
-            setTimeout(() => {
-                if (particle.parentNode) {
-                    particle.remove();
-                }
-            }, duration * 1000 + 500);
-        }
+   // ============================================
+   // MUSIC TOGGLE
+   // To add music: place file at ./assets/audio/bg-music.mp3
+   // and uncomment the Audio lines below.
+   // ============================================
+   (function() {
+       const btn = document.getElementById('music-toggle');
+       let playing = false;
+       // const audio = new Audio('./assets/audio/bg-music.mp3');
+       // audio.loop = true;
+       // audio.volume = 0.3;
+       btn.addEventListener('click', () => {
+           playing = !playing;
+           btn.classList.toggle('active', playing);
+           // if(playing) audio.play().catch(()=>{ playing=false; btn.classList.remove('active'); });
+           // else audio.pause();
+           console.log(playing ? '🎵 Music ON (add audio file to enable)' :
+               '🔇 Music OFF');
+       });
+   })();
 
-        // Create initial batch
-        for (let i = 0; i < 35; i++) {
-            setTimeout(createParticle, i * 300);
-        }
-        // Keep creating new particles
-        setInterval(() => {
-            if (container.children.length < 50) {
-                createParticle();
-            }
-        }, 2000);
-    })();
+   // ============================================
+   // SMOOTH SCROLL FOR ENTER BUTTON
+   // ============================================
+   document.querySelector('.btn-enter')?.addEventListener('click', function(e) {
+       e.preventDefault();
+       const target = document.querySelector(this.getAttribute('href'));
+       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+   });
 
-    // ============================================
-    // MUSIC TOGGLE (Placeholder — No audio file included)
-    // To add music, place an audio file at:
-    // ./assets/audio/background-music.mp3
-    // and uncomment the Audio lines below.
-    // ============================================
-    (function() {
-        const musicToggle = document.getElementById('music-toggle');
-        let isPlaying = false;
-        // UNCOMMENT BELOW TO ADD REAL MUSIC:
-        // const bgMusic = new Audio('./assets/audio/background-music.mp3');
-        // bgMusic.loop = true;
-        // bgMusic.volume = 0.35;
+   // ============================================
+   // CARD PARALLAX HOVER
+   // ============================================
+   document.querySelectorAll('.child-card').forEach(card => {
+       card.addEventListener('mousemove', function(e) {
+           const r = card.getBoundingClientRect();
+           const x = e.clientX - r.left;
+           const y = e.clientY - r.top;
+           const rx = ((y - r.height / 2) / (r.height / 2)) * -5;
+           const ry = ((x - r.width / 2) / (r.width / 2)) * 5;
+           card.style.transform =
+               `translateY(-10px) perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+       });
+       card.addEventListener('mouseleave', () => {
+           card.style.transform = 'translateY(0) perspective(700px) rotateX(0) rotateY(0)';
+       });
+   });
 
-        musicToggle.addEventListener('click', () => {
-            isPlaying = !isPlaying;
-            if (isPlaying) {
-                musicToggle.classList.add('playing');
-                musicToggle.innerHTML = '&#9835;'; // music note
-                // UNCOMMENT: bgMusic.play().catch(() => { isPlaying = false;
-                    musicToggle.classList.remove('playing'); });
-                // For demo, just show visual feedback:
-                console.log('Music would play — add audio file to enable.');
-            } else {
-                musicToggle.classList.remove('playing');
-                musicToggle.innerHTML = '&#9835;';
-                // UNCOMMENT: bgMusic.pause();
-            }
-        });
-    })();
+   // ============================================
+   // FOOTER SCROLL REVEAL
+   // ============================================
+   (function() {
+       const footer = document.getElementById('site-footer');
+       const obs = new IntersectionObserver((entries) => {
+           entries.forEach(e => { if (e.isIntersecting) e.target.style.opacity = '1';
+               e.target.style.transform = 'translateY(0)'; });
+       }, { threshold: 0.2 });
+       if (footer) {
+           footer.style.opacity = '0';
+           footer.style.transform = 'translateY(30px)';
+           footer.style.transition = 'all 0.8s ease';
+           obs.observe(footer);
+       }
+   })();
 
-    // ============================================
-    // SCROLL REVEAL FOR SECTIONS
-    // ============================================
-    (function() {
-        const revealSections = document.querySelectorAll('.reveal-section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-        revealSections.forEach(section => observer.observe(section));
-        // Also observe footer
-        const footer = document.getElementById('site-footer');
-        if (footer) observer.observe(footer);
-    })();
-
-    // ============================================
-    // SMOOTH SCROLL FOR "ENTER ALBUM" BUTTON
-    // ============================================
-    document.querySelector('.btn-enter')?.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    });
-
-    // ============================================
-    // PARALLAX-LIKE EFFECT ON CARDS (subtle)
-    // ============================================
-    document.querySelectorAll('.child-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -4;
-            const rotateY = ((x - centerX) / centerX) * 4;
-            card.style.transform =
-                `translateY(-10px) perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) perspective(800px) rotateX(0) rotateY(0)';
-        });
-    });
-
-    console.log('%c✨ Family Memory Album Ready %c| %cMade with love for our sons',
-        'font-size:1.2em;color:#d4a574;', '', 'color:#e8b4b8;');
-    console.log('%c📸 Update image paths in the clearly marked sections throughout the code.',
-        'color:#b4c8e8;');
-    console.log('%c📁 Data files: ./data/elder-son.json & ./data/younger-son.json',
-        'color:#c8b4e8;');
+   console.log('%c✨ Family Album Ready %c| %cOpen elder-son.html or younger-son.html',
+       'font-size:1.2em;color:#d4a574;', '', 'color:#e8b4b8;');
 </script>
 </body>
 </html>
